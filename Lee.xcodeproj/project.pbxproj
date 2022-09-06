@@ -14,6 +14,8 @@
 		3F1E8E3628BE881400C4DEE3 /* LeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
+		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
+		3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		3F1E8E3B28BE881400C4DEE3 /* LeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
+		3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		3F1E8E1728BE881300C4DEE3 = {
 			isa = PBXGroup;
 			children = (
+				3F8F2B9528C29F3B00B7565D /* DataModels */,
 				3F1E8E2228BE881300C4DEE3 /* Lee */,
 				3F1E8E3428BE881400C4DEE3 /* LeeTests */,
 				3F1E8E3E28BE881400C4DEE3 /* LeeUITests */,
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				3F1E8E2328BE881300C4DEE3 /* LeeApp.swift */,
+				3F8F2B9328C29EB400B7565D /* argsTest.py */,
 				3F1E8E2528BE881300C4DEE3 /* ContentView.swift */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
@@ -127,6 +133,14 @@
 				3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */,
 			);
 			path = LeeUITests;
+			sourceTree = "<group>";
+		};
+		3F8F2B9528C29F3B00B7565D /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */,
 				3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */,
 				3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */,
 			);
@@ -260,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */,
+				3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */,
 				3F1E8E2428BE881300C4DEE3 /* LeeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
