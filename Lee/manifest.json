@@ -1,0 +1,24 @@
+{
+    "program": {
+        "runner": "python"
+    },
+    "inputs": [
+        {
+            "name": "in-file",
+            "type": "path",
+            "comment": "Input file"
+        },
+        {
+            "name": "timeout",
+            "type": "int",
+            "comment": "Time to allow script to run"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "out-file",
+            "type": "path",
+            "comment": "File to output data"
+        }
+    ]
+}
