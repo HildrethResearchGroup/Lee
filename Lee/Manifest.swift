@@ -26,7 +26,7 @@ struct Manifest {
     let inputs: [Parameter];
     let outputs: [Parameter];
     
-    static func parseFromString(source: String) -> Manifest {
-        Manifest(runner: Runner.python, inputs: [], outputs: [])
+    static func parseFromString(source: String) -> Manifest? {
+        nil
     }
 }
