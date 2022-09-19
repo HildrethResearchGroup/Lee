@@ -7,26 +7,48 @@
 
 import Foundation
 
-enum Runner {
+enum Runner : Codable {
     case python, matlab
 }
 
-enum DataType {
+enum DataType : Codable {
     case path, string, int
 }
 
-struct Parameter {
-    let name: String;
-    let type: DataType;
-    let comment: String?;
+struct Program : Codable {
+    let runner: String
 }
 
-struct Manifest {
-    let runner: Runner;
-    let inputs: [Parameter];
-    let outputs: [Parameter];
+struct Parameter : Codable {
+    let name: String
+    let type: String
+    let comment: String?
+}
+
+struct Manifest : Codable {
+    let program: Program
+    let inputs: [Parameter]
+    let outputs : [Parameter]
     
     static func parseFromString(source: String) -> Manifest? {
-        nil
+        var manifest: Manifest? = nil
+        
+        do {
+            // Only parse the source if the source can be converted to data
+            if let manifestData = source.data(using: .utf8) {
+                let jsonDecoder = JSONDecoder()
+                // Parse the manifest by splitting it into the Program, Inputs, and Outputs section.
+                /*
+                 Program - Specifies the program to run the script
+                 Inputs - This will specify the script to run with the program specified in Program. Additionally, this specifies any arguments to pass the script, such as min, max, and time out values.
+                 Outputs - This specifies the file to output the script's output too after it finishes running. It writes the values written to stdout to the output files in the order provided for both the script and the output file.
+                 */
+                manifest = try jsonDecoder.decode(Manifest.self, from: manifestData)
+            }
+        } catch {
+            print ( error )
+        }
+        
+        return manifest
     }
 }
