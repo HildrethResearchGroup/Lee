@@ -11,3 +11,12 @@ jobs:
         run: docker pull ghcr.io/realm/swiftlint:latest
       - name: Run swiftlint
         run: docker run -v `pwd`:`pwd` -w `pwd` ghcr.io/realm/swiftlint:latest
+  test:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Select Xcode version
+        run: sudo xcode-select -switch /Applications/Xcode_13.4.app && /usr/bin/xcodebuild -version
+      - name: Run unit tests
+        run: xcodebuild -scheme Lee -only-testing:LeeTests clean test
