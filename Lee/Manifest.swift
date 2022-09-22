@@ -7,21 +7,21 @@
 
 import Foundation
 
-enum Runner : Codable {
+enum Runner : String, Codable {
     case python, matlab
 }
 
-enum DataType : Codable {
+enum DataType : String, Codable {
     case path, string, int
 }
 
 struct Program : Codable {
-    let runner: String
+    let runner: Runner
 }
 
-struct Parameter : Codable {
+struct Parameter : Codable, Equatable {
     let name: String
-    let type: String
+    let type: DataType
     let comment: String?
 }
 
