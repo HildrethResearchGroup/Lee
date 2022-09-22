@@ -12,7 +12,9 @@ enum Runner : String, Codable {
 }
 
 enum DataType : String, Codable {
-    case path, string, int
+    case path
+    case string
+    case int
 }
 
 struct Program : Codable {

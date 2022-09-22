@@ -35,6 +35,42 @@ struct Manifests {
         ]
     }
     """
+    static let valid2: String = """
+    {
+        "program": {
+            "runner": "matlab"
+        },
+        "inputs": [
+            {
+                "name": "inputImage",
+                "type": "path",
+                "comment": "Image to process",
+                "extensions": [
+                    "png",
+                    "jpg"
+                ]
+            },
+            {
+                "name": "outputNamePrefix",
+                "type": "string"
+            },
+            {
+                "name": "timeout",
+                "type": "int",
+                "comment": "Time before killing script",
+                "min": 10,
+                "max": 20
+            }
+        ],
+        "outputs": [
+            {
+                "name": "outputImage",
+                "type": "path",
+                "comment": "Processed image"
+            }
+        ]
+    }
+    """
 }
 
 class ManifestTests: XCTestCase {
@@ -55,6 +91,17 @@ class ManifestTests: XCTestCase {
                        Parameter(name: "in-file", type: DataType.path, comment: "Input file"))
         XCTAssertEqual(manifest!.inputs[1],
                        Parameter(name: "timeout", type: DataType.int, comment: "Time to allow script to run"))
+    }
+    
+    func testValidManifest2() {
+        // Attempt to parse
+        let manifest = Manifest.parseFromString(source: Manifests.valid2);
+        XCTAssertNotNil(manifest)
+        
+        // Check program section
+        XCTAssertEqual(manifest!.program.runner, Runner.matlab)
+        
+        XCTFail()
     }
     
     func testEmptyManifest() {
