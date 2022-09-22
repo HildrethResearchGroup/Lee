@@ -16,6 +16,8 @@
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */; };
+		4A0737F828D3952A005B60F9 /* LeeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0737F728D3952A005B60F9 /* LeeDataModel.swift */; };
+		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
 		3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
+		4A0737F728D3952A005B60F9 /* LeeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeDataModel.swift; sourceTree = "<group>"; };
+		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +105,12 @@
 			isa = PBXGroup;
 			children = (
 				3F1E8E2328BE881300C4DEE3 /* LeeApp.swift */,
+				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3F8F2B9328C29EB400B7565D /* argsTest.py */,
 				3F1E8E2528BE881300C4DEE3 /* ContentView.swift */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
+				4A0737F728D3952A005B60F9 /* LeeDataModel.swift */,
 				3F1E8E2928BE881400C4DEE3 /* Preview Content */,
 			);
 			path = Lee;
@@ -276,6 +282,8 @@
 			files = (
 				3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */,
 				3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */,
+				4A0737F828D3952A005B60F9 /* LeeDataModel.swift in Sources */,
+				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3F1E8E2428BE881300C4DEE3 /* LeeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

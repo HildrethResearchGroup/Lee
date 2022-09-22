@@ -32,5 +32,16 @@ class LeeTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testLoadFile() throws {
+       
+        let lee = LeeApp()
+        lee.saveFile("/Lee/Lee/Lee.swift")
+        XCTAssert(lee.getFile() == "/Lee/Lee/Lee.swift")
+        lee.saveFile("")
+        XCTAssertFalse(lee.getFile() == "/Lee/Lee/Lee.swift")
+        lee.saveFile("/Lee/Lee/LeeApp.swift")
+        XCTAssertFalse(lee.getFile() == "/Lee/Lee/Lee.swift")
+    }
 
 }
