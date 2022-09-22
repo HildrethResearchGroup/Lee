@@ -16,20 +16,16 @@ class PythonExectuor: ObservableObject {
     ///
     /// This filepath needs to be updated
     @Published var pythonProcessPath = "/usr/bin/python3"
-    
     /// The filepath for the script to run
     ///
     /// This filepath needs to be updated
-    @Published var filePath = "/Users/ohildret/Documents/Code/Research/Mines/ExamplePythonExectutor/ExamplePythonExectutor/argsTest.py"
-    
+    @Published var filePath = """
+    /Users/ohildret/Documents/Code/Research/Mines/ExamplePythonExectutor/ExamplePythonExectutor/argsTest.py
+    """
     /// This is an argument being sent to the external script.
     @Published var integerToPass = 15
-    
     /// Used to update the UI based upon if an external script is running or not
     @Published var scriptIsRunning = false
-    
-    
-    
     /// This function runs the target external script
     ///
     /// The process is run asynchronously to make sure the main threed isn't blocked if the script takes a long time to run.
@@ -43,7 +39,9 @@ class PythonExectuor: ObservableObject {
             process.executableURL = executableURL
             process.arguments = [filePath, String(integerToPass)]
             process.terminationHandler = {_ in
-                // The terminationHandler uses an "old school" escaping completion handler.  You can't rely on Swift's new async/await to know what to run on the main thread for you.  You need to wrap the property accesses in a DispatchQueue (old school style).
+                // The terminationHandler uses an "old school" escaping completion handler.
+                // You can't rely on Swift's new async/await to know what to run on the main thread for you.
+                // You need to wrap the property accesses in a DispatchQueue (old school style).
                 DispatchQueue.main.async {
                     self.scriptIsRunning = false
                   }
