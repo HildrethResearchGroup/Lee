@@ -42,8 +42,10 @@ struct Manifest : Codable {
                 // Parse the manifest by splitting it into the Program, Inputs, and Outputs section.
                 /*
                  Program - Specifies the program to run the script
-                 Inputs - This will specify the script to run with the program specified in Program. Additionally, this specifies any arguments to pass the script, such as min, max, and time out values.
-                 Outputs - This specifies the file to output the script's output too after it finishes running. It writes the values written to stdout to the output files in the order provided for both the script and the output file.
+                 Inputs - This will specify the script to run with the program specified in Program.
+                 Additionally, this specifies any arguments to pass the script, such as min, max, and time out values.
+                 Outputs - This specifies the file to output the script's output too after it finishes running.
+                 It writes the values written to stdout to the output files in the order provided for both the script and the output file.
                  */
                 manifest = try jsonDecoder.decode(Manifest.self, from: manifestData)
             }

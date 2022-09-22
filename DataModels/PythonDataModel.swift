@@ -43,7 +43,10 @@ class PythonExectuor: ObservableObject {
             process.executableURL = executableURL
             process.arguments = [filePath, String(integerToPass)]
             process.terminationHandler = {_ in
-                // The terminationHandler uses an "old school" escaping completion handler.  You can't rely on Swift's new async/await to know what to run on the main thread for you.  You need to wrap the property accesses in a DispatchQueue (old school style).
+                /* The terminationHandler uses an "old school" escaping completion handler.
+                 You can't rely on Swift's new async/await to know what to run on the main thread for you.
+                 You need to wrap the property accesses in a DispatchQueue (old school style).
+                 */
                 DispatchQueue.main.async {
                     self.scriptIsRunning = false
                   }
