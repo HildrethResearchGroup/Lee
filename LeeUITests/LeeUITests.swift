@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import Lee
 
 class LeeUITests: XCTestCase {
 
@@ -38,4 +39,6 @@ class LeeUITests: XCTestCase {
             }
         }
     }
+    
+    
 }

@@ -20,5 +20,9 @@ class LeeApp: ObservableObject {
         model.manifestFilename = filename
     }
     
+    func getFile() -> String{
+        return model.manifestFilename
+    }
+    
 
 }
