@@ -8,36 +8,60 @@
 import XCTest
 @testable import Lee
 
+struct Manifests {
+    static let valid1: String = """
+    {
+        "program": {
+            "runner": "python"
+        },
+        "inputs": [
+            {
+                "name": "in-file",
+                "type": "path",
+                "comment": "Input file"
+            },
+            {
+                "name": "timeout",
+                "type": "int",
+                "comment": "Time to allow script to run"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "out-file",
+                "type": "path",
+                "comment": "File to output data"
+            }
+        ]
+    }
+    """
+}
+
 class ManifestTests: XCTestCase {
-    
-    func testParseManifest() throws {
-        let bundle = Bundle(for: type(of: self))
-        // Get the path of the test file "manifest.json"
-        guard let path = bundle.path(forResource: "manifest", ofType: "json") else {
-            XCTFail("Failed to load manifest")
-            return
-        }
-        
-        // Read all the text from the test file
-        let source = try? String(contentsOfFile: path)
-        
-        // Error if the file doesn't have text
-        XCTAssertNotNil(source)
-        
-        // Parse the data from the manifest
-        let manifest = Manifest.parseFromString(source: source!)
-        
-        // Error if the manifest isn't parsed
-        XCTAssertNotNil(manifest)
-        
-        // This section checks if the parsed file has valid entires
-        
-        // Checks the Program section
-        // Checks if the runner string contains a value
-        XCTAssertFalse(((manifest?.program.runner.isEmpty) != nil))
-        
-        
+    override func setUp() {
+        continueAfterFailure = false
     }
     
+    func testValidManifest1() {
+        // Attempt to parse
+        let manifest = Manifest.parseFromString(source: Manifests.valid1);
+        XCTAssertNotNil(manifest)
+        
+        // Check program section
+        XCTAssertEqual(manifest!.program.runner, Runner.python)
+        
+        // Check inputs section
+        XCTAssertEqual(manifest!.inputs[0],
+                       Parameter(name: "in-file", type: DataType.path, comment: "Input file"))
+        XCTAssertEqual(manifest!.inputs[1],
+                       Parameter(name: "timeout", type: DataType.int, comment: "Time to allow script to run"))
+    }
     
+    func testEmptyManifest() {
+        // Supply empty string to parser
+        let manifest = Manifest.parseFromString(source: "")
+        
+        // Ensure nil is returned
+        XCTAssertNil(manifest)
+    }
 }
