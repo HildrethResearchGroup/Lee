@@ -18,6 +18,7 @@ class LeeApp: ObservableObject {
     
     func saveFile(_ filename: String){
         model.manifestFilename = filename
+        print(model.manifestFilename)
     }
     
     func getFile() -> String{
