@@ -11,11 +11,9 @@
 		3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2528BE881300C4DEE3 /* ContentView.swift */; };
 		3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */; };
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
-		3F1E8E3628BE881400C4DEE3 /* LeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
 		3F68515B28D3917900B18DAF /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68515A28D3917900B18DAF /* Manifest.swift */; };
-		3F68516028D3A41100B18DAF /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68515F28D3A41100B18DAF /* manifest.json */; };
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */; };
@@ -46,12 +44,10 @@
 		3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lee.entitlements; sourceTree = "<group>"; };
 		3F1E8E3128BE881400C4DEE3 /* LeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeTests.swift; sourceTree = "<group>"; };
 		3F1E8E3B28BE881400C4DEE3 /* LeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3F68515A28D3917900B18DAF /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
-		3F68515F28D3A41100B18DAF /* manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
 		3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
@@ -128,8 +124,6 @@
 		3F1E8E3428BE881400C4DEE3 /* LeeTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F68515C28D3A38700B18DAF /* Manifests */,
-				3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */,
 				3F68516128D3A43E00B18DAF /* ManifestTests.swift */,
 			);
 			path = LeeTests;
@@ -142,14 +136,6 @@
 				3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */,
 			);
 			path = LeeUITests;
-			sourceTree = "<group>";
-		};
-		3F68515C28D3A38700B18DAF /* Manifests */ = {
-			isa = PBXGroup;
-			children = (
-				3F68515F28D3A41100B18DAF /* manifest.json */,
-			);
-			path = Manifests;
 			sourceTree = "<group>";
 		};
 		3F8F2B9528C29F3B00B7565D /* DataModels */ = {
@@ -274,7 +260,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F68516028D3A41100B18DAF /* manifest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */,
-				3F1E8E3628BE881400C4DEE3 /* LeeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
