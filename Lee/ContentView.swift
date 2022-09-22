@@ -23,13 +23,14 @@ struct ContentView: View {
     }
     
     func loadFile(){
+        //create a new window to choose a file
         let dialog = NSOpenPanel();
         
-        dialog.title                   = "Choose a file| Our Code World";
-        dialog.showsResizeIndicator    = true;
-        dialog.showsHiddenFiles        = false;
-        dialog.allowsMultipleSelection = false;
-        dialog.canChooseDirectories = false;
+        dialog.title                   = "Choose a file";
+        dialog.showsResizeIndicator    = true; //allow resizing
+        dialog.showsHiddenFiles        = false; //Manifest files shouldn't be hidden, could change if needed
+        dialog.allowsMultipleSelection = false; //select only one right now, will change
+        dialog.canChooseDirectories = false; //manifest files are not directories
         
         if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
             let result = dialog.url // Pathname of the file
