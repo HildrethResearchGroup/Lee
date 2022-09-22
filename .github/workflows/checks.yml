@@ -1,0 +1,13 @@
+name: 'Build, Test, and Lint'
+
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Pull swiftlint docker image
+        run: docker pull ghcr.io/realm/swiftlint:latest
+      - name: Run swiftlint
+        run: docker run -it -v `pwd`:`pwd` -w `pwd` ghcr.io/realm/swiftlint:latest
