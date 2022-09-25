@@ -7,23 +7,13 @@
 
 import Foundation
 
-//this is the VIEWMODEL
-//needs to be published and content view needs to subscribe to it
+// This is the VIEWMODEL
+// needs to be published and content view needs to subscribe to it
 
 class LeeApp: ObservableObject {
     @Published private var model = LeeDataModel()
-    
-   
-    //intent function for when user chooses manifest file through view
-    
-    func saveFile(_ filename: String){
-        model.manifestFilename = filename
-        print(model.manifestFilename)
+    // Intent function for user selecting manifest
+    func selectManifest(filename: String) {
+        model.changeTargetManifest(newFilePath: filename)
     }
-    
-    func getFile() -> String{
-        return model.manifestFilename
-    }
-    
-
 }
