@@ -18,6 +18,7 @@ struct ContentView: View {
             Button(action: loadFile) {
                 Text("Load File")
             }
+            
         }
         
     }
