@@ -14,31 +14,37 @@ enum ManifestParseError: Error {
 }
 
 struct Manifest: Codable {
+    // Possible programs to execute scripts
+    enum Runner: String, Codable {
+        case python
+        case matlab
+    }
+    
+    // Types for data
+    enum DataType: String, Codable {
+        case path
+        case string
+        case int
+        case float
+    }
+    
     // Program section representation
-    struct Program: Codable {
-        // Possible programs to execute scripts
-        enum Runner: String, Codable {
-            case python
-            case matlab
-        }
-        
+    struct Program: Codable, Equatable {
         let runner: Runner
         let entry: String // Main file for script
         let version: String? // Optional runner version
     }
     
     // Representation of a single script input
-    struct Input: Codable {
-        // Datatype of input
-        enum DataType: String, Codable {
-            case path
-            case string
-            case int
-            case float
-        }
-        
+    struct Input: Codable, Equatable {
         let name: String
         let type: DataType
+        let comment: String?
+    }
+    
+    // Representation of a single script output
+    struct Output: Codable, Equatable {
+        let name: String
         let comment: String?
     }
     
@@ -64,5 +70,5 @@ struct Manifest: Codable {
     
     let program: Program
     let inputs: [Input]
-    let output: [String]
+    let outputs: [Output]
 }
