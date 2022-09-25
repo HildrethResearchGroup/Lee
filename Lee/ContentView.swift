@@ -36,10 +36,9 @@ struct ContentView: View {
         dialog.showsHiddenFiles        = false; // Manifest files shouldn't be hidden, could change if needed
         dialog.allowsMultipleSelection = false; // select only one right now, will change
         dialog.canChooseDirectories = false; // manifest files are not directories
-        if (dialog.runModal() ==  NSApplication.ModalResponse.OK) {
+        if dialog.runModal() ==  NSApplication.ModalResponse.OK {
             let result = dialog.url // Pathname of the file
-            
-            if (result != nil) {
+            if result != nil {
                 let path: String = result!.path
                 viewModel.selectManifest(filename: path)
                 // path contains the file path e.g
