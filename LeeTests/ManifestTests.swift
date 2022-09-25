@@ -79,7 +79,8 @@ class ManifestTests: XCTestCase {
         // Check inputs section
         XCTAssertEqual(manifest.inputs, [
             Manifest.Input(name: "inputImage", type: Manifest.DataType.path, comment: "The image to process"),
-            Manifest.Input(name: "timeout", type: Manifest.DataType.int, comment: "Time in seconds to allow script to run")
+            Manifest.Input(name: "timeout", type: Manifest.DataType.int,
+                           comment: "Time in seconds to allow script to run")
         ])
         // Check oututs section
         XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", comment: "This is the first output")])

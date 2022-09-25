@@ -19,7 +19,6 @@ struct Manifest: Codable {
         case python
         case matlab
     }
-    
     // Types for data
     enum DataType: String, Codable {
         case path
@@ -27,30 +26,25 @@ struct Manifest: Codable {
         case int
         case float
     }
-    
     // Program section representation
     struct Program: Codable, Equatable {
         let runner: Runner
         let entry: String // Main file for script
         let version: String? // Optional runner version
     }
-    
     // Representation of a single script input
     struct Input: Codable, Equatable {
         let name: String
         let type: DataType
         let comment: String?
     }
-    
     // Representation of a single script output
     struct Output: Codable, Equatable {
         let name: String
         let comment: String?
     }
-    
     // Reusable decoder for parsing from string
     private static let decoder = JSONDecoder()
-    
     // Attempt to parse a manifest from a string source
     static func fromString(source: String) throws -> Manifest {
         // Proceed only if the string can be converted to data
@@ -67,7 +61,6 @@ struct Manifest: Codable {
             throw ManifestParseError.badEncoding
         }
     }
-    
     let program: Program
     let inputs: [Input]
     let outputs: [Output]
