@@ -11,9 +11,24 @@ import SwiftUI
 struct ContentView: View {
     // Handy charge on which Property Wrapper t use
     // https://swiftuipropertywrappers.com
-    @ObservedObject var viewModel: LeeApp
+    @ObservedObject var viewModel: LeeViewModel
     var body: some View {
         VStack {
+            HStack {
+                Text("Current Manifest: \(viewModel.manifestPath)")
+                switch viewModel.manifestStatus {
+                case .good: Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+                case .error: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
+                default: Spacer()
+                }
+                Spacer()
+            }
+            if case .error(let message) = viewModel.manifestStatus {
+                HStack {
+                    Text("Error: \(message)")
+                    Spacer()
+                }
+            }
             Spacer(minLength: 4.0)
             HStack {
                 Button(action: loadFile) {
@@ -24,7 +39,7 @@ struct ContentView: View {
                     Text("Run")
                 }
             }
-        }
+        }.padding(16)
     }
     func run() {
     }
@@ -40,7 +55,7 @@ struct ContentView: View {
             let result = dialog.url // Pathname of the file
             if result != nil {
                 let path: String = result!.path
-                viewModel.selectManifest(filename: path)
+                viewModel.selectManifest(path: path)
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt
                 // saveFile(path)

@@ -9,12 +9,6 @@ import SwiftUI
 
 // This is the Model
 class LeeDataModel: ObservableObject {
-    // Status of manifest from parser
-    enum ManifestStatus {
-        case good
-        case loading
-        case error(String)
-    }
     @Published var targetManifestPath: String = ""
     @Published var manifestStatus: ManifestStatus?
     var targetManifest: Manifest?
