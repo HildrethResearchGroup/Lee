@@ -23,6 +23,7 @@ class LeeViewModel: ObservableObject {
     @Published var manifestPath: String = ""
     @Published var manifestStatus: ManifestStatus = .none
     private var manifest: Manifest?
+    var scriptIsRunning = false
     // Intent function for user selecting manifest
     func selectManifest(path: String) {
         manifestStatus = ManifestStatus.loading

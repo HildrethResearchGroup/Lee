@@ -42,6 +42,7 @@ struct ContentView: View {
         }.padding(16)
     }
     func run() {
+
     }
     func loadFile() {
         // create a new window to choose a file

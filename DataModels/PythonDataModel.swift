@@ -9,7 +9,8 @@ import Foundation
 
 /// This class runs external scripts and tracks running state.
 ///
-/// Use @MainActor on your View Model or Data Model (if it is acting as your view model) to make sure all published properties are run on the main thread
+/// Use @MainActor on your View Model or Data Model (if it is acting as your view model)
+/// to make sure all published properties are run on the main thread
 @MainActor
 class PythonExectuor: ObservableObject {
     /// The filepath to the scripting program
@@ -28,13 +29,14 @@ class PythonExectuor: ObservableObject {
     @Published var scriptIsRunning = false
     /// This function runs the target external script
     ///
-    /// The process is run asynchronously to make sure the main threed isn't blocked if the script takes a long time to run.
+    /// The process is run asynchronously to make sure the main threed isn't blocked
+    /// if the script takes a long time to run.
     func runScript() async {
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
         Task {
             let executableURL = URL(fileURLWithPath: pythonProcessPath)
             self.scriptIsRunning = true
-            
+
             let process = Process()
             process.executableURL = executableURL
             process.arguments = [filePath, String(integerToPass)]
@@ -45,17 +47,17 @@ class PythonExectuor: ObservableObject {
                 DispatchQueue.main.async {
                     self.scriptIsRunning = false
                   }
-                
+
                 print("Process finished")
             }
-            
+
             // This is a do-catch statement
             do {
                 try process.run()
-            } catch  {
+            } catch {
                 print(error)
             }
         }
     }
-    
+
 }
