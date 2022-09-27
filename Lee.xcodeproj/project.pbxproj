@@ -11,14 +11,17 @@
 		3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2528BE881300C4DEE3 /* ContentView.swift */; };
 		3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */; };
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
-		3F1E8E3628BE881400C4DEE3 /* LeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
+		3F68515B28D3917900B18DAF /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68515A28D3917900B18DAF /* Manifest.swift */; };
+		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */; };
 		3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1B28E35FE3000BA2D9 /* good.py */; };
 		3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
+		4A0737F828D3952A005B60F9 /* LeeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0737F728D3952A005B60F9 /* LeeDataModel.swift */; };
+		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,15 +49,18 @@
 		3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lee.entitlements; sourceTree = "<group>"; };
 		3F1E8E3128BE881400C4DEE3 /* LeeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeTests.swift; sourceTree = "<group>"; };
 		3F1E8E3B28BE881400C4DEE3 /* LeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3F68515A28D3917900B18DAF /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
+		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
 		3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
 		3FBC8D1B28E35FE3000BA2D9 /* good.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = good.py; sourceTree = "<group>"; };
 		3FBC8D1C28E35FE3000BA2D9 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
+		4A0737F728D3952A005B60F9 /* LeeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeDataModel.swift; sourceTree = "<group>"; };
+		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,11 +114,14 @@
 			isa = PBXGroup;
 			children = (
 				3F1E8E2328BE881300C4DEE3 /* LeeApp.swift */,
+				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3F8F2B9328C29EB400B7565D /* argsTest.py */,
 				3F1E8E2528BE881300C4DEE3 /* ContentView.swift */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
+				4A0737F728D3952A005B60F9 /* LeeDataModel.swift */,
 				3F1E8E2928BE881400C4DEE3 /* Preview Content */,
+				3F68515A28D3917900B18DAF /* Manifest.swift */,
 			);
 			path = Lee;
 			sourceTree = "<group>";
@@ -128,7 +137,7 @@
 		3F1E8E3428BE881400C4DEE3 /* LeeTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F1E8E3528BE881400C4DEE3 /* LeeTests.swift */,
+				3F68516128D3A43E00B18DAF /* ManifestTests.swift */,
 			);
 			path = LeeTests;
 			sourceTree = "<group>";
@@ -170,6 +179,7 @@
 				3F1E8E1C28BE881300C4DEE3 /* Sources */,
 				3F1E8E1D28BE881300C4DEE3 /* Frameworks */,
 				3F1E8E1E28BE881300C4DEE3 /* Resources */,
+				3F68516D28DCA96C00B18DAF /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -289,13 +299,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F68516D28DCA96C00B18DAF /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3F1E8E1C28BE881300C4DEE3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F68515B28D3917900B18DAF /* Manifest.swift in Sources */,
 				3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */,
 				3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */,
+				4A0737F828D3952A005B60F9 /* LeeDataModel.swift in Sources */,
+				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3F1E8E2428BE881300C4DEE3 /* LeeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,7 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F1E8E3628BE881400C4DEE3 /* LeeTests.swift in Sources */,
+				3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -437,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -504,7 +538,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mines.hildreth.LeeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,7 +556,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.mines.hildreth.LeeTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
