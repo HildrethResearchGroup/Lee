@@ -8,11 +8,10 @@
 import SwiftUI
 
 @main
-struct Lee: App{
-    let lee = LeeApp()
-    
-    var body: some Scene{
-        WindowGroup{
+struct Lee: App {
+    let lee = LeeViewModel()
+    var body: some Scene {
+        WindowGroup {
             ContentView(viewModel: lee)
         }
     }

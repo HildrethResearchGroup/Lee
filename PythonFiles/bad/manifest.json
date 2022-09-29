@@ -1,0 +1,12 @@
+{
+    "program": {
+        "runner": "python",
+        "entry": "bad.py"
+    },
+    "inputs": [],
+    "outputs": [
+        {
+            "name": "num"
+        }
+    ]
+}

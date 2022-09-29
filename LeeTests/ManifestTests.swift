@@ -8,58 +8,49 @@ import XCTest
 @testable import Lee
 
 struct Manifests {
-    static let valid1: String = """
+    static let pythonSimple: String = """
     {
         "program": {
-            "runner": "python"
+            "runner": "python",
+            "entry": "main.py"
         },
         "inputs": [
             {
                 "name": "in-file",
                 "type": "path",
-                "comment": "Input file"
-            },
-            {
-                "name": "timeout",
-                "type": "int",
-                "comment": "Time to allow script to run"
             }
         ],
-        "output": {
-            "files":
-                [
-                    "output1"
-                ]
-        }
+        "outputs": [
+            {
+                "name": "output1"
+            }
+        ]
     }
     """
-    static let valid2: String = """
+    static let pythonCommented: String = """
     {
         "program": {
-            "runner": "matlab"
+            "runner": "python",
+            "entry": "main.py"
         },
         "inputs": [
             {
                 "name": "inputImage",
-                "type": "path"
-            },
-            {
-                "name": "outputNamePrefix",
-                "type": "string"
+                "type": "path",
+                "comment": "The image to process"
             },
             {
                 "name": "timeout",
                 "type": "int",
-                "min": 10,
-                "max": 20
+                "comment": "Time in seconds to allow script to run"
             }
         ],
-        "output": {
-            "files":
-                [
-                    "output2"
-                ]
-        }
+        "outputs": [
+            {
+                "name": "output1",
+                "comment": "This is the first output"
+            }
+        ]
     }
     """
 }
@@ -68,38 +59,34 @@ class ManifestTests: XCTestCase {
     override func setUp() {
         continueAfterFailure = false
     }
-    func testValidManifestComment() {
+    func testPythonSimple() throws {
         // Attempt to parse
-        let manifest = Manifest.parseFromString(source: Manifests.valid1)
-        XCTAssertNotNil(manifest)
+        let manifest = try Manifest.fromString(source: Manifests.pythonSimple)
         // Check program section
-        XCTAssertEqual(manifest!.program.runner, Runner.python)
+        XCTAssertEqual(manifest.program, Manifest.Program(runner: Manifest.Runner
+            .python, entry: "main.py", version: nil))
         // Check inputs section
-        XCTAssertEqual(manifest!.inputs[0],
-                       Parameter(name: "in-file", type: DataType.path, comment: "Input file"))
-        XCTAssertEqual(manifest!.inputs[1],
-                       Parameter(name: "timeout", type: DataType.int, comment: "Time to allow script to run"))
+        XCTAssertEqual(manifest.inputs, [Manifest.Input(name: "in-file", type: Manifest.DataType.path, comment: nil)])
         // Check oututs section
-        XCTAssertEqual(manifest!.output, Output(files: ["output1"]))
+        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", comment: nil)])
     }
-    func testValidManifestNoComment() {
+    func testPythonCommented() throws {
         // Attempt to parse
-        let manifest = Manifest.parseFromString(source: Manifests.valid2)
-        XCTAssertNotNil(manifest)
+        let manifest = try Manifest.fromString(source: Manifests.pythonCommented)
         // Check program section
-        XCTAssertEqual(manifest!.program.runner, Runner.matlab)
+        XCTAssertEqual(manifest.program,
+                       Manifest.Program(runner: Manifest.Runner.python, entry: "main.py", version: nil))
         // Check inputs section
-        XCTAssertEqual(manifest!.inputs[0],
-                       Parameter(name: "inputImage", type: DataType.path, comment: nil))
-        XCTAssertEqual(manifest!.inputs[2],
-                       Parameter(name: "timeout", type: DataType.int, comment: nil))
+        XCTAssertEqual(manifest.inputs, [
+            Manifest.Input(name: "inputImage", type: Manifest.DataType.path, comment: "The image to process"),
+            Manifest.Input(name: "timeout", type: Manifest.DataType.int,
+                           comment: "Time in seconds to allow script to run")
+        ])
         // Check oututs section
-        XCTAssertEqual(manifest!.output, Output(files: ["output2"]))
+        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", comment: "This is the first output")])
     }
-    func testEmptyManifest() {
-        // Supply empty string to parser
-        let manifest = Manifest.parseFromString(source: "")
-        // Ensure nil is returned
-        XCTAssertNil(manifest)
+    func testEmpty() {
+        // Supply empty string to parser, ensure an error is thrown
+        XCTAssertThrowsError(try Manifest.fromString(source: ""))
     }
 }
