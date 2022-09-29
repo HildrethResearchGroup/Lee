@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Current Manifest: \(viewModel.manifestPath)")
+                Text("Current Manifest: \(viewModel.dataModel.targetManifestPath)")
                 switch viewModel.manifestStatus {
                 case .good: Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
                 case .error: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
@@ -41,9 +41,11 @@ struct ContentView: View {
             }
         }.padding(16)
     }
+    
     func run() {
 
     }
+    
     func loadFile() {
         // create a new window to choose a file
         let dialog = NSOpenPanel()

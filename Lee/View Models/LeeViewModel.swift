@@ -20,10 +20,14 @@ enum ManifestStatus {
 // needs to be published and content view needs to subscribe to it
 
 class LeeViewModel: ObservableObject {
+    @Published var dataModel = LeeDataModel()
     @Published var manifestPath: String = ""
     @Published var manifestStatus: ManifestStatus = .none
+    
     private var manifest: Manifest?
     var scriptIsRunning = false
+    
+    
     // Intent function for user selecting manifest
     func selectManifest(path: String) {
         manifestStatus = ManifestStatus.loading

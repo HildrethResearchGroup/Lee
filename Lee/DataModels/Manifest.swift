@@ -13,6 +13,7 @@ enum ManifestParseError: Error {
     case decodingFailure(DecodingError)
 }
 
+// MARK: - Manifest
 struct Manifest: Codable {
     // Possible programs to execute scripts
     enum Runner: String, Codable {
@@ -20,11 +21,13 @@ struct Manifest: Codable {
         case matlab
     }
     // Types for data
+    /// <#Description#>
     enum DataType: String, Codable {
         case path
         case string
         case int
         case float
+        case filepath
     }
     // Program section representation
     struct Program: Codable, Equatable {

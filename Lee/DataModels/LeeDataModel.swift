@@ -8,7 +8,7 @@
 import SwiftUI
 
 // This is the Model
-@MainActor
+
 class LeeDataModel: ObservableObject {
     @Published var targetManifestPath: String = ""
     @Published var manifestStatus: ManifestStatus?
