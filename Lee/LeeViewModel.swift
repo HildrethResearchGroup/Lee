@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // Status of manifest from parser
-enum ManifestStatus {
+enum ManifestStatus: Equatable {
     case none
     case good
     case loading
@@ -23,11 +23,8 @@ class LeeViewModel: ObservableObject {
     @Published var dataModel = LeeDataModel()
     @Published var manifestPath: String = ""
     @Published var manifestStatus: ManifestStatus = .none
-    
     private var manifest: Manifest?
     var scriptIsRunning = false
-    
-    
     // Intent function for user selecting manifest
     func selectManifest(path: String) {
         manifestStatus = ManifestStatus.loading

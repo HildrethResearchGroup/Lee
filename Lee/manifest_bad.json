@@ -3,12 +3,7 @@
         "runner": "python",
         "entry": "bad.py"
     },
-    "inputs": [
-        {
-            "name": "in",
-            "type": "int"
-        }
-    ],
+    "inputs": [],
     "outputs": [
         {
             "name": "num"

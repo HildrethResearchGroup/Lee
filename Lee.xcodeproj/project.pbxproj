@@ -7,20 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1E8E2428BE881300C4DEE3 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2328BE881300C4DEE3 /* LeeViewModel.swift */; };
-		3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2528BE881300C4DEE3 /* ContentView.swift */; };
 		3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */; };
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
-		3F68515B28D3917900B18DAF /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68515A28D3917900B18DAF /* Manifest.swift */; };
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
+		3F86522428E8E954002210D0 /* Views in Resources */ = {isa = PBXBuildFile; fileRef = 3F86522328E8E954002210D0 /* Views */; };
+		3F86522628E8E967002210D0 /* DataModels in Resources */ = {isa = PBXBuildFile; fileRef = 3F86522528E8E967002210D0 /* DataModels */; };
+		3F86522828E8E9EF002210D0 /* ViewModels in Resources */ = {isa = PBXBuildFile; fileRef = 3F86522728E8E9EF002210D0 /* ViewModels */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
-		3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */; };
+		3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */; };
+		3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85428E90B2B00EB0302 /* ContentView.swift */; };
+		3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85628E90B2F00EB0302 /* Manifest.swift */; };
+		3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */; };
+		3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85728E90B2F00EB0302 /* LeeDataModel.swift */; };
+		3FA6D85D28E90BA100EB0302 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */; };
+		3FA6D85F28E945C900EB0302 /* manifest_good.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6D85E28E945C900EB0302 /* manifest_good.json */; };
+		3FA6D86128E945D500EB0302 /* manifest_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6D86028E945D500EB0302 /* manifest_bad.json */; };
 		3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1B28E35FE3000BA2D9 /* good.py */; };
 		3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
-		4A0737F828D3952A005B60F9 /* LeeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0737F728D3952A005B60F9 /* LeeDataModel.swift */; };
 		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +49,6 @@
 
 /* Begin PBXFileReference section */
 		3F1E8E2028BE881300C4DEE3 /* Lee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lee.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F1E8E2328BE881300C4DEE3 /* LeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeViewModel.swift; sourceTree = "<group>"; };
-		3F1E8E2528BE881300C4DEE3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Lee.entitlements; sourceTree = "<group>"; };
@@ -52,14 +56,23 @@
 		3F1E8E3B28BE881400C4DEE3 /* LeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3F68515A28D3917900B18DAF /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
 		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
+		3F86522328E8E954002210D0 /* Views */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Views; sourceTree = "<group>"; };
+		3F86522528E8E967002210D0 /* DataModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DataModels; sourceTree = "<group>"; };
+		3F86522728E8E9EF002210D0 /* ViewModels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ViewModels; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
-		3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
+		3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeViewModel.swift; sourceTree = "<group>"; };
+		3FA6D85428E90B2B00EB0302 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3FA6D85628E90B2F00EB0302 /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
+		3FA6D85728E90B2F00EB0302 /* LeeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeDataModel.swift; sourceTree = "<group>"; };
+		3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
+		3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		3FA6D85E28E945C900EB0302 /* manifest_good.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_good.json; sourceTree = "<group>"; };
+		3FA6D86028E945D500EB0302 /* manifest_bad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_bad.json; sourceTree = "<group>"; };
+		3FA6D86428E9FEFC00EB0302 /* manifest_input.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest_input.json; sourceTree = "<group>"; };
 		3FBC8D1B28E35FE3000BA2D9 /* good.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = good.py; sourceTree = "<group>"; };
 		3FBC8D1C28E35FE3000BA2D9 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
-		4A0737F728D3952A005B60F9 /* LeeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeDataModel.swift; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,10 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */,
-				3F8F2B9528C29F3B00B7565D /* DataModels */,
 				3F1E8E2228BE881300C4DEE3 /* Lee */,
-				3F1E8E3428BE881400C4DEE3 /* LeeTests */,
 				3F1E8E3E28BE881400C4DEE3 /* LeeUITests */,
+				3F1E8E3428BE881400C4DEE3 /* LeeTests */,
 				3F1E8E2128BE881300C4DEE3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,15 +125,22 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
-				3F1E8E2328BE881300C4DEE3 /* LeeViewModel.swift */,
+				3F86522528E8E967002210D0 /* DataModels */,
+				3F86522328E8E954002210D0 /* Views */,
+				3F86522728E8E9EF002210D0 /* ViewModels */,
+				3FA6D86428E9FEFC00EB0302 /* manifest_input.json */,
+				3FA6D86028E945D500EB0302 /* manifest_bad.json */,
+				3FA6D85E28E945C900EB0302 /* manifest_good.json */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
+				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
+				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
+				3FA6D85728E90B2F00EB0302 /* LeeDataModel.swift */,
+				3FA6D85628E90B2F00EB0302 /* Manifest.swift */,
+				3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */,
 				3F8F2B9328C29EB400B7565D /* argsTest.py */,
-				3F1E8E2528BE881300C4DEE3 /* ContentView.swift */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
-				4A0737F728D3952A005B60F9 /* LeeDataModel.swift */,
 				3F1E8E2928BE881400C4DEE3 /* Preview Content */,
-				3F68515A28D3917900B18DAF /* Manifest.swift */,
 			);
 			path = Lee;
 			sourceTree = "<group>";
@@ -138,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				3F68516128D3A43E00B18DAF /* ManifestTests.swift */,
+				3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */,
 			);
 			path = LeeTests;
 			sourceTree = "<group>";
@@ -149,14 +169,6 @@
 				3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */,
 			);
 			path = LeeUITests;
-			sourceTree = "<group>";
-		};
-		3F8F2B9528C29F3B00B7565D /* DataModels */ = {
-			isa = PBXGroup;
-			children = (
-				3F8F2B9628C29F6600B7565D /* PythonDataModel.swift */,
-			);
-			path = DataModels;
 			sourceTree = "<group>";
 		};
 		3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */ = {
@@ -276,7 +288,10 @@
 			files = (
 				3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */,
 				3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */,
+				3F86522828E8E9EF002210D0 /* ViewModels in Resources */,
 				3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */,
+				3F86522428E8E954002210D0 /* Views in Resources */,
+				3F86522628E8E967002210D0 /* DataModels in Resources */,
 				3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */,
 				3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */,
 				3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */,
@@ -287,6 +302,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA6D86128E945D500EB0302 /* manifest_bad.json in Resources */,
+				3FA6D85F28E945C900EB0302 /* manifest_good.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,12 +342,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F68515B28D3917900B18DAF /* Manifest.swift in Sources */,
-				3F1E8E2628BE881300C4DEE3 /* ContentView.swift in Sources */,
-				3F8F2B9728C29F6600B7565D /* PythonDataModel.swift in Sources */,
-				4A0737F828D3952A005B60F9 /* LeeDataModel.swift in Sources */,
+				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
-				3F1E8E2428BE881300C4DEE3 /* LeeViewModel.swift in Sources */,
+				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
+				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
+				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
+				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */,
+				3FA6D85D28E90BA100EB0302 /* RunnerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
