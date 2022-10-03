@@ -22,7 +22,7 @@ class RunnerTests: XCTestCase {
     }
     func testGoodOutput() async {
         // Set up the script runner from the manifest file
-        ldm.changeTargetManifest(newFilePath: "manifest_good.json")
+        ldm.changeTargetManifest(path: "manifest_good.json")
         // Running the test
         do {
             try await ldm.runScript()
@@ -39,7 +39,7 @@ class RunnerTests: XCTestCase {
     }
     func testInputOutput() async {
         // Set up the script runner from the manifest file
-        ldm.changeTargetManifest(newFilePath: "../PythonFiles/manifest_input.json")
+        ldm.changeTargetManifest(path: "../PythonFiles/manifest_input.json")
         // Running the test
         do {
             try await ldm.runScript()
@@ -55,7 +55,7 @@ class RunnerTests: XCTestCase {
     }
     func testBadOutput() async {
         // Set up the script runner from the manifest file
-        ldm.changeTargetManifest(newFilePath: "../PythonFiles/manifest_bad.json")
+        ldm.changeTargetManifest(path: "../PythonFiles/manifest_bad.json")
         // Running the test
         do {
             try await ldm.runScript()
