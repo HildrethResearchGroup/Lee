@@ -15,15 +15,15 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Current Manifest: \(viewModel.dataModel.targetManifestPath)")
+                Text("Current Manifest: \(viewModel.manifestPath)")
                 switch viewModel.manifestStatus {
                 case .good: Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
-                case .error: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
+                case .bad: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
                 default: Spacer()
                 }
                 Spacer()
             }
-            if case .error(let message) = viewModel.manifestStatus {
+            if case .bad(let message) = viewModel.manifestStatus {
                 HStack {
                     Text("Error: \(message)")
                     Spacer()
@@ -31,7 +31,7 @@ struct ContentView: View {
             }
             Spacer(minLength: 4.0)
             HStack {
-                Button(action: loadFile) {
+                Button(action: viewModel.loadManifestFile) {
                     Text("Load File")
                 }
                 Spacer(minLength: 1.0)
@@ -45,26 +45,7 @@ struct ContentView: View {
 
     }
     func loadFile() {
-        // create a new window to choose a file
-        let dialog = NSOpenPanel()
-        dialog.title                   = "Choose a file"
-        dialog.showsResizeIndicator    = true; // allow resizing
-        dialog.showsHiddenFiles        = false; // Manifest files shouldn't be hidden, could change if needed
-        dialog.allowsMultipleSelection = false; // select only one right now, will change
-        dialog.canChooseDirectories = false; // manifest files are not directories
-        if dialog.runModal() ==  NSApplication.ModalResponse.OK {
-            let result = dialog.url // Pathname of the file
-            if result != nil {
-                let path: String = result!.path
-                viewModel.selectManifest(path: path)
-                // path contains the file path e.g
-                // /Users/ourcodeworld/Desktop/file.txt
-                // saveFile(path)
-            }
-        } else {
-            // User clicked on "Cancel"
-            return
-        }
+
     }
 }
 
