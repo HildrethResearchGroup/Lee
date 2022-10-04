@@ -10,6 +10,7 @@ import XCTest
 
 class RunnerTests: XCTestCase {
     let ldm = LeeDataModel()
+    let bundle = Bundle(for: RunnerTests.self)
     override func setUp() {
     }
     func isValidStartOutput(output: [String]) {
@@ -21,14 +22,18 @@ class RunnerTests: XCTestCase {
         XCTAssertEqual(output.last, "$@RUNE_END@$")
     }
     func testGoodOutput() async {
-        // Set up the script runner from the manifest file
-        ldm.changeTargetManifest(path: "manifest_good.json")
         // Running the test
-        do {
-            try await ldm.runScript()
-        } catch {
-            print(error)
-            XCTFail()
+        // Finding the manifest_good.json file
+        if let filepath = Bundle.main.path(forResource: "manifest_good", ofType: "json") {
+            do {
+                // Need the contents to be able to parse the string
+                let contents = try String(contentsOfFile: filepath)
+                // Set up the script runner from the manifest file
+                try await ldm.runScript()
+            } catch {
+                print(error)
+                XCTFail("Couldn't read in the manifest")
+            }
         }
         // Getting the output from the script
         let output = ldm.getOutput()
@@ -38,13 +43,17 @@ class RunnerTests: XCTestCase {
         XCTAssertEqual(output[2], "0.5714025946899135")
     }
     func testInputOutput() async {
-        // Set up the script runner from the manifest file
-        ldm.changeTargetManifest(path: "../PythonFiles/manifest_input.json")
-        // Running the test
-        do {
-            try await ldm.runScript()
-        } catch {
-            print(error)
+        // Finding the manifest_input.json file
+        if let filepath = Bundle.main.path(forResource: "manifest_input", ofType: "json") {
+            do {
+                // Need the contents to be able to parse the string
+                let contents = try String(contentsOfFile: filepath)
+                // Set up the script runner from the manifest file
+                try await ldm.runScript()
+            } catch {
+                print(error)
+                XCTFail("Couldn't read in the manifest")
+            }
         }
         // Getting the output from the script
         let output = ldm.getOutput()
@@ -54,13 +63,17 @@ class RunnerTests: XCTestCase {
         XCTAssertEqual(output[2], "testing")
     }
     func testBadOutput() async {
-        // Set up the script runner from the manifest file
-        ldm.changeTargetManifest(path: "../PythonFiles/manifest_bad.json")
-        // Running the test
-        do {
-            try await ldm.runScript()
-        } catch {
-            print(error)
+        // Finding the manifest_bad.json file
+        if let filepath = Bundle.main.path(forResource: "manifest_bad", ofType: "json") {
+            do {
+                // Need the contents to be able to parse the string
+                let contents = try String(contentsOfFile: filepath)
+                // Set up the script runner from the manifest file
+                try await ldm.runScript()
+            } catch {
+                print(error)
+                XCTFail("Couldn't read in the manifest")
+            }
         }
         // Getting the output from the script
         let output = ldm.getOutput()

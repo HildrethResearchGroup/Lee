@@ -8,17 +8,13 @@
 import Foundation
 import SwiftUI
 
-
-
 // This is the VIEWMODEL
 // needs to be published and content view needs to subscribe to it
 
 class LeeViewModel: ObservableObject {
     @Published var dataModel = LeeDataModel()
-    
     @Published var manifestStatus: ManifestStatus?
     @Published var manifestPath: String = ""
-    
     // Intent function for user selecting manifest
     func loadManifestFile() {
         // create a new window to choose a file

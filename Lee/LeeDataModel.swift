@@ -19,17 +19,14 @@ enum ManifestStatus: Equatable {
 // This is the Model
 class LeeDataModel {
     var scriptIsRunning = false
-    
     private var manifest: Manifest?
     // This is the script output
     let output: [String] = []
-    
     func changeTargetManifest(path: String) -> ManifestStatus {
         do {
             // Attempt to load from file
             let manifestUrl = URL(fileURLWithPath: path)
             let manifestSource = try String(contentsOf: manifestUrl)
-            
             // Attempt to parse loaded source
             manifest = try Manifest.fromString(source: manifestSource)
             return .good
@@ -42,17 +39,16 @@ class LeeDataModel {
     func runScript() async throws {
         // var input = targetManifest!.inputs[2].name
         // Only run the script if the manifest was loaded correctly
-        /*if manifestStatus != ManifestStatus.good {
-            throw ScriptErrors.badManifestError("Improper manifest!")
-        }
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
          Task {
-             let executableURL = URL(fileURLWithPath: manifestPath)
+             let executableURL = URL(fileURLWithPath: manifest!.program.entry)
              self.scriptIsRunning = true
 
              let process = Process()
+             let outputPipe = Pipe()
+             process.standardOutput = outputPipe
              process.executableURL = executableURL
-             process.arguments = [manifestPath, manifest!.inputs[2].name]
+             process.arguments = [manifest!.inputs[2].name]
              process.terminationHandler = {_ in
              // The terminationHandler uses an "old school" escaping completion handler.
              // You can't rely on Swift's new async/await to know what to run on the main thread for you.
@@ -64,12 +60,23 @@ class LeeDataModel {
              }
 
              // This is a do-catch statement
-         do {
-             try process.run()
+             do {
+                 try process.run()
              } catch {
                  print(error)
              }
-         }*/
+             
+             let outputHandle = outputPipe.fileHandleForReading
+             outputHandle.readInBackgroundAndNotify()
+             
+             outputHandle.readabilityHandler = { pipe in
+                 guard let currentOutput = String(data: pipe.availableData, encoding: .utf8) else {
+                     print("Can't decode data")
+                     return
+                 }
+             }
+         }
+        
     }
     func getOutput() -> [String] {
         return output
