@@ -13,15 +13,15 @@ enum ManifestParseError: Error {
     case decodingFailure(DecodingError)
 }
 
-// MARK: - Manifest
+// MARK: - Manifest Enums, to be separated
 struct Manifest: Codable {
     // Possible programs to execute scripts
+    // TODO: Generalize to allow for user to add more Runners
     enum Runner: String, Codable {
         case python
         case matlab
     }
-    // Types for data
-    /// <#Description#>
+    /// Types for data
     enum DataType: String, Codable {
         case path
         case string
@@ -29,26 +29,32 @@ struct Manifest: Codable {
         case float
         case filepath
     }
-    // Program section representation
+    /// Program section representation
     struct Program: Codable, Equatable {
         let runner: Runner
         let entry: String // Main file for script
         let version: String? // Optional runner version
     }
-    // Representation of a single script input
+    /// Representation of a single script input
     struct Input: Codable, Equatable {
         let name: String
         let type: DataType
         let comment: String?
     }
-    // Representation of a single script output
+    /// Representation of a single script output
     struct Output: Codable, Equatable {
         let name: String
         let comment: String?
     }
     // Reusable decoder for parsing from string
     private static let decoder = JSONDecoder()
-    // Attempt to parse a manifest from a string source
+    // MARK: Manifest Parser
+    
+    /// The function will parse a given RUNE manifest file based on the enums
+    ///
+    /// - parameter source: The manifest file to be parsed
+    ///
+    /// - throws ManifestParseError: if the manifest is not valid, a ManifestParseError will be thrown
     static func fromString(source: String) throws -> Manifest {
         // Proceed only if the string can be converted to data
         if let manifestData = source.data(using: .utf8) {

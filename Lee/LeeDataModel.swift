@@ -7,23 +7,34 @@
 
 import SwiftUI
 
+///Enum for possible errors script can throw
 enum ScriptErrors: Error {
     case badManifestError(String)
 }
 
+///Enum for status of the manifest
 enum ManifestStatus: Equatable {
     case good
     case bad(error: String)
 }
 
-// This is the Model
+///DataModel for Lee program
+///Contains the Manifest as well as script running and output functions
 class LeeDataModel {
     var scriptIsRunning = false
     
     private var manifest: Manifest?
-    // This is the script output
+    /// This is the script output
     let output: [String] = []
-    
+    //MARK: Change target manifest
+    ///Function to change the current target manifest file
+    ///It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
+    ///
+    ///- Parameter path: The path of the manifest file to be loaded
+    ///
+    ///- Returns ManifestStatus: if the manifest file is valid or not
+    ///
+    ///- Throws Any errors due to loading or parsing will be caught, printed and returned
     func changeTargetManifest(path: String) -> ManifestStatus {
         do {
             // Attempt to load from file
@@ -39,6 +50,10 @@ class LeeDataModel {
             return .bad(error: error.localizedDescription)
         }
     }
+    //MARK: Run Script function
+    
+    ///This function will run the script that the dataModel currently has
+    //TODO: document and finish/fix
     func runScript() async throws {
         // var input = targetManifest!.inputs[2].name
         // Only run the script if the manifest was loaded correctly
@@ -71,6 +86,7 @@ class LeeDataModel {
              }
          }*/
     }
+    //MARK: Get Output Function
     func getOutput() -> [String] {
         return output
     }

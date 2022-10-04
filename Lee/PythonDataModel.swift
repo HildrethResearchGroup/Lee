@@ -17,6 +17,7 @@ class PythonExectuor: ObservableObject {
     ///
     /// This filepath needs to be updated
     @Published var pythonProcessPath = "/usr/bin/python3"
+    @Published var matlabPath = "/Applications/MATLAB_R20XXx.app"
     /// The filepath for the script to run
     ///
     /// This filepath needs to be updated
