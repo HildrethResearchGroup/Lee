@@ -7,13 +7,15 @@
 
 import SwiftUI
 
-// VIEW
+/// This is the Lee View
 struct ContentView: View {
-    // Handy charge on which Property Wrapper t use
+    // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
     var body: some View {
         VStack {
+            //MARK: Manifest Path Display
+            //TODO: make separate view
             HStack {
                 Text("Current Manifest: \(viewModel.manifestPath)")
                 switch viewModel.manifestStatus {
@@ -30,6 +32,8 @@ struct ContentView: View {
                 }
             }
             Spacer(minLength: 4.0)
+            //MARK: Run and Load File Buttons
+            //TODO: Make separate view
             HStack {
                 Button(action: viewModel.loadManifestFile) {
                     Text("Load File")
@@ -49,6 +53,7 @@ struct ContentView: View {
     }
 }
 
+//Commented out to allow ease of use
 /*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
