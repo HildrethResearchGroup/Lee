@@ -19,8 +19,6 @@
 		3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */; };
 		3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85728E90B2F00EB0302 /* LeeDataModel.swift */; };
 		3FA6D85D28E90BA100EB0302 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */; };
-		3FA6D85F28E945C900EB0302 /* manifest_good.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6D85E28E945C900EB0302 /* manifest_good.json */; };
-		3FA6D86128E945D500EB0302 /* manifest_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA6D86028E945D500EB0302 /* manifest_bad.json */; };
 		3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1B28E35FE3000BA2D9 /* good.py */; };
 		3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
@@ -61,9 +59,6 @@
 		3FA6D85728E90B2F00EB0302 /* LeeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeDataModel.swift; sourceTree = "<group>"; };
 		3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PythonDataModel.swift; sourceTree = "<group>"; };
 		3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		3FA6D85E28E945C900EB0302 /* manifest_good.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_good.json; sourceTree = "<group>"; };
-		3FA6D86028E945D500EB0302 /* manifest_bad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_bad.json; sourceTree = "<group>"; };
-		3FA6D86428E9FEFC00EB0302 /* manifest_input.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest_input.json; sourceTree = "<group>"; };
 		3FBC8D1B28E35FE3000BA2D9 /* good.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = good.py; sourceTree = "<group>"; };
 		3FBC8D1C28E35FE3000BA2D9 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
@@ -119,9 +114,6 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
-				3FA6D86428E9FEFC00EB0302 /* manifest_input.json */,
-				3FA6D86028E945D500EB0302 /* manifest_bad.json */,
-				3FA6D85E28E945C900EB0302 /* manifest_good.json */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
 				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
@@ -290,8 +282,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FA6D86128E945D500EB0302 /* manifest_bad.json in Resources */,
-				3FA6D85F28E945C900EB0302 /* manifest_good.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
