@@ -39,19 +39,21 @@ struct ContentView: View {
                     Text("Load File")
                 }
                 Spacer(minLength: 1.0)
-                Button(action: run) {
+                Button(action: {
+                    Task{
+                        try await viewModel.runScript()
+                    }
+                }) {
                     Text("Run")
                 }
             }
         }.padding(16)
     }
-    func run() {
 
-    }
-    func loadFile() {
-
-    }
+    
 }
+
+
 
 // Commented out to allow ease of use
 /*

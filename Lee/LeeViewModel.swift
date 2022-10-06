@@ -18,13 +18,14 @@ import SwiftUI
 class LeeViewModel: ObservableObject {
     ///The data model, default is LeeDataModel()
     @Published var dataModel = LeeDataModel()
-    
-    ///Manifest Status optional
+
+    /// Manifest Status optional
     @Published var manifestStatus: ManifestStatus?
-    ///Manifest path, defaults to empty string
+    /// Manifest path, defaults to empty string
     @Published var manifestPath: String = ""
+    private var manifest : Manifest?
     // Intent function for user selecting manifest
-    
+
     /// Intent function for user selecting manifest, will open new file chooser window for user
     /// Once user has selected a file, the function will update the manifest in the data model and return the status.
     ///
@@ -32,6 +33,7 @@ class LeeViewModel: ObservableObject {
     //MARK: Load Manifest File 
     func loadManifestFile() {
         // create a new window to choose a file
+        var filename = ""
         let dialog = NSOpenPanel()
         dialog.title                   = "Choose a file"
         dialog.showsResizeIndicator    = true; // allow resizing
@@ -50,6 +52,14 @@ class LeeViewModel: ObservableObject {
         } else {
             // User clicked on "Cancel"
             return
+        }
+    }
+    func runScript() async throws {
+        do {
+            try await dataModel.runScript()
+        } catch {
+            // not sure what would go here
+            // TODO: error handling could go here instead of data model??
         }
     }
 }

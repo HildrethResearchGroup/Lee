@@ -1,7 +1,7 @@
 {
     "program": {
         "runner": "python",
-        "entry": "bad.py"
+        "entry": "input.py"
     },
     "inputs": [
         {

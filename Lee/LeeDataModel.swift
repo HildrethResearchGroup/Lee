@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PythonKit
 
 ///Enum for possible errors script can throw
 enum ScriptErrors: Error {
@@ -18,22 +19,22 @@ enum ManifestStatus: Equatable {
     case bad(error: String)
 }
 
-///DataModel for Lee program
-///Contains the Manifest as well as script running and output functions
+/// DataModel for Lee program
+/// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
     var scriptIsRunning = false
     private var manifest: Manifest?
     /// This is the script output
     let output: [String] = []
-    //MARK: Change target manifest
-    ///Function to change the current target manifest file
-    ///It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
+    // MARK: Change target manifest
+    /// Function to change the current target manifest file
+    /// It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
     ///
-    ///- Parameter path: The path of the manifest file to be loaded
+    /// Parameter path: The path of the manifest file to be loaded
     ///
-    ///- Returns ManifestStatus: if the manifest file is valid or not
+    /// Returns ManifestStatus: if the manifest file is valid or not
     ///
-    ///- Throws Any errors due to loading or parsing will be caught, printed and returned
+    /// Throws Any errors due to loading or parsing will be caught, printed and returned
     func changeTargetManifest(path: String) -> ManifestStatus {
         do {
             // Attempt to load from file
@@ -48,23 +49,29 @@ class LeeDataModel {
             return .bad(error: error.localizedDescription)
         }
     }
-    //MARK: Run Script function
-    
-    ///This function will run the script that the dataModel currently has
-    //TODO: document and finish/fix
+    // MARK: Run Script function
+
+    /// This function will run the script that the dataModel currently has
+    // TODO: document and finish/fix
     func runScript() async throws {
-        // var input = targetManifest!.inputs[2].name
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
          Task {
-             let executableURL = URL(fileURLWithPath: manifest!.program.entry)
+             let executableURL = URL(fileURLWithPath: "/usr/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
              self.scriptIsRunning = true
-
              let process = Process()
              let outputPipe = Pipe()
              process.standardOutput = outputPipe
              process.executableURL = executableURL
-             process.arguments = [manifest!.inputs[2].name]
+             process.arguments = [manifest!.program.entry]
+            //if manifest specifies inputs, go through that array and get names
+             if !manifest!.inputs.isEmpty {
+                 var inputsArray: [String] = []
+                 for input in manifest!.inputs {
+                     inputsArray.append(input.name)
+                 }
+                 process.arguments = inputsArray // sets the arguments of the scriot to inputs specified in manifest
+             }
              process.terminationHandler = {_ in
              // The terminationHandler uses an "old school" escaping completion handler.
              // You can't rely on Swift's new async/await to know what to run on the main thread for you.
@@ -81,10 +88,10 @@ class LeeDataModel {
              } catch {
                  print(error)
              }
-             
+
              let outputHandle = outputPipe.fileHandleForReading
              outputHandle.readInBackgroundAndNotify()
-             
+
              outputHandle.readabilityHandler = { pipe in
                  guard let currentOutput = String(data: pipe.availableData, encoding: .utf8) else {
                      print("Can't decode data")
@@ -92,10 +99,11 @@ class LeeDataModel {
                  }
              }
          }
-        
+
     }
-    //MARK: Get Output Function
+    // MARK: Get Output Function
     func getOutput() -> [String] {
         return output
     }
+
 }
