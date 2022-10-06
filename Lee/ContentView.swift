@@ -40,7 +40,7 @@ struct ContentView: View {
                 }
                 Spacer(minLength: 1.0)
                 Button(action: {
-                    Task{
+                    Task {
                         try await viewModel.runScript()
                     }
                 }) {

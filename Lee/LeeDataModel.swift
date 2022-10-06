@@ -8,12 +8,12 @@
 import SwiftUI
 import PythonKit
 
-///Enum for possible errors script can throw
+/// Enum for possible errors script can throw
 enum ScriptErrors: Error {
     case badManifestError(String)
 }
 
-///Enum for status of the manifest
+/// Enum for status of the manifest
 enum ManifestStatus: Equatable {
     case good
     case bad(error: String)
@@ -64,7 +64,7 @@ class LeeDataModel {
              process.standardOutput = outputPipe
              process.executableURL = executableURL
              process.arguments = [manifest!.program.entry]
-            //if manifest specifies inputs, go through that array and get names
+            // if manifest specifies inputs, go through that array and get names
              if !manifest!.inputs.isEmpty {
                  var inputsArray: [String] = []
                  for input in manifest!.inputs {
