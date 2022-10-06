@@ -25,7 +25,7 @@ class LeeDataModel {
     var scriptIsRunning = false
     private var manifest: Manifest?
     /// This is the script output
-    let output: [String] = []
+    var scriptOutput: [String] = []
     // MARK: Change target manifest
     /// Function to change the current target manifest file
     /// It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
@@ -89,21 +89,20 @@ class LeeDataModel {
                  print(error)
              }
 
+             // Get the piped standard output from the subprocess
              let outputHandle = outputPipe.fileHandleForReading
-             outputHandle.readInBackgroundAndNotify()
-
-             outputHandle.readabilityHandler = { pipe in
-                 guard let currentOutput = String(data: pipe.availableData, encoding: .utf8) else {
-                     print("Can't decode data")
-                     return
-                 }
+             let outputData = outputHandle.readDataToEndOfFile()
+             if let processOutput = String(data: outputData, encoding: String.Encoding.utf8) {
+                 scriptOutput = processOutput.components(separatedBy: "\n")
+                 
              }
          }
 
     }
     // MARK: Get Output Function
     func getOutput() -> [String] {
-        return output
+        return scriptOutput
+        
     }
 
 }
