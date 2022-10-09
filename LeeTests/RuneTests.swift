@@ -76,9 +76,9 @@ class RuneTests: XCTestCase {
     func testValidRUNESchema() {
         // Ensure that the rune schema is followed
         XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST1$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST2$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST3$@"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTA$@"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTB$@"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTC$@"))
     }
     
     func testInvalidRUNESchema() {
