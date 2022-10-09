@@ -13,14 +13,6 @@ class RunnerTests: XCTestCase {
     let bundle = Bundle(for: RunnerTests.self)
     override func setUp() {
     }
-    func isValidStartOutput(output: [String]) {
-        // This marks the start of the output read from the script
-        XCTAssertEqual(output[0], "$@RUNE_START@$")
-    }
-    func isValidEndOutput(output: [String]) {
-        // This marks the end of the output read from the script
-        XCTAssertEqual(output.last, "$@RUNE_END@$")
-    }
     func testGoodOutput() async {
         // Running the test
         // Finding the manifest_good.json file
