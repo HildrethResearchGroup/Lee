@@ -42,18 +42,18 @@ class RuneTests: XCTestCase {
     
     func testValidRUNEFile() {
         // Ensure that the file command works
-        XCTAssertTrue(Rune.isValidRuneFile(command: "@$RUNE_FILE(file1)$@"))
+        XCTAssertTrue(Rune.isValidRuneFile(command: "@$RUNE_FILE(file1)$@", fileName: "file1"))
     }
     
     func testInvalidRUNEFile() {
         // Ensure that only the command FILE starts reading into a file
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file(file1)$@"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_File(file1)$@"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_fIle(file1)$@"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_fiLe(file1)$@"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_filE(file1)$@"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file$@"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file()$@"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file(file1)$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_File(file1)$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_fIle(file1)$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_fiLe(file1)$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_filE(file1)$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file()$@", fileName: "file1"))
     }
     
     func testValidRUNEError() {
@@ -78,7 +78,7 @@ class RuneTests: XCTestCase {
         XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST$@"))
         XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTA$@"))
         XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTB$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTC$@"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST(C)$@"))
     }
     
     func testInvalidRUNESchema() {

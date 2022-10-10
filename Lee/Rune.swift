@@ -44,6 +44,31 @@ struct Rune {
         let endIndex = postCommand.index(postCommand.endIndex, offsetBy: -3)
         return String(postCommand[...endIndex])
     }
+    /// This function extracts the rune command, such as FILE or ERROR, and the associated value in the parentheses.
+    ///
+    /// - parameter command: The full rune command with the command and the value
+    ///
+    /// - returns [String]: The extracted command and the desired internal vlaue
+    static func extractInternalName(command: String) -> [String] {
+        // Ensuring that the command follows rune schema
+        if !isValidRuneSchema(command: command) {
+            return []
+        }
+        // Extract the command and the parentheses value
+        let extractedCommand = extractCommand(command: command)
+        if !extractedCommand.contains("(") && !extractedCommand.contains(")") {
+           return []
+        }
+        // Extract the command section
+        let commandIndex = extractedCommand.firstIndex(of: "(")!
+        let onlyCommand = String(extractedCommand[..<commandIndex])
+        // Extract the parentheses value
+        let startParenthesesIndex = extractedCommand.index(after: commandIndex)
+        let endParenthesesIndex = extractedCommand.firstIndex(of: ")")!
+        let onlyParentheses = String(extractedCommand[startParenthesesIndex..<endParenthesesIndex])
+        return [onlyCommand, onlyParentheses]
+        
+    }
     /// This function verifies if the rune command is START
     ///
     ///  - parameter command: The command to check if it is a START rune command
@@ -59,13 +84,41 @@ struct Rune {
         let checkEnum = isValidRuneCommand(command: extractedCommand)
         let checkStart = RuneCommands.START == RuneCommands(rawValue: extractedCommand)
         return checkEnum && checkStart
-        
     }
+    /// This function verifies if the rune command is END
+    ///
+    ///  - parameter command: The command to check if it is an END rune command
+    ///
+    /// - returns Bool: true if the command is a start command and false if it isn't
     static func isValidRuneEnd(command: String) -> Bool {
-        return false
+        // Ensure that the command follows the rune schema
+        if !isValidRuneSchema(command: command) {
+            return false
+        }
+        // Get the extracted command and verify that the command is END
+        let extractedCommand = extractCommand(command: command)
+        let checkEnum = isValidRuneCommand(command: extractedCommand)
+        let checkEnd = RuneCommands.END == RuneCommands(rawValue: extractedCommand)
+        return checkEnum && checkEnd
     }
-    static func isValidRuneFile(command: String) -> Bool {
-        return false
+    /// This function verifies if the rune command is FILE
+    ///
+    /// - parameter command: The command to check if it is a FILE rune command
+    ///
+    /// - returns Bool: true if the FILE command is valid and false if it isn't
+    static func isValidRuneFile(command: String, fileName: String) -> Bool {
+        // Ensure that the command follows the rune schema
+        if !isValidRuneSchema(command: command) {
+            return false
+        }
+        // Get the extracted command and verify that the command is FILE
+        // Additionally, check the file name is correct
+        let extractedValues = extractInternalName(command: command)
+        // Get the extracted command and verify that the command is FILE
+        let checkEnum = isValidRuneCommand(command: extractedValues[0])
+        let checkFile = RuneCommands.FILE == RuneCommands(rawValue: extractedValues[0])
+        // Check the file is the same as the one provided
+        return checkEnum && checkFile && fileName == extractedValues[1]
     }
     static func isValidRuneError(command: String) -> Bool {
         return false
