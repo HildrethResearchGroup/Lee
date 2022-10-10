@@ -24,11 +24,42 @@ struct Rune {
     ///
     /// - returns Bool: true if command is a valid enum and false if it isn't
     static func isValidRuneCommand(command: String) -> Bool {
-        // Compares
+        // Compares the string command to the available strings in the enum
         return RuneCommands(rawValue: command) != nil
     }
+    /// This function extracts the command from the full rune schema.
+    /// An example of this would be START from @$RUNE_START$@
+    ///
+    /// - parameter command: The full rune command to get the key command from
+    ///
+    /// - returns String: The extracted command from the rune command
+    static func extractCommand(command: String) -> String {
+        // Ensure that the command follows the rune schema
+        if !isValidRuneSchema(command: command) {
+           return ""
+        }
+        // Cut off the @$RUNE_ and $@ parts of the command
+        let startIndex = command.index(command.startIndex, offsetBy: 7, limitedBy: command.endIndex)!
+        let postCommand = String(command[startIndex..<command.endIndex])
+        let endIndex = postCommand.index(postCommand.endIndex, offsetBy: -3)
+        return String(postCommand[...endIndex])
+    }
+    /// This function verifies if the rune command is START
+    ///
+    ///  - parameter command: The command to check if it is a START rune command
+    ///
+    /// - returns Bool: true if the command is a start command and false if it isn't
     static func isValidRuneStart(command: String) -> Bool {
-       return false
+        // Ensure that the command follows the rune schema
+        if !isValidRuneSchema(command: command) {
+            return false
+        }
+        // Get the extracted command and verify that the command is START
+        let extractedCommand = extractCommand(command: command)
+        let checkEnum = isValidRuneCommand(command: extractedCommand)
+        let checkStart = RuneCommands.START == RuneCommands(rawValue: extractedCommand)
+        return checkEnum && checkStart
+        
     }
     static func isValidRuneEnd(command: String) -> Bool {
         return false
