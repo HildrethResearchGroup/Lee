@@ -120,7 +120,24 @@ struct Rune {
         // Check the file is the same as the one provided
         return checkEnum && checkFile && fileName == extractedValues[1]
     }
-    static func isValidRuneError(command: String) -> Bool {
-        return false
+
+    /// This function verifies if the rune command is END
+    ///
+    /// - parameter command: The command to check if it is a END rune command
+    ///
+    /// - returns Bool: true if the END command is valid and false if it isn't
+    static func isValidRuneError(command: String, providedError: String) -> Bool {
+        // Ensure that the command follows the rune schema
+        if !isValidRuneSchema(command: command) {
+            return false
+        }
+        // Get the extracted command and verify that the command is END
+        // Additionally, check the file name is correct
+        let extractedValues = extractInternalName(command: command)
+        // Get the extracted command and verify that the command is END
+        let checkEnum = isValidRuneCommand(command: extractedValues[0])
+        let checkError = RuneCommands.ERROR == RuneCommands(rawValue: extractedValues[0])
+        // Check the error is the same as the one provided
+        return checkEnum && checkError && providedError == extractedValues[1]
     }
 }
