@@ -38,7 +38,7 @@ class LeeDataModel {
     func changeTargetManifest(url: URL) -> ManifestStatus {
         do {
             // Attempt to parse loaded source
-            manifest = try Manifest.fromURL(url: url)
+            manifest = try Manifest(url: url)
             return .good
         } catch let error {
             print(error)

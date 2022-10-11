@@ -9,7 +9,7 @@ import Foundation
 
 // Custom errors for manifest parser
 enum ManifestParseError: Error {
-    case otherError(Error)
+    case otherError(message: String)
     case badProtocol
     case decodingFailure(DecodingError)
 }
@@ -47,18 +47,11 @@ struct Manifest: Codable {
         let name: String
         let comment: String?
     }
-    // Reusable decoder for parsing from string
-    private static let decoder = JSONDecoder()
     // MARK: Manifest Parser
     
-    /// The function will parse a given RUNE manifest file based on the enums
-    ///
-    /// - parameter url: URL of the manifest file to be parsed
-    ///
-    /// - throws ManifestParseError: if the manifest is not valid, a ManifestParseError will be thrown
-    static func fromURL(url: URL) throws -> Manifest {
+    public init(url: URL) throws {
         // Check to ensure the URL points to a file
-        if(!url.isFileURL) {
+        if !url.isFileURL {
             throw ManifestParseError.badProtocol
         }
         
@@ -67,22 +60,27 @@ struct Manifest: Codable {
             let manifestData = try Data(contentsOf: url)
             
             // Attempt to parse manifest
-            var manifest = try decoder.decode(self, from: manifestData)
+            let decoder = JSONDecoder()
+            self = try decoder.decode(Manifest.self, from: manifestData)
+            
+            // Ensure that users can't specifiy a 'rootDirectory' key in manifest
+            if self.rootDirectory != nil {
+                throw ManifestParseError.otherError(message: "Root directory specified in manifest file")
+            }
             
             // Add root directory to manifest
             var rootDir = url
             rootDir.deleteLastPathComponent()
-            manifest.rootDirectory = rootDir
-            
-            return manifest
+            self.rootDirectory = rootDir
         } catch let error as DecodingError {
             throw ManifestParseError.decodingFailure(error)
         } catch let error {
-            throw ManifestParseError.otherError(error)
+            throw ManifestParseError.otherError(message: error.localizedDescription)
         }
     }
+    
+    var rootDirectory: URL?
     let program: Program
-    var rootDirectory: URL
     let inputs: [Input]
     let outputs: [Output]
 }
