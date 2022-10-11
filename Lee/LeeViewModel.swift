@@ -33,7 +33,6 @@ class LeeViewModel: ObservableObject {
     // MARK: Load Manifest File 
     func loadManifestFile() {
         // create a new window to choose a file
-        var filename = ""
         let dialog = NSOpenPanel()
         dialog.title                   = "Choose a file"
         dialog.showsResizeIndicator    = true; // allow resizing
@@ -44,7 +43,7 @@ class LeeViewModel: ObservableObject {
             let result = dialog.url // Pathname of the file
             if result != nil {
                 let path = result!.path
-                manifestStatus = dataModel.changeTargetManifest(path: path)
+                manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: path))
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt
                 // saveFile(path)

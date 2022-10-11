@@ -30,18 +30,15 @@ class LeeDataModel {
     /// Function to change the current target manifest file
     /// It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
     ///
-    /// Parameter path: The path of the manifest file to be loaded
+    /// Parameter url: The url of the manifest file to be loaded
     ///
     /// Returns ManifestStatus: if the manifest file is valid or not
     ///
     /// Throws Any errors due to loading or parsing will be caught, printed and returned
-    func changeTargetManifest(path: String) -> ManifestStatus {
+    func changeTargetManifest(url: URL) -> ManifestStatus {
         do {
-            // Attempt to load from file
-            let manifestUrl = URL(fileURLWithPath: path)
-            let manifestSource = try String(contentsOf: manifestUrl)
             // Attempt to parse loaded source
-            manifest = try Manifest.fromString(source: manifestSource)
+            manifest = try Manifest.fromURL(url: url)
             return .good
         } catch let error {
             print(error)
