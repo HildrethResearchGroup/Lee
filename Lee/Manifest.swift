@@ -49,6 +49,12 @@ struct Manifest: Codable {
     }
     // MARK: Manifest Parser
     
+    let program: Program
+    let inputs: [Input]
+    let outputs: [Output]
+    
+    private var rootDirectory: URL?
+    
     public init(url: URL) throws {
         // Check to ensure the URL points to a file
         if !url.isFileURL {
@@ -79,8 +85,8 @@ struct Manifest: Codable {
         }
     }
     
-    var rootDirectory: URL?
-    let program: Program
-    let inputs: [Input]
-    let outputs: [Output]
+    
+    public func relativeTo(relativePath: String) -> URL {
+        return URL(string: relativePath, relativeTo: rootDirectory)!
+    }
 }
