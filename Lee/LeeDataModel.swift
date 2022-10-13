@@ -61,7 +61,7 @@ class LeeDataModel {
              let outputPipe = Pipe()
              process.standardOutput = outputPipe
              process.executableURL = executableURL
-             process.arguments = [manifest!.program.entry]
+             process.arguments = [manifest!.program.entry] // TODO: manifest needs to help w/ python access
             // if manifest specifies inputs, go through that array and get names
              if !manifest!.inputs.isEmpty {
                  var inputsArray: [String] = []
