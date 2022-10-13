@@ -50,7 +50,6 @@ class LeeDataModel {
     // MARK: Run Script function
 
     /// This function will run the script that the dataModel currently has
-    // TODO: document and finish/fix
     func runScript() async throws {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
