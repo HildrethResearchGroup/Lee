@@ -156,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				3FA6D87C28F3501300EB0302 /* RuneTests.swift */,
-				3F68517C28F5CB2900B18DAF /* Manifests */
+				3F68517C28F5CB2900B18DAF /* Manifests */,
 				3F68516128D3A43E00B18DAF /* ManifestTests.swift */,
 				3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */,
 			);
