@@ -34,6 +34,7 @@ struct ContentView: View {
             Spacer(minLength: 4.0)
             // MARK: Run and Load File Buttons
             // TODO: Make separate view
+            
             HStack {
                 Button(action: viewModel.loadManifestFile) {
                     Text("Load File")
