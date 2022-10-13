@@ -13,6 +13,8 @@
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F68517B28EF286E00B18DAF /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F68517A28EF286E00B18DAF /* PythonKit */; };
+		3F68517E28F5CB5500B18DAF /* python_simple.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68517D28F5CB5500B18DAF /* python_simple.json */; };
+		3F68518028F5CB8100B18DAF /* python_commented.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68517F28F5CB8100B18DAF /* python_commented.json */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */; };
 		3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85428E90B2B00EB0302 /* ContentView.swift */; };
@@ -54,6 +56,8 @@
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
+		3F68517D28F5CB5500B18DAF /* python_simple.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_simple.json; sourceTree = "<group>"; };
+		3F68517F28F5CB8100B18DAF /* python_commented.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_commented.json; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
 		3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeViewModel.swift; sourceTree = "<group>"; };
 		3FA6D85428E90B2B00EB0302 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		3F1E8E3428BE881400C4DEE3 /* LeeTests */ = {
 			isa = PBXGroup;
 			children = (
+				3F68517C28F5CB2900B18DAF /* Manifests */,
 				3F68516128D3A43E00B18DAF /* ManifestTests.swift */,
 				3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */,
 			);
@@ -156,6 +161,15 @@
 				3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */,
 			);
 			path = LeeUITests;
+			sourceTree = "<group>";
+		};
+		3F68517C28F5CB2900B18DAF /* Manifests */ = {
+			isa = PBXGroup;
+			children = (
+				3F68517D28F5CB5500B18DAF /* python_simple.json */,
+				3F68517F28F5CB8100B18DAF /* python_commented.json */,
+			);
+			path = Manifests;
 			sourceTree = "<group>";
 		};
 		3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */ = {
@@ -263,7 +277,6 @@
 			mainGroup = 3F1E8E1728BE881300C4DEE3;
 			packageReferences = (
 				4A36334A28EE59AD000F8851 /* XCRemoteSwiftPackageReference "PythonKit" */,
-				3F68517928EF286E00B18DAF /* XCRemoteSwiftPackageReference "PythonKit" */,
 			);
 			productRefGroup = 3F1E8E2128BE881300C4DEE3 /* Products */;
 			projectDirPath = "";
@@ -294,6 +307,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F68518028F5CB8100B18DAF /* python_commented.json in Resources */,
+				3F68517E28F5CB5500B18DAF /* python_simple.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +513,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lee/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -523,6 +539,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Lee/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -648,14 +665,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3F68517928EF286E00B18DAF /* XCRemoteSwiftPackageReference "PythonKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pvieito/PythonKit.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		4A36334A28EE59AD000F8851 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pvieito/PythonKit.git";
