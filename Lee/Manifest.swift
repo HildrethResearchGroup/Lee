@@ -7,9 +7,10 @@
 
 import Foundation
 
-// Custom errors for manifest parser
+/// Custom errors for manifest parser
 enum ManifestParseError: Error {
-    case badEncoding
+    case otherError(message: String)
+    case badProtocol
     case decodingFailure(DecodingError)
 }
 
@@ -46,31 +47,53 @@ struct Manifest: Codable {
         let name: String
         let comment: String?
     }
-    // Reusable decoder for parsing from string
-    private static let decoder = JSONDecoder()
     // MARK: Manifest Parser
     
-    /// The function will parse a given RUNE manifest file based on the enums
-    ///
-    /// - parameter source: The manifest file to be parsed
-    ///
-    /// - throws ManifestParseError: if the manifest is not valid, a ManifestParseError will be thrown
-    static func fromString(source: String) throws -> Manifest {
-        // Proceed only if the string can be converted to data
-        if let manifestData = source.data(using: .utf8) {
-            // Attempt to decode into manifest, throw error on failure
-            do {
-                return try decoder.decode(self, from: manifestData)
-            } catch let error as DecodingError {
-                // Rethrow as ManifestParseError
-                throw ManifestParseError.decodingFailure(error)
-            }
-        } else {
-            // Failed to convert to data, string had bad encoding
-            throw ManifestParseError.badEncoding
-        }
-    }
     let program: Program
     let inputs: [Input]
     let outputs: [Output]
+    
+    private var rootDirectory: URL?
+    
+    /// Constructs a manifest from the URL of a manifest file
+    ///
+    /// - Parameter url: URL of the file containing the manifest
+    public init(url: URL) throws {
+        // Check to ensure the URL points to a file
+        if !url.isFileURL {
+            throw ManifestParseError.badProtocol
+        }
+        
+        do {
+            // Convert to data
+            let manifestData = try Data(contentsOf: url)
+            
+            // Attempt to parse manifest
+            let decoder = JSONDecoder()
+            self = try decoder.decode(Manifest.self, from: manifestData)
+            
+            // Ensure that users can't specifiy a 'rootDirectory' key in manifest
+            if self.rootDirectory != nil {
+                throw ManifestParseError.otherError(message: "Root directory specified in manifest file")
+            }
+            
+            // Add root directory to manifest
+            var rootDir = url
+            rootDir.deleteLastPathComponent()
+            self.rootDirectory = rootDir
+        } catch let error as DecodingError {
+            throw ManifestParseError.decodingFailure(error)
+        } catch let error {
+            throw ManifestParseError.otherError(message: error.localizedDescription)
+        }
+    }
+    
+    /// Converts a path relative to the manifest's root directory into an absolute path
+    ///
+    /// - Parameter relativePath: path relative to the manifest directory
+    ///
+    /// - Returns String: Absolute path
+    public func relativeTo(relativePath: String) -> String {
+        return URL(string: relativePath, relativeTo: rootDirectory)!.path
+    }
 }

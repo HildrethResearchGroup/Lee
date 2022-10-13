@@ -1,0 +1,24 @@
+{
+    "program": {
+        "runner": "python",
+        "entry": "main.py"
+    },
+    "inputs": [
+        {
+            "name": "inputImage",
+            "type": "path",
+            "comment": "The image to process"
+        },
+        {
+            "name": "timeout",
+            "type": "int",
+            "comment": "Time in seconds to allow script to run"
+        }
+    ],
+    "outputs": [
+        {
+            "name": "output1",
+            "comment": "This is the first output"
+        }
+    ]
+}
