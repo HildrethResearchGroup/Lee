@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import QuickLook
 
 /// This is the Lee View
 struct ContentView: View {
+    @State
+    var url: URL?
     // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
@@ -31,6 +34,9 @@ struct ContentView: View {
                     Spacer()
                 }
             }
+            Button("Preview") {
+                        url = Bundle.main.url(forResource: "argsTest", withExtension: "py")
+                    }.quickLookPreview($url)
             Spacer(minLength: 4.0)
             // MARK: Run and Load File Buttons
             // TODO: Make separate view

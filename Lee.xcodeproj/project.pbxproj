@@ -11,6 +11,7 @@
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
+		3F52C98428F87A1900771352 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3F52C98328F87A1900771352 /* Documentation.docc */; };
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F68517B28EF286E00B18DAF /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F68517A28EF286E00B18DAF /* PythonKit */; };
 		3F68517E28F5CB5500B18DAF /* python_simple.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68517D28F5CB5500B18DAF /* python_simple.json */; };
@@ -58,6 +59,7 @@
 		3F1E8E3B28BE881400C4DEE3 /* LeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3F52C98328F87A1900771352 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
 		3F68517D28F5CB5500B18DAF /* python_simple.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_simple.json; sourceTree = "<group>"; };
 		3F68517F28F5CB8100B18DAF /* python_commented.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_commented.json; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
+				3F52C98328F87A1900771352 /* Documentation.docc */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
 				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
@@ -360,6 +363,7 @@
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
+				3F52C98428F87A1900771352 /* Documentation.docc in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
