@@ -26,6 +26,7 @@ class LeeDataModel {
     private var manifest: Manifest?
     /// This is the script output
     var scriptOutput: [String] = []
+    
     // MARK: Change target manifest
     /// Function to change the current target manifest file
     /// It will attempt to load and parse the manifest, then will return whether or not the manifest is good.

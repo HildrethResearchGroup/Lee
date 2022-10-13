@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Custom errors for manifest parser
+/// Custom errors for manifest parser
 enum ManifestParseError: Error {
     case otherError(message: String)
     case badProtocol
@@ -55,6 +55,9 @@ struct Manifest: Codable {
     
     private var rootDirectory: URL?
     
+    /// Constructs a manifest from the URL of a manifest file
+    ///
+    /// - Parameter url: URL of the file containing the manifest
     public init(url: URL) throws {
         // Check to ensure the URL points to a file
         if !url.isFileURL {
@@ -85,8 +88,12 @@ struct Manifest: Codable {
         }
     }
     
-    
-    public func relativeTo(relativePath: String) -> URL {
-        return URL(string: relativePath, relativeTo: rootDirectory)!
+    /// Converts a path relative to the manifest's root directory into an absolute path
+    ///
+    /// - Parameter relativePath: path relative to the manifest directory
+    ///
+    /// - Returns String: Absolute path
+    public func relativeTo(relativePath: String) -> String {
+        return URL(string: relativePath, relativeTo: rootDirectory)!.path
     }
 }
