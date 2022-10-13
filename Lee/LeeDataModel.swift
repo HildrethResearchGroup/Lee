@@ -55,13 +55,14 @@ class LeeDataModel {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
          Task {
-             let executableURL = URL(fileURLWithPath: "/usr/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
+             let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
+             let scriptURL = manifest!.relativeTo(relativePath: manifest!.program.entry)
              self.scriptIsRunning = true
              let process = Process()
              let outputPipe = Pipe()
              process.standardOutput = outputPipe
              process.executableURL = executableURL
-             process.arguments = [manifest!.program.entry] // TODO: manifest needs to help w/ python access
+             process.arguments = [scriptURL] // TODO: manifest needs to help w/ python access
             // if manifest specifies inputs, go through that array and get names
              if !manifest!.inputs.isEmpty {
                  var inputsArray: [String] = []
