@@ -20,7 +20,7 @@ struct Rune {
     }
     /// This function determines if the string entered is a valid rune command or not.
     ///
-    /// - parameter command: The command to verified
+    /// - parameter command: The command to be verified
     ///
     /// - returns Bool: true if command is a valid enum and false if it isn't
     static func isValidRuneCommand(command: String) -> Bool {
