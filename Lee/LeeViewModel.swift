@@ -55,7 +55,9 @@ class LeeViewModel: ObservableObject {
     }
     func runScript() async throws {
         do {
-            try await dataModel.runScript()
+            try await dataModel.runScript() {
+                
+            }
         } catch {
             // not sure what would go here
             // TODO: error handling could go here instead of data model??

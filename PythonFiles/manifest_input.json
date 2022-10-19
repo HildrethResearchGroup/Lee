@@ -5,13 +5,14 @@
     },
     "inputs": [
         {
-            "name": "in",
-            "type": "int"
+            "name": "testing",
+            "type": "string"
         }
     ],
     "outputs": [
         {
-            "name": "num"
+            "name": "num",
+            "extension": "txt"
         }
     ]
 }

@@ -16,7 +16,7 @@ struct Rune {
     /// - returns Bool: true if command has good schema or false if it doesn't
     static func isValidRuneSchema(command: String) -> Bool {
         // Compare the command to the valid RUNE schema
-        return command.range(of: #"\@\$RUNE_[A-Z]+(\([\w\d]+\))?\$\@"#, options: .regularExpression) != nil
+        return command.range(of: #"\$\@RUNE_[A-Z]+(\([\w\d ]+\))?\@\$"#, options: .regularExpression) != nil
     }
     /// This function determines if the string entered is a valid rune command or not.
     ///
@@ -28,7 +28,7 @@ struct Rune {
         return RuneCommands(rawValue: command) != nil
     }
     /// This function extracts the command from the full rune schema.
-    /// An example of this would be START from @$RUNE_START$@
+    /// An example of this would be START from @$RUNE\_START$@
     ///
     /// - parameter command: The full rune command to get the key command from
     ///
@@ -114,11 +114,14 @@ struct Rune {
         // Get the extracted command and verify that the command is FILE
         // Additionally, check the file name is correct
         let extractedValues = extractInternalName(command: command)
-        // Get the extracted command and verify that the command is FILE
-        let checkEnum = isValidRuneCommand(command: extractedValues[0])
-        let checkFile = RuneCommands.FILE == RuneCommands(rawValue: extractedValues[0])
-        // Check the file is the same as the one provided
-        return checkEnum && checkFile && fileName == extractedValues[1]
+        if extractedValues.count != 0 {
+            // Get the extracted command and verify that the command is FILE
+            let checkEnum = isValidRuneCommand(command: extractedValues[0])
+            let checkFile = RuneCommands.FILE == RuneCommands(rawValue: extractedValues[0])
+            // Check the file is the same as the one provided
+            return checkEnum && checkFile && fileName == extractedValues[1]
+        }
+        return false
     }
 
     /// This function verifies if the rune command is END
@@ -134,10 +137,13 @@ struct Rune {
         // Get the extracted command and verify that the command is END
         // Additionally, check the file name is correct
         let extractedValues = extractInternalName(command: command)
-        // Get the extracted command and verify that the command is END
-        let checkEnum = isValidRuneCommand(command: extractedValues[0])
-        let checkError = RuneCommands.ERROR == RuneCommands(rawValue: extractedValues[0])
-        // Check the error is the same as the one provided
-        return checkEnum && checkError && providedError == extractedValues[1]
+        if extractedValues.count != 0 {
+            // Get the extracted command and verify that the command is END
+            let checkEnum = isValidRuneCommand(command: extractedValues[0])
+            let checkError = RuneCommands.ERROR == RuneCommands(rawValue: extractedValues[0])
+            // Check the error is the same as the one provided
+            return checkEnum && checkError && providedError == extractedValues[1]
+        }
+        return false
     }
 }

@@ -6,7 +6,8 @@
     "inputs": [],
     "outputs": [
         {
-            "name": "num"
+            "name": "num",
+            "extension": "txt"
         }
     ]
 }

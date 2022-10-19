@@ -45,6 +45,7 @@ struct Manifest: Codable {
     /// Representation of a single script output
     struct Output: Codable, Equatable {
         let name: String
+        let `extension`: String
         let comment: String?
     }
     // MARK: Manifest Parser
