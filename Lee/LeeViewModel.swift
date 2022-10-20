@@ -21,6 +21,8 @@ class LeeViewModel: ObservableObject {
 
     /// Manifest Status optional
     @Published var manifestStatus: ManifestStatus?
+    /// Script Status optional
+    @Published var scriptStatus: ScriptStatus?
     /// Manifest path, defaults to empty string
     @Published var manifestPath: String = ""
     private var manifest: Manifest?
@@ -53,12 +55,20 @@ class LeeViewModel: ObservableObject {
             return
         }
     }
-    func runScript() async throws {
+    func runScript() async {
         do {
             try await dataModel.runScript()
+            DispatchQueue.main.async {
+                self.scriptStatus = self.dataModel.getScriptStatus()
+            }
+        
         } catch {
-            // not sure what would go here
-            // TODO: error handling could go here instead of data model??
+            
         }
+        
     }
+    
+    
+    
+    
 }
