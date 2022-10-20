@@ -4,7 +4,6 @@
 //
 //  Created by Isabella Fernandes de Oliveira on 9/15/22.
 //
-
 import SwiftUI
 import PythonKit
 
@@ -48,7 +47,6 @@ class LeeDataModel {
         }
     }
     // MARK: Run Script function
-
     /// This function will run the script that the dataModel currently has
     func runScript(action: @escaping () -> Void) async throws {
         // Only run the script if the manifest was loaded correctly
