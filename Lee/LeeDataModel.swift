@@ -110,7 +110,7 @@ class LeeDataModel {
     }
     /// As script is running it will change the script status depending on what step it is on. This is a getter
     /// with a default that the program has not yet run.
-    func getScriptStatus() -> ScriptStatus{
+    func getScriptStatus() -> ScriptStatus {
         return scriptStat ?? .done
     }
     

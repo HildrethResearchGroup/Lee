@@ -49,11 +49,12 @@ struct ContentView: View {
                 Spacer(minLength: 1.0)
                 Button(action: {
                     Task {
+                        
                         await viewModel.runScript()
                     }
                 }) {
                     Text("Run")
-                }
+                }.disabled(viewModel.loadedManifest == false)
                 
             }
         }.padding(16)
