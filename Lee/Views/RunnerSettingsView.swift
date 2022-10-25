@@ -13,12 +13,24 @@ struct RunnerSettingsView: View {
     var viewModel: SettingsViewModel
     
     @State
-    var selection = Set<String>()
+    private var selection = Set<String>()
+    
+    @State
+    private var editing: String?
+    
+    @State
+    private var editValue: String = ""
+    
+    @FocusState
+    private var editFocus: Bool
+    
     
     var runnerEditView: some View {
         HStack {
             Button {
-                viewModel.addRunner(name: "Test")
+                viewModel.addRunner(name: "runner")
+                editing = "runner"
+                editValue = ""
             } label: {
                 Image(systemName: "plus")
             }.buttonStyle(.borderless)
@@ -33,8 +45,15 @@ struct RunnerSettingsView: View {
     
     var runnerListView: some View {
         VStack {
-            List(Array(viewModel.runnerNames), id: \.self, selection: $selection) { name in
-                Text(name)
+            List(viewModel.runnerNames, id: \.self, selection: $selection) { name in
+                TextField(name, text: Binding(
+                    get: {name}, set: { (val) in
+                        editValue = val
+                    }
+                ))
+                    .onSubmit {
+                        viewModel.renameRunner(oldName: name, newName: editValue)
+                }
             }
             runnerEditView
                 .padding(4)
