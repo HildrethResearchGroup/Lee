@@ -54,4 +54,10 @@ struct RunnerSettingsView: View {
         }
         .padding()
     }
+    
+    var body: some View {
+        HStack {
+            runnerListView
+        }.padding(8)
+    }
 }
