@@ -17,10 +17,7 @@
 		3F68518028F5CB8100B18DAF /* python_commented.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68517F28F5CB8100B18DAF /* python_commented.json */; };
 		3F68519728FF393E00B18DAF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68519628FF393E00B18DAF /* SettingsView.swift */; };
 		3F68519929019D9C00B18DAF /* RunnerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68519829019D9C00B18DAF /* RunnerSettingsView.swift */; };
-		3F68519D2901A58900B18DAF /* Runner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68519C2901A58900B18DAF /* Runner.swift */; };
 		3F6851A12901C38400B18DAF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6851A02901C38400B18DAF /* SettingsViewModel.swift */; };
-		3F6851A82901D41D00B18DAF /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6851A72901D41D00B18DAF /* AppSettings.swift */; };
-		3F6851AA2901DDD800B18DAF /* RunnerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6851A92901DDD800B18DAF /* RunnerSettings.swift */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */; };
 		3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85428E90B2B00EB0302 /* ContentView.swift */; };
@@ -69,10 +66,7 @@
 		3F68517F28F5CB8100B18DAF /* python_commented.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_commented.json; sourceTree = "<group>"; };
 		3F68519628FF393E00B18DAF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3F68519829019D9C00B18DAF /* RunnerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerSettingsView.swift; sourceTree = "<group>"; };
-		3F68519C2901A58900B18DAF /* Runner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Runner.swift; sourceTree = "<group>"; };
 		3F6851A02901C38400B18DAF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		3F6851A72901D41D00B18DAF /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
-		3F6851A92901DDD800B18DAF /* RunnerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerSettings.swift; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
 		3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeViewModel.swift; sourceTree = "<group>"; };
 		3FA6D85428E90B2B00EB0302 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,7 +134,6 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
-				3F6851A42901CD1600B18DAF /* Data */,
 				3F68519E2901C35D00B18DAF /* View Models */,
 				3F68519528FF392D00B18DAF /* Views */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
@@ -211,16 +204,6 @@
 				3F6851A02901C38400B18DAF /* SettingsViewModel.swift */,
 			);
 			path = "View Models";
-			sourceTree = "<group>";
-		};
-		3F6851A42901CD1600B18DAF /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				3F68519C2901A58900B18DAF /* Runner.swift */,
-				3F6851A72901D41D00B18DAF /* AppSettings.swift */,
-				3F6851A92901DDD800B18DAF /* RunnerSettings.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */ = {
@@ -398,17 +381,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F6851AA2901DDD800B18DAF /* RunnerSettings.swift in Sources */,
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
-				3F6851A82901D41D00B18DAF /* AppSettings.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3F68519728FF393E00B18DAF /* SettingsView.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
 				3F68519929019D9C00B18DAF /* RunnerSettingsView.swift in Sources */,
-				3F68519D2901A58900B18DAF /* Runner.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
 				3FA6D87B28F3500900EB0302 /* Rune.swift in Sources */,
 				3F6851A12901C38400B18DAF /* SettingsViewModel.swift in Sources */,
