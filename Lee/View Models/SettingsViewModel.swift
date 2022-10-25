@@ -10,23 +10,33 @@ import SwiftUI
 
 class SettingsViewModel: ObservableObject {
     public init() {
-        if let runnerNames = settingsStore.mutableSetValue(forKey: "runnerNames") as? Set<String> {
+        if let runnerNames = settingsStore.stringArray(forKey: "runnerNames") {
             self.runnerNames = runnerNames
         }
     }
     
     public func addRunner(name: String) {
-        runnerNames.insert(name)
+        if let _ = runnerNames.firstIndex(of: name) {
+            print("Attempt to create duplicate runner")
+        }
+        
+        runnerNames.append(name)
     }
     
     public func removeRunners(names: Set<String>) {
         for name in names {
-            runnerNames.remove(name)
+            runnerNames.remove(at: runnerNames.firstIndex(of: name)!)
+        }
+    }
+    
+    public func renameRunner(oldName: String, newName: String) {
+        if let index = runnerNames.firstIndex(of: oldName) {
+            runnerNames[index] = newName
         }
     }
     
     @Published
-    private(set) var runnerNames = Set<String>()
+    var runnerNames: [String] = []
     
     private let settingsStore = UserDefaults(suiteName: "settings")!
 }
