@@ -11,7 +11,10 @@ import SwiftUI
 struct RunnerSettingsView: View {
     @ObservedObject private(set) var viewModel: SettingsViewModel
     
-    var body: some View {
+    @State
+    var selection = Set<String>()
+    
+    var runnerEditView: some View {
         HStack {
             RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
             Spacer()
@@ -22,5 +25,11 @@ struct RunnerSettingsView: View {
             }
         }
         .padding()
+    }
+    
+    var body: some View {
+        HStack {
+            runnerListView
+        }.padding(8)
     }
 }

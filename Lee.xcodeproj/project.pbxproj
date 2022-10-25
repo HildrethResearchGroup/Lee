@@ -390,10 +390,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F6851AA2901DDD800B18DAF /* RunnerSettings.swift in Sources */,
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
-				3F6851A82901D41D00B18DAF /* AppSettings.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3F68519728FF393E00B18DAF /* SettingsView.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,

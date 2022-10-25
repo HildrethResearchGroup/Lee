@@ -9,32 +9,24 @@ import Foundation
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    private let decoder = PropertyListDecoder()
-    private let encoder = PropertyListEncoder()
-    private let standardStore = UserDefaults.standard
+    public init() {
+        if let runnerNames = settingsStore.mutableSetValue(forKey: "runnerNames") as? Set<String> {
+            self.runnerNames = runnerNames
+        }
+    }
+    
+    public func addRunner(name: String) {
+        runnerNames.insert(name)
+    }
+    
+    public func removeRunners(names: Set<String>) {
+        for name in names {
+            runnerNames.remove(name)
+        }
+    }
     
     @Published
-    public var settings: AppSettings
+    private(set) var runnerNames = Set<String>()
     
-    public init() {
-        // Try to load settings from system, else load defaults
-        do {
-            // Will fail if settings not present
-            let encodedSettings = standardStore.data(forKey: "settings")!
-            
-            settings = try decoder.decode(AppSettings.self, from: encodedSettings)
-        } catch {
-            settings = AppSettings()
-            saveSettings()
-        }
-    }
-    
-    public func saveSettings() {
-        do {
-            let encodedSettings = try encoder.encode(settings)
-            standardStore.set(encodedSettings, forKey: "settings")
-        } catch let err {
-            print(err.localizedDescription)
-        }
-    }
+    private let settingsStore = UserDefaults(suiteName: "settings")!
 }
