@@ -12,7 +12,17 @@ struct RunnerSettingsView: View {
     @ObservedObject private(set) var viewModel: SettingsViewModel
     
     @State
-    var selection = Set<String>()
+    private var selection = Set<String>()
+    
+    @State
+    private var editing: String?
+    
+    @State
+    private var editValue: String = ""
+    
+    @FocusState
+    private var editFocus: Bool
+    
     
     var runnerEditView: some View {
         HStack {
