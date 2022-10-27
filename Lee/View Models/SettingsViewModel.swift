@@ -23,17 +23,20 @@ class SettingsViewModel: ObservableObject {
         }
         
         runnerNames.append(name)
+        saveRunnerNames()
     }
     
     public func removeRunners(names: Set<String>) {
         runnerNames.removeAll(where: { name in
             return names.contains(name)
         })
+        saveRunnerNames()
     }
     
     public func renameRunner(oldName: String, newName: String) {
         if validateRunnerName(name: newName), let index = runnerNames.firstIndex(of: oldName) {
             runnerNames[index] = newName
+            saveRunnerNames()
         }
     }
     
@@ -45,6 +48,10 @@ class SettingsViewModel: ObservableObject {
         }
         
         return true
+    }
+    
+    private func saveRunnerNames() {
+        settingsStore.set(runnerNames, forKey: "runnerNames")
     }
     
     @Published
