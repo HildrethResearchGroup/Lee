@@ -23,7 +23,6 @@ class LeeViewModel: ObservableObject {
     @Published var manifestStatus: ManifestStatus?
     /// Manifest path, defaults to empty string
     @Published var manifestPath: String = ""
-    private var manifest: Manifest?
     // Intent function for user selecting manifest
 
     /// Intent function for user selecting manifest, will open new file chooser window for user
@@ -55,7 +54,7 @@ class LeeViewModel: ObservableObject {
     }
     func runScript() async throws {
         do {
-            try await dataModel.runScript() {
+            try await dataModel.runScript {
                 
             }
         } catch {
