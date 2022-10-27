@@ -32,11 +32,19 @@ class SettingsViewModel: ObservableObject {
     }
     
     public func renameRunner(oldName: String, newName: String) {
-        if let index = runnerNames.firstIndex(of: oldName) {
+        if validateRunnerName(name: newName), let index = runnerNames.firstIndex(of: oldName) {
             runnerNames[index] = newName
-        } else {
-            runnerNames.append(newName)
         }
+    }
+    
+    private func validateRunnerName(name: String) -> Bool {
+        if name.isEmpty {
+            return false
+        } else if runnerNames.firstIndex(of: name) != nil {
+            return false
+        }
+        
+        return true
     }
     
     @Published

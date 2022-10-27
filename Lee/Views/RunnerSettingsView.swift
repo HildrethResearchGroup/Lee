@@ -9,6 +9,11 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
+    private func commitRunnerEdit() {
+        viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
+        currentlyEditing = nil
+    }
+    
     private func makeRunnerListItem(name: String) -> some View {
         return HStack {
             if name != currentlyEditing {
@@ -20,8 +25,13 @@ struct RunnerSettingsView: View {
             } else {
                 TextField("", text: $editValue)
                     .onSubmit {
-                        viewModel.renameRunner(oldName: name, newName: editValue)
-                        currentlyEditing = nil
+                        commitRunnerEdit()
+                    }
+                    .focused($editFocus)
+                    .task {
+                        selection.removeAll()
+                        selection.insert(name)
+                        editFocus = true
                     }
             }
             Spacer()
@@ -42,7 +52,6 @@ struct RunnerSettingsView: View {
     
     @FocusState
     private var editFocus: Bool
-    
     
     var runnerEditView: some View {
         HStack {
