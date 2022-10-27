@@ -9,32 +9,11 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
-    private func commitRunnerEdit() {
-        viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
-        currentlyEditing = nil
-    }
-    
-    private func makeRunnerListItem(name: String) -> some View {
-        return HStack {
-            if name != currentlyEditing {
-                Text(name)
-                    .onTapGesture(count: 2, perform: {
-                        currentlyEditing = name
-                        editValue = name
-                    })
-            } else {
-                TextField("", text: $editValue)
-                    .onSubmit {
-                        commitRunnerEdit()
-                    }
-                    .focused($editFocus)
-                    .task {
-                        selection.removeAll()
-                        selection.insert(name)
-                        editFocus = true
-                    }
-            }
-            Spacer()
+    private func commitRunnerName() {
+        selection.removeAll()
+        DispatchQueue.main.async {
+            viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
+            currentlyEditing = nil
         }
     }
     
@@ -71,9 +50,25 @@ struct RunnerSettingsView: View {
     
     var runnerListView: some View {
         VStack {
-            NavigationView {
-                List(viewModel.runnerNames, id: \.self, selection: $selection) { name in
-                    makeRunnerListItem(name: name)
+            List(viewModel.runnerNames, id: \.self, selection: $selection) { name in
+                if name != currentlyEditing {
+                    Text(name)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .onTapGesture(count: 2, perform: {
+                            currentlyEditing = name
+                            editValue = name
+                        })
+                } else {
+                    TextField("", text: $editValue)
+                        .onSubmit {
+                            commitRunnerName()
+                        }
+                        .focused($editFocus)
+                        .task {
+                            selection.removeAll()
+                            selection.insert(name)
+                            editFocus = true
+                        }
                 }
             }
             runnerEditView
