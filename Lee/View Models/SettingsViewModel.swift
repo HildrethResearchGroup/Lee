@@ -16,22 +16,26 @@ class SettingsViewModel: ObservableObject {
     }
     
     public func addRunner(name: String) {
-        if let _ = runnerNames.firstIndex(of: name) {
-            print("Attempt to create duplicate runner")
+        var name = name
+        
+        while runnerNames.contains(name) {
+            name.append("-new")
         }
         
         runnerNames.append(name)
     }
     
     public func removeRunners(names: Set<String>) {
-        for name in names {
-            runnerNames.remove(at: runnerNames.firstIndex(of: name)!)
-        }
+        runnerNames.removeAll(where: { name in
+            return names.contains(name)
+        })
     }
     
     public func renameRunner(oldName: String, newName: String) {
         if let index = runnerNames.firstIndex(of: oldName) {
             runnerNames[index] = newName
+        } else {
+            runnerNames.append(newName)
         }
     }
     

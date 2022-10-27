@@ -9,6 +9,25 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
+    private func makeRunnerListItem(name: String) -> some View {
+        return HStack {
+            if name != currentlyEditing {
+                Text(name)
+                    .onTapGesture(count: 2, perform: {
+                        currentlyEditing = name
+                        editValue = name
+                    })
+            } else {
+                TextField("", text: $editValue)
+                    .onSubmit {
+                        viewModel.renameRunner(oldName: name, newName: editValue)
+                        currentlyEditing = nil
+                    }
+            }
+            Spacer()
+        }
+    }
+    
     @StateObject
     var viewModel: SettingsViewModel
     
@@ -16,7 +35,7 @@ struct RunnerSettingsView: View {
     private var selection = Set<String>()
     
     @State
-    private var editing: String?
+    private var currentlyEditing: String?
     
     @State
     private var editValue: String = ""
@@ -29,8 +48,6 @@ struct RunnerSettingsView: View {
         HStack {
             Button {
                 viewModel.addRunner(name: "runner")
-                editing = "runner"
-                editValue = ""
             } label: {
                 Image(systemName: "plus")
             }.buttonStyle(.borderless)
@@ -45,14 +62,9 @@ struct RunnerSettingsView: View {
     
     var runnerListView: some View {
         VStack {
-            List(viewModel.runnerNames, id: \.self, selection: $selection) { name in
-                TextField(name, text: Binding(
-                    get: {name}, set: { (val) in
-                        editValue = val
-                    }
-                ))
-                    .onSubmit {
-                        viewModel.renameRunner(oldName: name, newName: editValue)
+            NavigationView {
+                List(viewModel.runnerNames, id: \.self, selection: $selection) { name in
+                    makeRunnerListItem(name: name)
                 }
             }
             runnerEditView
