@@ -23,7 +23,6 @@ struct RunnerSettingsView: View {
     @FocusState
     private var editFocus: Bool
     
-    
     var runnerEditView: some View {
         HStack {
             RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
