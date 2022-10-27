@@ -1,4 +1,4 @@
-//
+ //
 //  RunnerSettingsView.swift
 //  Lee
 //
@@ -15,7 +15,7 @@ struct RunnerSettingsView: View {
     private var selection = Set<String>()
     
     @State
-    private var editing: String?
+    private var currentlyEditing: String?
     
     @State
     private var editValue: String = ""
