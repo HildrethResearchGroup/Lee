@@ -70,6 +70,7 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+<<<<<<< HEAD
     public func renameRunner(index: Int, newName: String) {
         if validateRunnerName(name: newName) {
             runnerNames[index] = newName
@@ -135,14 +136,34 @@ class SettingsViewModel: ObservableObject {
         } catch let err {
             print("Failed to encode settings: \(err.localizedDescription)")
             return
+=======
+    public func renameRunner(oldName: String, newName: String) {
+        if validateRunnerName(name: newName), let index = runnerNames.firstIndex(of: oldName) {
+            runnerNames[index] = newName
+>>>>>>> 6e7b7a1 (Better editing and focus control)
         }
         
         settingsStore.set(encodedRunners, forKey: "runners")
     }
     
+<<<<<<< HEAD
     @Published private(set) var runnerNames: [String] = []
     @Published private(set) var selectedRunner: Int?
     @Published private(set) var runnerVersions: [[String: String]] = []
+=======
+    private func validateRunnerName(name: String) -> Bool {
+        if name.isEmpty {
+            return false
+        } else if runnerNames.firstIndex(of: name) != nil {
+            return false
+        }
+        
+        return true
+    }
+    
+    @Published
+    var runnerNames: [String] = []
+>>>>>>> 6e7b7a1 (Better editing and focus control)
     
     private let settingsStore = UserDefaults(suiteName: "settings")!
     private let decoder = PropertyListDecoder()

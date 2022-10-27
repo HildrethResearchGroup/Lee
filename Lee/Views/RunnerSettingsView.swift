@@ -9,10 +9,41 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
+<<<<<<< HEAD
     @ObservedObject private(set) var viewModel: SettingsViewModel
     
     @State
     private var runnerNamesSelection = Set<Int>()
+=======
+    private func commitRunnerEdit() {
+        viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
+        currentlyEditing = nil
+    }
+    
+    private func makeRunnerListItem(name: String) -> some View {
+        return HStack {
+            if name != currentlyEditing {
+                Text(name)
+                    .onTapGesture(count: 2, perform: {
+                        currentlyEditing = name
+                        editValue = name
+                    })
+            } else {
+                TextField("", text: $editValue)
+                    .onSubmit {
+                        commitRunnerEdit()
+                    }
+                    .focused($editFocus)
+                    .task {
+                        selection.removeAll()
+                        selection.insert(name)
+                        editFocus = true
+                    }
+            }
+            Spacer()
+        }
+    }
+>>>>>>> 6e7b7a1 (Better editing and focus control)
     
     @State
     private var currentlyEditing: Int?
@@ -29,7 +60,11 @@ struct RunnerSettingsView: View {
     @FocusState
     private var editFocus: Bool
     
+<<<<<<< HEAD
     var runnerListButtons: some View {
+=======
+    var runnerEditView: some View {
+>>>>>>> 6e7b7a1 (Better editing and focus control)
         HStack {
             RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
             Spacer()
