@@ -49,6 +49,7 @@
 		3FD477592901C1AD0043FC04 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477442901C1AD0043FC04 /* input.py */; };
 		3FD4775A2901C1AD0043FC04 /* bad in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477452901C1AD0043FC04 /* bad */; };
 		3FD4775B2901C1AD0043FC04 /* bad in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477452901C1AD0043FC04 /* bad */; };
+		3FD4775D2905CA3B0043FC04 /* QLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD4775C2905CA3B0043FC04 /* QLImage.swift */; };
 		4A36334C28EE59AD000F8851 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A36334B28EE59AD000F8851 /* PythonKit */; };
 		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		3FD477432901C1AD0043FC04 /* manifest_input.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_input.json; sourceTree = "<group>"; };
 		3FD477442901C1AD0043FC04 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FD477452901C1AD0043FC04 /* bad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bad; sourceTree = "<group>"; };
+		3FD4775C2905CA3B0043FC04 /* QLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLImage.swift; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +170,7 @@
 				3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */,
 				3FA6D87828F3500500EB0302 /* RuneCommands.swift */,
 				3FA6D87A28F3500900EB0302 /* Rune.swift */,
+				3FD4775C2905CA3B0043FC04 /* QLImage.swift */,
 				3F8F2B9328C29EB400B7565D /* argsTest.py */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
@@ -413,6 +416,7 @@
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
+				3FD4775D2905CA3B0043FC04 /* QLImage.swift in Sources */,
 				3F52C98428F87A1900771352 /* Documentation.docc in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,

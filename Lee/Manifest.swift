@@ -59,10 +59,10 @@ struct Manifest: Codable {
     /// Constructs a manifest from the URL of a manifest file
     ///
     /// - Parameter url: URL of the file containing the manifest
-    public init(url: URL) throws {
+    public init?(url: URL) {
         // Check to ensure the URL points to a file
         if !url.isFileURL {
-            throw ManifestParseError.badProtocol
+            return nil
         }
         
         do {
@@ -82,10 +82,9 @@ struct Manifest: Codable {
             var rootDir = url
             rootDir.deleteLastPathComponent()
             self.rootDirectory = rootDir
-        } catch let error as DecodingError {
-            throw ManifestParseError.decodingFailure(error)
         } catch let error {
-            throw ManifestParseError.otherError(message: error.localizedDescription)
+            print(error.localizedDescription)
+            return nil
         }
     }
     

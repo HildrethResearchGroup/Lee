@@ -63,4 +63,8 @@ class LeeViewModel: ObservableObject {
             // TODO: error handling could go here instead of data model??
         }
     }
+    func returnFiles() -> [URL]{
+        print(dataModel.outputFilenames)
+        return(dataModel.outputFilenames)
+    }
 }

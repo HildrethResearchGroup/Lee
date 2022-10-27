@@ -25,6 +25,7 @@ class LeeDataModel {
     private var manifest: Manifest?
     /// This is the script output
     var scriptOutput: [String] = []
+    var outputFilenames: [URL] = []
     
     // MARK: Change target manifest
     /// Function to change the current target manifest file
@@ -36,15 +37,13 @@ class LeeDataModel {
     ///
     /// Throws Any errors due to loading or parsing will be caught, printed and returned
     func changeTargetManifest(url: URL) -> ManifestStatus {
-        do {
-            // Attempt to parse loaded source
-            manifest = try Manifest(url: url)
+        // Attempt to load manifest from file
+        if let potentialManifest = Manifest(url: url) {
+            self.manifest = potentialManifest
             return .good
-        } catch let error {
-            print(error)
-            // Manifest loading or parsing failed, report error to user
-            return .bad(error: error.localizedDescription)
         }
+        
+        return .bad(error: "Fail")
     }
     // MARK: Run Script function
     /// This function will run the script that the dataModel currently has
@@ -85,6 +84,7 @@ class LeeDataModel {
                 let outputData = outputHandle.readDataToEndOfFile()
                 if let processOutput = String(data: outputData, encoding: String.Encoding.utf8) {
                     try writeToFile(output: processOutput)
+                    print("Output files written")
                     scriptOutput = processOutput.components(separatedBy: "\n")
                 }
             } catch {
@@ -116,8 +116,10 @@ class LeeDataModel {
                     let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                     var fileName = URL(fileURLWithPath: currentFile.name, relativeTo: outputFile)
                     fileName = fileName.appendingPathExtension(currentFile.extension)
+                    outputFilenames.append(fileName)
                     // Write the script's output to the file
                     try currentOutput.write(to: fileName, atomically: true, encoding: .utf8)
+                    print("Written to \(fileName)")
                     // Finished getting all output written to this file
                     foundFile = false
                     break

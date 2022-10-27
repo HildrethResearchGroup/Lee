@@ -4,9 +4,12 @@
 //
 //  Created by Owen Hildreth on 8/25/22.
 //
-
+//import UIKit
 import SwiftUI
-import QuickLook
+import Quartz
+
+
+
 
 /// This is the Lee View
 struct ContentView: View {
@@ -34,9 +37,15 @@ struct ContentView: View {
                     Spacer()
                 }
             }
-            Button("Preview") {
-                        url = Bundle.main.url(forResource: "argsTest", withExtension: "py")
-                    }.quickLookPreview($url)
+//            let previewController = QLPreviewController()
+//            previewController.dataSource = self
+//            present(previewController, animated: true)
+            VStack(alignment: .leading) {
+                ForEach(viewModel.returnFiles(),id: \.self) { file in
+                    QLImage(url: file)
+                    Text("hi")
+               }
+            }
             Spacer(minLength: 4.0)
             // MARK: Run and Load File Buttons
             // TODO: Make separate view
