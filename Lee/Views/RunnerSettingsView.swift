@@ -9,12 +9,10 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
-<<<<<<< HEAD
     @ObservedObject private(set) var viewModel: SettingsViewModel
     
     @State
     private var runnerNamesSelection = Set<Int>()
-=======
     private func commitRunnerEdit() {
         viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
         currentlyEditing = nil
@@ -41,9 +39,13 @@ struct RunnerSettingsView: View {
                     }
             }
             Spacer()
+    private func commitRunnerName() {
+        selection.removeAll()
+        DispatchQueue.main.async {
+            viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
+            currentlyEditing = nil
         }
     }
->>>>>>> 6e7b7a1 (Better editing and focus control)
     
     @State
     private var currentlyEditing: Int?
@@ -60,11 +62,7 @@ struct RunnerSettingsView: View {
     @FocusState
     private var editFocus: Bool
     
-<<<<<<< HEAD
     var runnerListButtons: some View {
-=======
-    var runnerEditView: some View {
->>>>>>> 6e7b7a1 (Better editing and focus control)
         HStack {
             RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
             Spacer()
