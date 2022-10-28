@@ -15,7 +15,7 @@ class LeeUITests: XCTestCase {
         try super.setUpWithError()
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launch()
+
         // In UI tests it is usually best to stop immediately when a failure occurs.
 
         // In UI tests it’s important to set the initial state - such as interface orientation
@@ -30,7 +30,7 @@ class LeeUITests: XCTestCase {
 
     func testLoadFile() {
         // given
-        
+        app.launch()
         let loadFileButton = app.buttons["Load File"]
         let typeLabel = app.staticTexts["Current Manifest: "]
         let good = app.images["checkmark.circle.fill"]
@@ -38,6 +38,20 @@ class LeeUITests: XCTestCase {
         let bad = app.images["multiply.circle.fill"]
         loadFileButton.tap()
         XCTAssertTrue(file.exists)
+       
+    }
+    
+    func testGoodManifest() {
+        // given
+        app.launchArguments = ["-goodManifest"]
+        app.launch()
+        let run = app.buttons["Run"]
+        let typeLabel = app.staticTexts["Current Manifest: "]
+        let good = app.images["checkmark.circle.fill"]
+        let file = app.dialogs["Choose a file"]
+        let bad = app.images["multiply.circle.fill"]
+        XCTAssertTrue(good.exists)
+        XCTAssertTrue(run.isEnabled)
        
     }
 

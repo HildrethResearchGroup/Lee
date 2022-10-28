@@ -12,6 +12,9 @@ struct ContentView: View {
     // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
+    func debug(){
+        viewModel.debug()
+    }
     var body: some View {
         VStack {
             // MARK: Manifest Path Display
@@ -62,7 +65,7 @@ struct ContentView: View {
                 await viewModel.runScript()
             }
     }
-    
+
     
 }
 
