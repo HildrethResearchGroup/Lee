@@ -8,6 +8,7 @@
 import SwiftUI
 
 @main
+
 /// Main application of MacOS app Lee
 struct Lee: App {
     let lee = LeeViewModel()

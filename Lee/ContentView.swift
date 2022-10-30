@@ -4,11 +4,17 @@
 //
 //  Created by Owen Hildreth on 8/25/22.
 //
-
+//import UIKit
 import SwiftUI
+import Quartz
+
+
+
 
 /// This is the Lee View
 struct ContentView: View {
+    @State
+    var url: URL?
     // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
@@ -39,6 +45,17 @@ struct ContentView: View {
                 HStack {
                     Text("Error: \(message)")
                     Spacer()
+                }
+            }
+//            let previewController = QLPreviewController()
+//            previewController.dataSource = self
+//            present(previewController, animated: true)
+            if(viewModel.scriptRun){
+                VStack(alignment: .leading) {
+                    ForEach(viewModel.returnFiles(),id: \.self) { file in
+                        Text("\(file)")
+                        QLImage(url: file)
+                   }
                 }
             }
             Spacer(minLength: 4.0)

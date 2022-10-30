@@ -18,7 +18,7 @@ import SwiftUI
 class LeeViewModel: ObservableObject {
     /// The data model, default is LeeDataModel()
     @Published var dataModel = LeeDataModel()
-
+    @Published var scriptRun = false
     /// Manifest Status optional
     @Published var manifestStatus: ManifestStatus?
     /// Script Status optional
@@ -65,7 +65,7 @@ class LeeViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.scriptStatus = self.dataModel.getScriptStatus()
             }
-        
+            self.scriptRun = true
         } catch {
             
         }
@@ -83,7 +83,9 @@ class LeeViewModel: ObservableObject {
         }
         #endif
     }
-    
-    
+    func returnFiles() -> [URL]{
+        print(dataModel.outputFilenames)
+        return(dataModel.outputFilenames)
+    }
 }
 

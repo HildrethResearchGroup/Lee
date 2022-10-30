@@ -4,7 +4,6 @@
 //
 //  Created by Isabella Fernandes de Oliveira on 9/15/22.
 //
-
 import SwiftUI
 import PythonKit
 
@@ -33,6 +32,7 @@ class LeeDataModel {
     private var manifest: Manifest?
     /// This is the script output
     var scriptOutput: [String] = []
+    var outputFilenames: [URL] = []
     
     // MARK: Change target manifest
     /// Function to change the current target manifest file
@@ -44,20 +44,17 @@ class LeeDataModel {
     ///
     /// Throws Any errors due to loading or parsing will be caught, printed and returned
     func changeTargetManifest(url: URL) -> ManifestStatus {
-        do {
-            // Attempt to parse loaded source
-            manifest = try Manifest(url: url)
+        // Attempt to load manifest from file
+        if let potentialManifest = Manifest(url: url) {
+            self.manifest = potentialManifest
             return .good
-        } catch let error {
-            print(error)
-            // Manifest loading or parsing failed, report error to user
-            return .bad(error: error.localizedDescription)
         }
+        
+        return .bad(error: "Fail")
     }
     // MARK: Run Script function
-
     /// This function will run the script that the dataModel currently has
-    func runScript() async throws {
+    func runScript(action: @escaping () -> Void) async throws {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
          Task {
@@ -92,6 +89,14 @@ class LeeDataModel {
              // This is a do-catch statement
              do {
                  try process.run()
+                // Get the piped standard output from the subprocess
+                let outputHandle = outputPipe.fileHandleForReading
+                let outputData = outputHandle.readDataToEndOfFile()
+                if let processOutput = String(data: outputData, encoding: String.Encoding.utf8) {
+                    try writeToFile(output: processOutput)
+                    print("Output files written")
+                    scriptOutput = processOutput.components(separatedBy: "\n")
+                }
                  scriptStat = .done
              } catch {
                  print(error)
@@ -106,7 +111,6 @@ class LeeDataModel {
                  
              }
          }
-
     }
     /// As script is running it will change the script status depending on what step it is on. This is a getter
     /// with a default that the program has not yet run.
@@ -117,7 +121,39 @@ class LeeDataModel {
     // MARK: Get Output Function
     func getOutput() -> [String] {
         return scriptOutput
-        
+    }
+   
+    /// This function writes the output of the script to the files desinated in the manfest
+    ///
+    /// - parameter output: This is the output from the script
+    func writeToFile(output: String) throws {
+        for currentFile in manifest!.outputs {
+            // Save the script's output for this desinated file
+            var currentOutput = ""
+            var foundFile = false
+            // Iterating through the script's output to find where files are written
+            for currentLine in output.components(separatedBy: "\n") {
+                // Checking if the current line matches for any of the files
+                if !foundFile && Rune.isValidRuneFile(command: currentLine, fileName: currentFile.name) {
+                    foundFile = true
+                } else if foundFile && Rune.isValidRuneSchema(command: currentLine) {
+                    // Set up the file to write to given the output
+                    let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                    var fileName = URL(fileURLWithPath: currentFile.name, relativeTo: outputFile)
+                    fileName = fileName.appendingPathExtension(currentFile.extension)
+                    outputFilenames.append(fileName)
+                    // Write the script's output to the file
+                    try currentOutput.write(to: fileName, atomically: true, encoding: .utf8)
+                    print("Written to \(fileName)")
+                    // Finished getting all output written to this file
+                    foundFile = false
+                    break
+                } else if foundFile {
+                    // Adding lines from the script's output to this desinated output
+                    currentOutput += currentLine + "\n"
+                }
+            }
+        }
     }
 
 }

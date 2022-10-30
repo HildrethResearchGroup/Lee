@@ -1,12 +1,16 @@
 {
     "program": {
         "runner": "python",
-        "entry": "bad.py"
+        "entry": "multiple_files.py"
     },
     "inputs": [],
     "outputs": [
         {
-            "name": "error",
+            "name": "ex1",
+            "extension": "txt"
+        },
+        {
+            "name":"ex2",
             "extension": "txt"
         }
     ]

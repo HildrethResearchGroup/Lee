@@ -26,7 +26,7 @@ class ManifestTests: XCTestCase {
         // Check inputs section
         XCTAssertEqual(manifest.inputs, [Manifest.Input(name: "in-file", type: Manifest.DataType.path, comment: nil)])
         // Check oututs section
-        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", comment: nil)])
+        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", extension: "txt", comment: nil)])
     }
     func testPythonCommented() throws {
         let url = bundle.url(forResource: "python_commented", withExtension: "json")
@@ -46,6 +46,6 @@ class ManifestTests: XCTestCase {
         ])
         
         // Check oututs section
-        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", comment: "This is the first output")])
+        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", extension: "txt", comment: "This is the first output")])
     }
 }

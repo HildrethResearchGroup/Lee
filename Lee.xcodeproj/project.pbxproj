@@ -11,10 +11,9 @@
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
+		3F52C98428F87A1900771352 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 3F52C98328F87A1900771352 /* Documentation.docc */; };
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F68517B28EF286E00B18DAF /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F68517A28EF286E00B18DAF /* PythonKit */; };
-		3F68517E28F5CB5500B18DAF /* python_simple.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68517D28F5CB5500B18DAF /* python_simple.json */; };
-		3F68518028F5CB8100B18DAF /* python_commented.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F68517F28F5CB8100B18DAF /* python_commented.json */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */; };
 		3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85428E90B2B00EB0302 /* ContentView.swift */; };
@@ -28,6 +27,29 @@
 		3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1B28E35FE3000BA2D9 /* good.py */; };
 		3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
+		3FD477462901C1AD0043FC04 /* good in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773B2901C1AD0043FC04 /* good */; };
+		3FD477472901C1AD0043FC04 /* good in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773B2901C1AD0043FC04 /* good */; };
+		3FD477482901C1AD0043FC04 /* manifest_many.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773C2901C1AD0043FC04 /* manifest_many.json */; };
+		3FD477492901C1AD0043FC04 /* manifest_many.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773C2901C1AD0043FC04 /* manifest_many.json */; };
+		3FD4774A2901C1AD0043FC04 /* many.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773D2901C1AD0043FC04 /* many.py */; };
+		3FD4774B2901C1AD0043FC04 /* many.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773D2901C1AD0043FC04 /* many.py */; };
+		3FD4774C2901C1AD0043FC04 /* manifest_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773E2901C1AD0043FC04 /* manifest_bad.json */; };
+		3FD4774D2901C1AD0043FC04 /* manifest_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773E2901C1AD0043FC04 /* manifest_bad.json */; };
+		3FD4774E2901C1AD0043FC04 /* manifest_good.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773F2901C1AD0043FC04 /* manifest_good.json */; };
+		3FD4774F2901C1AD0043FC04 /* manifest_good.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD4773F2901C1AD0043FC04 /* manifest_good.json */; };
+		3FD477502901C1AD0043FC04 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477402901C1AD0043FC04 /* good.py */; };
+		3FD477512901C1AD0043FC04 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477402901C1AD0043FC04 /* good.py */; };
+		3FD477522901C1AD0043FC04 /* input in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477412901C1AD0043FC04 /* input */; };
+		3FD477532901C1AD0043FC04 /* input in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477412901C1AD0043FC04 /* input */; };
+		3FD477542901C1AD0043FC04 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477422901C1AD0043FC04 /* bad.py */; };
+		3FD477552901C1AD0043FC04 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477422901C1AD0043FC04 /* bad.py */; };
+		3FD477562901C1AD0043FC04 /* manifest_input.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477432901C1AD0043FC04 /* manifest_input.json */; };
+		3FD477572901C1AD0043FC04 /* manifest_input.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477432901C1AD0043FC04 /* manifest_input.json */; };
+		3FD477582901C1AD0043FC04 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477442901C1AD0043FC04 /* input.py */; };
+		3FD477592901C1AD0043FC04 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477442901C1AD0043FC04 /* input.py */; };
+		3FD4775A2901C1AD0043FC04 /* bad in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477452901C1AD0043FC04 /* bad */; };
+		3FD4775B2901C1AD0043FC04 /* bad in Resources */ = {isa = PBXBuildFile; fileRef = 3FD477452901C1AD0043FC04 /* bad */; };
+		3FD4775D2905CA3B0043FC04 /* QLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD4775C2905CA3B0043FC04 /* QLImage.swift */; };
 		4A36334C28EE59AD000F8851 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A36334B28EE59AD000F8851 /* PythonKit */; };
 		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
@@ -58,9 +80,8 @@
 		3F1E8E3B28BE881400C4DEE3 /* LeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITests.swift; sourceTree = "<group>"; };
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3F52C98328F87A1900771352 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
-		3F68517D28F5CB5500B18DAF /* python_simple.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_simple.json; sourceTree = "<group>"; };
-		3F68517F28F5CB8100B18DAF /* python_commented.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = python_commented.json; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
 		3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeViewModel.swift; sourceTree = "<group>"; };
 		3FA6D85428E90B2B00EB0302 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +95,18 @@
 		3FBC8D1B28E35FE3000BA2D9 /* good.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = good.py; sourceTree = "<group>"; };
 		3FBC8D1C28E35FE3000BA2D9 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
+		3FD4773B2901C1AD0043FC04 /* good */ = {isa = PBXFileReference; lastKnownFileType = folder; path = good; sourceTree = "<group>"; };
+		3FD4773C2901C1AD0043FC04 /* manifest_many.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_many.json; sourceTree = "<group>"; };
+		3FD4773D2901C1AD0043FC04 /* many.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = many.py; sourceTree = "<group>"; };
+		3FD4773E2901C1AD0043FC04 /* manifest_bad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_bad.json; sourceTree = "<group>"; };
+		3FD4773F2901C1AD0043FC04 /* manifest_good.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_good.json; sourceTree = "<group>"; };
+		3FD477402901C1AD0043FC04 /* good.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = good.py; sourceTree = "<group>"; };
+		3FD477412901C1AD0043FC04 /* input */ = {isa = PBXFileReference; lastKnownFileType = folder; path = input; sourceTree = "<group>"; };
+		3FD477422901C1AD0043FC04 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
+		3FD477432901C1AD0043FC04 /* manifest_input.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_input.json; sourceTree = "<group>"; };
+		3FD477442901C1AD0043FC04 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
+		3FD477452901C1AD0043FC04 /* bad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bad; sourceTree = "<group>"; };
+		3FD4775C2905CA3B0043FC04 /* QLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLImage.swift; sourceTree = "<group>"; };
 		3FED97ED290AEE5A00DDE4B4 /* PythonKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PythonKit; path = ../../../../Applications/PythonKit; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +163,7 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
+				3F52C98328F87A1900771352 /* Documentation.docc */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
 				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
@@ -138,6 +172,7 @@
 				3FA6D85828E90B2F00EB0302 /* PythonDataModel.swift */,
 				3FA6D87828F3500500EB0302 /* RuneCommands.swift */,
 				3FA6D87A28F3500900EB0302 /* Rune.swift */,
+				3FD4775C2905CA3B0043FC04 /* QLImage.swift */,
 				3F8F2B9328C29EB400B7565D /* argsTest.py */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
@@ -158,7 +193,6 @@
 			isa = PBXGroup;
 			children = (
 				3FA6D87C28F3501300EB0302 /* RuneTests.swift */,
-				3F68517C28F5CB2900B18DAF /* Manifests */,
 				3F68516128D3A43E00B18DAF /* ManifestTests.swift */,
 				3FA6D85C28E90BA100EB0302 /* RunnerTests.swift */,
 			);
@@ -174,18 +208,20 @@
 			path = LeeUITests;
 			sourceTree = "<group>";
 		};
-		3F68517C28F5CB2900B18DAF /* Manifests */ = {
-			isa = PBXGroup;
-			children = (
-				3F68517D28F5CB5500B18DAF /* python_simple.json */,
-				3F68517F28F5CB8100B18DAF /* python_commented.json */,
-			);
-			path = Manifests;
-			sourceTree = "<group>";
-		};
 		3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */ = {
 			isa = PBXGroup;
 			children = (
+				3FD477452901C1AD0043FC04 /* bad */,
+				3FD477422901C1AD0043FC04 /* bad.py */,
+				3FD4773B2901C1AD0043FC04 /* good */,
+				3FD477402901C1AD0043FC04 /* good.py */,
+				3FD477412901C1AD0043FC04 /* input */,
+				3FD477442901C1AD0043FC04 /* input.py */,
+				3FD4773E2901C1AD0043FC04 /* manifest_bad.json */,
+				3FD4773F2901C1AD0043FC04 /* manifest_good.json */,
+				3FD477432901C1AD0043FC04 /* manifest_input.json */,
+				3FD4773C2901C1AD0043FC04 /* manifest_many.json */,
+				3FD4773D2901C1AD0043FC04 /* many.py */,
 				3FBC8D1D28E35FE3000BA2D9 /* bad.py */,
 				3FBC8D1B28E35FE3000BA2D9 /* good.py */,
 				3FBC8D1C28E35FE3000BA2D9 /* input.py */,
@@ -313,12 +349,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FD4774E2901C1AD0043FC04 /* manifest_good.json in Resources */,
+				3FD477522901C1AD0043FC04 /* input in Resources */,
+				3FD477542901C1AD0043FC04 /* bad.py in Resources */,
+				3FD4774C2901C1AD0043FC04 /* manifest_bad.json in Resources */,
 				3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */,
+				3FD477502901C1AD0043FC04 /* good.py in Resources */,
 				3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */,
 				3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */,
+				3FD477462901C1AD0043FC04 /* good in Resources */,
 				3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */,
+				3FD477562901C1AD0043FC04 /* manifest_input.json in Resources */,
+				3FD477482901C1AD0043FC04 /* manifest_many.json in Resources */,
+				3FD4774A2901C1AD0043FC04 /* many.py in Resources */,
 				3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */,
 				3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */,
+				3FD4775A2901C1AD0043FC04 /* bad in Resources */,
+				3FD477582901C1AD0043FC04 /* input.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,8 +373,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F68518028F5CB8100B18DAF /* python_commented.json in Resources */,
-				3F68517E28F5CB5500B18DAF /* python_simple.json in Resources */,
+				3FD477552901C1AD0043FC04 /* bad.py in Resources */,
+				3FD477472901C1AD0043FC04 /* good in Resources */,
+				3FD4774F2901C1AD0043FC04 /* manifest_good.json in Resources */,
+				3FD477492901C1AD0043FC04 /* manifest_many.json in Resources */,
+				3FD4775B2901C1AD0043FC04 /* bad in Resources */,
+				3FD4774D2901C1AD0043FC04 /* manifest_bad.json in Resources */,
+				3FD4774B2901C1AD0043FC04 /* many.py in Resources */,
+				3FD477532901C1AD0043FC04 /* input in Resources */,
+				3FD477572901C1AD0043FC04 /* manifest_input.json in Resources */,
+				3FD477512901C1AD0043FC04 /* good.py in Resources */,
+				3FD477592901C1AD0043FC04 /* input.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +426,8 @@
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
+				3FD4775D2905CA3B0043FC04 /* QLImage.swift in Sources */,
+				3F52C98428F87A1900771352 /* Documentation.docc in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
