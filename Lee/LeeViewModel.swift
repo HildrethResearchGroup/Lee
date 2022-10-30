@@ -18,7 +18,7 @@ import SwiftUI
 class LeeViewModel: ObservableObject {
     /// The data model, default is LeeDataModel()
     @Published var dataModel = LeeDataModel()
-
+    @Published var scriptRun = false
     /// Manifest Status optional
     @Published var manifestStatus: ManifestStatus?
     /// Manifest path, defaults to empty string
@@ -56,7 +56,7 @@ class LeeViewModel: ObservableObject {
     func runScript() async throws {
         do {
             try await dataModel.runScript() {
-                
+                self.scriptRun = true
             }
         } catch {
             // not sure what would go here

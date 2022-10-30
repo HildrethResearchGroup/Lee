@@ -40,11 +40,13 @@ struct ContentView: View {
 //            let previewController = QLPreviewController()
 //            previewController.dataSource = self
 //            present(previewController, animated: true)
-            VStack(alignment: .leading) {
-                ForEach(viewModel.returnFiles(),id: \.self) { file in
-                    QLImage(url: file)
-                    Text("hi")
-               }
+            if(viewModel.scriptRun){
+                VStack(alignment: .leading) {
+                    ForEach(viewModel.returnFiles(),id: \.self) { file in
+                        Text("\(file)")
+                        QLImage(url: file)
+                   }
+                }
             }
             Spacer(minLength: 4.0)
             // MARK: Run and Load File Buttons
