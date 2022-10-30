@@ -18,10 +18,17 @@ enum ManifestStatus: Equatable {
     case bad(error: String)
 }
 
+enum ScriptStatus: Equatable {
+    case running
+    case done
+    case hasNotRun
+}
+
 /// DataModel for Lee program
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
     var scriptIsRunning = false
+    private var scriptStat: ScriptStatus?
     private var manifest: Manifest?
     /// This is the script output
     var scriptOutput: [String] = []
@@ -50,35 +57,38 @@ class LeeDataModel {
     func runScript(action: @escaping () -> Void) async throws {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
-        Task {
-            let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
-            let scriptURL = manifest!.relativeTo(relativePath: manifest!.program.entry)
-            self.scriptIsRunning = true
-            let process = Process()
-            let outputPipe = Pipe()
-            process.standardOutput = outputPipe
-            process.executableURL = executableURL
+         Task {
+             let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
+             let scriptURL = manifest!.relativeTo(relativePath: manifest!.program.entry)
+             self.scriptIsRunning = true
+             scriptStat = .running
+             let process = Process()
+             let outputPipe = Pipe()
+             process.standardOutput = outputPipe
+             process.executableURL = executableURL
+             process.arguments = [scriptURL]
             // if manifest specifies inputs, go through that array and get names
-            var inputsArray: [String] = [scriptURL]
-            if !manifest!.inputs.isEmpty {
-                for input in manifest!.inputs {
-                    inputsArray.append(input.name)
-                }
-            }
-            process.arguments = inputsArray // sets the arguments of the script to inputs specified in manifest
-            process.terminationHandler = {_ in
-            // The terminationHandler uses an "old school" escaping completion handler.
-            // You can't rely on Swift's new async/await to know what to run on the main thread for you.
-            // You need to wrap the property accesses in a DispatchQueue (old school style).
-            DispatchQueue.main.async {
-            self.scriptIsRunning = false
-            }
-             print("Process finished")
-            }
+             if !manifest!.inputs.isEmpty {
+                 var inputsArray: [String] = []
+                 for input in manifest!.inputs {
+                     inputsArray.append(input.name)
+                 }
+                 process.arguments = inputsArray // sets the arguments of the scriot to inputs specified in manifest
+             }
+             process.terminationHandler = {_ in
+             // The terminationHandler uses an "old school" escaping completion handler.
+             // You can't rely on Swift's new async/await to know what to run on the main thread for you.
+             // You need to wrap the property accesses in a DispatchQueue (old school style).
+             DispatchQueue.main.async {
+             self.scriptIsRunning = false
+             }
+                 print("Process finished")
+                 
+             }
 
-            // This is a do-catch statement
-            do {
-                try process.run()
+             // This is a do-catch statement
+             do {
+                 try process.run()
                 // Get the piped standard output from the subprocess
                 let outputHandle = outputPipe.fileHandleForReading
                 let outputData = outputHandle.readDataToEndOfFile()
@@ -87,12 +97,27 @@ class LeeDataModel {
                     print("Output files written")
                     scriptOutput = processOutput.components(separatedBy: "\n")
                 }
-            } catch {
-                print(error)
-            }
-            action()
+                 scriptStat = .done
+             } catch {
+                 print(error)
+                 scriptStat = .hasNotRun
+             }
+
+             // Get the piped standard output from the subprocess
+             let outputHandle = outputPipe.fileHandleForReading
+             let outputData = outputHandle.readDataToEndOfFile()
+             if let processOutput = String(data: outputData, encoding: String.Encoding.utf8) {
+                 scriptOutput = processOutput.components(separatedBy: "\n")
+                 
+             }
          }
     }
+    /// As script is running it will change the script status depending on what step it is on. This is a getter
+    /// with a default that the program has not yet run.
+    func getScriptStatus() -> ScriptStatus {
+        return scriptStat ?? .done
+    }
+    
     // MARK: Get Output Function
     func getOutput() -> [String] {
         return scriptOutput

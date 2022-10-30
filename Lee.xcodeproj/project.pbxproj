@@ -107,6 +107,7 @@
 		3FD477442901C1AD0043FC04 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FD477452901C1AD0043FC04 /* bad */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bad; sourceTree = "<group>"; };
 		3FD4775C2905CA3B0043FC04 /* QLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QLImage.swift; sourceTree = "<group>"; };
+		3FED97ED290AEE5A00DDE4B4 /* PythonKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = PythonKit; path = ../../../../Applications/PythonKit; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +141,7 @@
 		3F1E8E1728BE881300C4DEE3 = {
 			isa = PBXGroup;
 			children = (
+				3FED97EC290AEE5A00DDE4B4 /* Packages */,
 				3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */,
 				3F1E8E2228BE881300C4DEE3 /* Lee */,
 				3F1E8E3E28BE881400C4DEE3 /* LeeUITests */,
@@ -225,6 +227,14 @@
 				3FBC8D1C28E35FE3000BA2D9 /* input.py */,
 			);
 			path = PythonFiles;
+			sourceTree = "<group>";
+		};
+		3FED97EC290AEE5A00DDE4B4 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				3FED97ED290AEE5A00DDE4B4 /* PythonKit */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -18,6 +18,9 @@ struct ContentView: View {
     // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
+    func debug(){
+        viewModel.debug()
+    }
     var body: some View {
         VStack {
             // MARK: Manifest Path Display
@@ -30,6 +33,13 @@ struct ContentView: View {
                 default: Spacer()
                 }
                 Spacer()
+                
+                Text("Current Script Status: ")
+                switch viewModel.scriptStatus {
+                case .done: Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
+                case .hasNotRun: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
+                default: Spacer()
+                }
             }
             if case .bad(let message) = viewModel.manifestStatus {
                 HStack {
@@ -59,13 +69,18 @@ struct ContentView: View {
                 Spacer(minLength: 1.0)
                 Button(action: {
                     Task {
-                        try await viewModel.runScript()
+                        
+                        await viewModel.runScript()
                     }
                 }) {
                     Text("Run")
-                }
+                }.disabled(viewModel.loadedManifest == false)
+                
             }
         }.padding(16)
+            .refreshable {
+                await viewModel.runScript()
+            }
     }
 
     
