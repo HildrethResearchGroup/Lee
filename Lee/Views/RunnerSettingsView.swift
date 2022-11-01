@@ -10,9 +10,9 @@ import SwiftUI
 
 struct RunnerSettingsView: View {
     private func commitRunnerName() {
-        selection.removeAll()
+        runnerNamesSelection.removeAll()
         DispatchQueue.main.async {
-            viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
+            viewModel.renameRunner(index: currentlyEditing!, newName: editValue)
             currentlyEditing = nil
         }
     }
@@ -21,10 +21,10 @@ struct RunnerSettingsView: View {
     var viewModel: SettingsViewModel
     
     @State
-    private var selection = Set<String>()
+    private var runnerNamesSelection = Set<Int>()
     
     @State
-    private var currentlyEditing: String?
+    private var currentlyEditing: Int?
     
     @State
     private var editValue: String = ""
@@ -32,7 +32,7 @@ struct RunnerSettingsView: View {
     @FocusState
     private var editFocus: Bool
     
-    var runnerEditView: some View {
+    var runnerListButtons: some View {
         HStack {
             Button {
                 viewModel.addRunner(name: "runner")
@@ -40,7 +40,7 @@ struct RunnerSettingsView: View {
                 Image(systemName: "plus")
             }.buttonStyle(.borderless)
             Button {
-                viewModel.removeRunners(names: selection)
+                viewModel.removeRunners(indicies: runnerNamesSelection)
             } label: {
                 Image(systemName: "minus")
             }.buttonStyle(.borderless)
@@ -50,13 +50,13 @@ struct RunnerSettingsView: View {
     
     var runnerListView: some View {
         VStack {
-            List(viewModel.runnerNames, id: \.self, selection: $selection) { name in
-                if name != currentlyEditing {
-                    Text(name)
+            List(viewModel.runnerNames.indices, id: \.self, selection: $runnerNamesSelection) { index in
+                if index != currentlyEditing {
+                    Text(viewModel.runnerNames[index])
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .onTapGesture(count: 2, perform: {
-                            currentlyEditing = name
-                            editValue = name
+                            currentlyEditing = index
+                            editValue = viewModel.runnerNames[index]
                         })
                 } else {
                     TextField("", text: $editValue)
@@ -65,20 +65,31 @@ struct RunnerSettingsView: View {
                         }
                         .focused($editFocus)
                         .task {
-                            selection.removeAll()
-                            selection.insert(name)
+                            runnerNamesSelection.removeAll()
+                            runnerNamesSelection.insert(index)
                             editFocus = true
                         }
                 }
-            }
-            runnerEditView
+            }.onChange(of: runnerNamesSelection, perform: { selection in
+                if selection.count == 1 {
+                    viewModel.selectRunner(index: selection.first)
+                }
+            })
+            runnerListButtons
                 .padding(4)
+        }
+    }
+    
+    var runnerEditView: some View {
+        VStack {
+            
         }
     }
     
     var body: some View {
         HStack {
             runnerListView
+            runnerEditView
         }.padding(8)
     }
 }
