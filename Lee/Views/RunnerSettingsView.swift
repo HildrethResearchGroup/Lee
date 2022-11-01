@@ -40,9 +40,9 @@ struct RunnerSettingsView: View {
             }
             Spacer()
     private func commitRunnerName() {
-        selection.removeAll()
+        runnerNamesSelection.removeAll()
         DispatchQueue.main.async {
-            viewModel.renameRunner(oldName: currentlyEditing!, newName: editValue)
+            viewModel.renameRunner(index: currentlyEditing!, newName: editValue)
             currentlyEditing = nil
         }
     }
@@ -88,9 +88,16 @@ struct RunnerSettingsView: View {
         .padding()
     }
     
+    var runnerEditView: some View {
+        VStack {
+            
+        }
+    }
+    
     var body: some View {
         HStack {
             runnerListView
+            runnerEditView
         }.padding(8)
     }
 }

@@ -144,6 +144,11 @@ class SettingsViewModel: ObservableObject {
     @Published private(set) var selectedRunner: Int?
     @Published private(set) var runnerVersions: [[String: String]] = []
     
+    @Published
+    var selectedRunnerVersions: [String: String]?
+    
+    private var runnerVersions: [[String: String]] = []
+    
     private let settingsStore = UserDefaults(suiteName: "settings")!
     private let decoder = PropertyListDecoder()
     private let encoder = PropertyListEncoder()
