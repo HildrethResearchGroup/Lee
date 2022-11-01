@@ -12,7 +12,7 @@ struct RunnerSettingsView: View {
     private func commitRunnerName() {
         runnerNamesSelection.removeAll()
         DispatchQueue.main.async {
-            viewModel.renameRunner(index: currentlyEditing!, newName: editValue)
+            viewModel.renameRunner(index: currentlyEditing!, newName: runnerNameEditValue)
             currentlyEditing = nil
         }
     }
@@ -27,7 +27,13 @@ struct RunnerSettingsView: View {
     private var currentlyEditing: Int?
     
     @State
-    private var editValue: String = ""
+    private var runnerNameEditValue: String = ""
+    
+    @State
+    private var runnerVersionNameEditValue: String = ""
+    
+    @State
+    private var runnerVersionPathEditValue: String = ""
     
     @FocusState
     private var editFocus: Bool
@@ -56,10 +62,10 @@ struct RunnerSettingsView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .onTapGesture(count: 2, perform: {
                             currentlyEditing = index
-                            editValue = viewModel.runnerNames[index]
+                            runnerNameEditValue = viewModel.runnerNames[index]
                         })
                 } else {
-                    TextField("", text: $editValue)
+                    TextField("", text: $runnerNameEditValue)
                         .onSubmit {
                             commitRunnerName()
                         }
@@ -73,23 +79,72 @@ struct RunnerSettingsView: View {
             }.onChange(of: runnerNamesSelection, perform: { selection in
                 if selection.count == 1 {
                     viewModel.selectRunner(index: selection.first)
+                } else {
+                    viewModel.selectRunner(index: nil)
                 }
             })
-            runnerListButtons
-                .padding(4)
         }
     }
     
-    var runnerEditView: some View {
-        VStack {
-            
+    var runnerVersionListButtons: some View {
+        HStack {
+            Button {
+                
+            } label: {
+                Image(systemName: "plus")
+            } .buttonStyle(.borderless)
+            Button {
+                
+            } label: {
+                Image(systemName: "minus")
+            } .buttonStyle(.borderless)
+            Spacer()
         }
+    }
+    
+    var runnerVersionList: some View {
+        List(Array(viewModel.selectedRunnerVersions!.sorted(by: >)), id: \.key) {key, value in
+            HStack {
+                Text(key)
+                Spacer()
+                Text(value)
+            }
+        }
+    }
+    
+    var runnerVersionEdit: some View {
+        VStack {
+            HStack {
+                Text("Version")
+                Spacer()
+            }
+            TextField("", text: $runnerVersionNameEditValue)
+            HStack {
+                Text("Executable")
+                Spacer()
+            }
+            TextField("", text: $runnerVersionPathEditValue)
+        }
+        .multilineTextAlignment(.leading)
     }
     
     var body: some View {
-        HStack {
-            runnerListView
-            runnerEditView
-        }.padding(8)
+        VStack {
+            HStack {
+                runnerListView
+                if viewModel.selectedRunnerVersions != nil {
+                    Spacer()
+                    VStack {
+                        runnerVersionList
+                        runnerVersionListButtons
+                            .padding(4)
+                        runnerVersionEdit
+                    }
+                }
+            }
+            runnerListButtons
+                .padding(4)
+        }
+        .padding(8)
     }
 }
