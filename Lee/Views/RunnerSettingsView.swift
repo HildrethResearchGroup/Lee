@@ -42,7 +42,7 @@ struct RunnerSettingsView: View {
     private func commitRunnerName() {
         runnerNamesSelection.removeAll()
         DispatchQueue.main.async {
-            viewModel.renameRunner(index: currentlyEditing!, newName: editValue)
+            viewModel.renameRunner(index: currentlyEditing!, newName: runnerNameEditValue)
             currentlyEditing = nil
         }
     }
@@ -88,16 +88,65 @@ struct RunnerSettingsView: View {
         .padding()
     }
     
-    var runnerEditView: some View {
-        VStack {
-            
+    var runnerVersionListButtons: some View {
+        HStack {
+            Button {
+                
+            } label: {
+                Image(systemName: "plus")
+            } .buttonStyle(.borderless)
+            Button {
+                
+            } label: {
+                Image(systemName: "minus")
+            } .buttonStyle(.borderless)
+            Spacer()
         }
     }
     
+    var runnerVersionList: some View {
+        List(Array(viewModel.selectedRunnerVersions!.sorted(by: >)), id: \.key) {key, value in
+            HStack {
+                Text(key)
+                Spacer()
+                Text(value)
+            }
+        }
+    }
+    
+    var runnerVersionEdit: some View {
+        VStack {
+            HStack {
+                Text("Version")
+                Spacer()
+            }
+            TextField("", text: $runnerVersionNameEditValue)
+            HStack {
+                Text("Executable")
+                Spacer()
+            }
+            TextField("", text: $runnerVersionPathEditValue)
+        }
+        .multilineTextAlignment(.leading)
+    }
+    
     var body: some View {
-        HStack {
-            runnerListView
-            runnerEditView
-        }.padding(8)
+        VStack {
+            HStack {
+                runnerListView
+                if viewModel.selectedRunnerVersions != nil {
+                    Spacer()
+                    VStack {
+                        runnerVersionList
+                        runnerVersionListButtons
+                            .padding(4)
+                        runnerVersionEdit
+                    }
+                }
+            }
+            runnerListButtons
+                .padding(4)
+        }
+        .padding(8)
     }
 }
