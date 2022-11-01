@@ -12,10 +12,10 @@ struct RunnerSettingsView: View {
     @ObservedObject private(set) var viewModel: SettingsViewModel
     
     @State
-    private var selection = Set<String>()
+    private var runnerNamesSelection = Set<Int>()
     
     @State
-    private var currentlyEditing: String?
+    private var currentlyEditing: Int?
     
     @State
     private var editValue: String = ""
@@ -23,7 +23,7 @@ struct RunnerSettingsView: View {
     @FocusState
     private var editFocus: Bool
     
-    var runnerEditView: some View {
+    var runnerListButtons: some View {
         HStack {
             RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
             Spacer()
@@ -36,9 +36,16 @@ struct RunnerSettingsView: View {
         .padding()
     }
     
+    var runnerEditView: some View {
+        VStack {
+            
+        }
+    }
+    
     var body: some View {
         HStack {
             runnerListView
+            runnerEditView
         }.padding(8)
     }
 }
