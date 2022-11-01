@@ -23,7 +23,7 @@ class SettingsViewModel: ObservableObject {
                 
                 for runner in runners {
                     runnerNames.append(runner.name)
-                    
+                    runnerVersions.append(runner.versions)
                 }
             }
         } catch let err {

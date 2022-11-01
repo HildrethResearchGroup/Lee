@@ -19,7 +19,7 @@ struct SettingsView: View {
                 .tabItem {
                     Label("Runner", systemImage: "play.circle.fill")
                 }.tag(Tabs.runner)
-        }.frame(width: 400, height: 300, alignment: .center)
+        }.frame(width: 800, height: 500, alignment: .center)
     }
     
     @StateObject
