@@ -21,6 +21,8 @@ class LeeViewModel: ObservableObject {
 
     /// Manifest Status optional
     @Published var manifestStatus: ManifestStatus?
+    /// Script Status optional
+    @Published var scriptStatus: ScriptStatus?
     /// Manifest path, defaults to empty string
     @Published var manifestPath: String = ""
     // Intent function for user selecting manifest
@@ -38,28 +40,35 @@ class LeeViewModel: ObservableObject {
         dialog.showsHiddenFiles        = false; // Manifest files shouldn't be hidden, could change if needed
         dialog.allowsMultipleSelection = false; // select only one right now, will change
         dialog.canChooseDirectories = false; // manifest files are not directories
+        
         if dialog.runModal() ==  NSApplication.ModalResponse.OK {
             let result = dialog.url // Pathname of the file
             if result != nil {
                 let path = result!.path
                 manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: path))
+                if manifestStatus == .good {
+                    loadedManifest = true
+                }
                 // path contains the file path e.g
                 // /Users/ourcodeworld/Desktop/file.txt
                 // saveFile(path)
+                
             }
         } else {
             // User clicked on "Cancel"
             return
         }
     }
-    func runScript() async throws {
+    func runScript() async {
         do {
             try await dataModel.runScripts {
                 
             }
         } catch {
-            // not sure what would go here
-            // TODO: error handling could go here instead of data model??
+            
         }
+        
     }
+    
+    
 }

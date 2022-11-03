@@ -19,6 +19,12 @@ enum ManifestStatus: Equatable {
     case bad(error: String)
 }
 
+enum ScriptStatus: Equatable {
+    case running
+    case done
+    case hasNotRun
+}
+
 /// DataModel for Lee program
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
@@ -111,7 +117,7 @@ class LeeDataModel {
             action()
          }
     }
-    
+
     // MARK: Get outputs for each script
     func getOutputs() -> [String: [String]] {
         return self.scriptOutput
