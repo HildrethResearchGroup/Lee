@@ -50,6 +50,7 @@ class SettingsViewModel: ObservableObject {
                 name.append("-new")
             }
             runnerVersions[index][name] = ""
+            saveRunners()
         }
     }
     
@@ -65,6 +66,7 @@ class SettingsViewModel: ObservableObject {
             for name in names {
                 runnerVersions[index].removeValue(forKey: name)
             }
+            saveRunners()
         }
     }
     
@@ -75,6 +77,15 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    public func setRunnerVersionExecutable(version: String, path: String) {
+        if let index = selectedRunner, runnerVersions[index][version] != nil {
+            runnerVersions[index][version] = path
+            saveRunners()
+        } else {
+            print("No runner selected, cannot set runner version executable")
+        }
+    }
+    
     public func renameRunnerVersion(prevName: String, newName: String) {
         if !validateRunnerName(name: newName) {
             print("Invalid runner version name: \(newName)")
@@ -82,12 +93,16 @@ class SettingsViewModel: ObservableObject {
         }
         
         if let index = selectedRunner, runnerVersions[index][prevName] != nil {
-            runnerVersions[index][prevName] = newName
+            let val = runnerVersions[index][prevName]
+            runnerVersions[index].removeValue(forKey: prevName)
+            runnerVersions[index][newName] = val
         } else if selectedRunner == nil {
             print("No runner selected, cannot rename a version")
         } else {
             print("'\(newName)' is an already existing version")
         }
+        
+        saveRunners()
     }
     
     public func selectRunner(index: Int?) {
