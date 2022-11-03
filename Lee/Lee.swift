@@ -10,10 +10,15 @@ import SwiftUI
 @main
 /// Main application of MacOS app Lee
 struct Lee: App {
-    let lee = LeeViewModel()
+    let leeViewModel = LeeViewModel()
+    let settingsViewModel = SettingsViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: lee)
+            ContentView(viewModel: leeViewModel)
+        }
+        Settings {
+            SettingsView(viewModel: settingsViewModel)
         }
     }
 }

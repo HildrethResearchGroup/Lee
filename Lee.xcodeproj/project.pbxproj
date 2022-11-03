@@ -124,6 +124,9 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
+				3F6851A42901CD1600B18DAF /* Data */,
+				3F68519E2901C35D00B18DAF /* View Models */,
+				3F68519528FF392D00B18DAF /* Views */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
 				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
@@ -340,14 +343,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F6851AA2901DDD800B18DAF /* RunnerSettings.swift in Sources */,
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
+				3F6851A82901D41D00B18DAF /* AppSettings.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
+				3F68519728FF393E00B18DAF /* SettingsView.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
+				3F68519929019D9C00B18DAF /* RunnerSettingsView.swift in Sources */,
+				3F68519D2901A58900B18DAF /* Runner.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
 				3FA6D87B28F3500900EB0302 /* Rune.swift in Sources */,
+				3F6851A12901C38400B18DAF /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
