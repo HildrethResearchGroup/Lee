@@ -1,0 +1,34 @@
+{
+    "scripts": [
+        {
+            "program": {
+                "runner": "python",
+                "entry": "good.py"
+            },
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "num",
+                    "extension": "txt"
+                }
+            ]
+        },
+        {
+            "program": {
+                "runner": "python",
+                "entry": "many.py"
+            },
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "ex1",
+                    "extension": "txt"
+                },
+                {
+                    "name":"ex2",
+                    "extension": "txt"
+                }
+            ]
+        }
+    ]
+}

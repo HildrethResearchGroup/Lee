@@ -25,9 +25,7 @@ class LeeViewModel: ObservableObject {
     @Published var scriptStatus: ScriptStatus?
     /// Manifest path, defaults to empty string
     @Published var manifestPath: String = ""
-    private var manifest: Manifest?
-    /// Variable that tells content view if manifest was loaded successfully.
-    @Published var loadedManifest = false
+    // Intent function for user selecting manifest
 
     /// Intent function for user selecting manifest, will open new file chooser window for user
     /// Once user has selected a file, the function will update the manifest in the data model and return the status.
@@ -63,11 +61,9 @@ class LeeViewModel: ObservableObject {
     }
     func runScript() async {
         do {
-            try await dataModel.runScript()
-            DispatchQueue.main.async {
-                self.scriptStatus = self.dataModel.getScriptStatus()
+            try await dataModel.runScripts {
+                
             }
-        
         } catch {
             
         }

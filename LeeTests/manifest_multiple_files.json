@@ -1,0 +1,17 @@
+{
+    "program": {
+        "runner": "python",
+        "entry": "multiple_files.py"
+    },
+    "inputs": [],
+    "outputs": [
+        {
+            "name": "ex1",
+            "extension": "txt"
+        },
+        {
+            "name":"ex2",
+            "extension": "txt"
+        }
+    ]
+}

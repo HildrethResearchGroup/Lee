@@ -45,15 +45,19 @@ struct Manifest: Codable {
     /// Representation of a single script output
     struct Output: Codable, Equatable {
         let name: String
+        let `extension`: String
         let comment: String?
     }
+    /// Representation of multiple scripts to be run from the manifest
+    struct Script: Codable, Equatable {
+        let program: Program
+        let inputs: [Input]
+        let outputs: [Output]
+    }
     // MARK: Manifest Parser
-    
-    let program: Program
-    let inputs: [Input]
-    let outputs: [Output]
-    
     private var rootDirectory: URL?
+    
+    let scripts: [Script]
     
     /// Constructs a manifest from the URL of a manifest file
     ///

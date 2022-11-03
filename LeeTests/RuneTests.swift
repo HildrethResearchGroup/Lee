@@ -13,77 +13,79 @@ class RuneTests: XCTestCase {
     
     func testValidRUNEStart() {
         // Ensure that the start command works
-        XCTAssertTrue(Rune.isValidRuneStart(command: "@$RUNE_START$@"))
+        XCTAssertTrue(Rune.isValidRuneStart(command: "$@RUNE_START@$"))
     }
     
     func testInvalidRUNEStart() {
         // Ensures that only START initiates the program
-        XCTAssertFalse(Rune.isValidRuneStart(command: "@$RUNE_start$@"))
-        XCTAssertFalse(Rune.isValidRuneStart(command: "@$RUNE_Start$@"))
-        XCTAssertFalse(Rune.isValidRuneStart(command: "@$RUNE_sTart$@"))
-        XCTAssertFalse(Rune.isValidRuneStart(command: "@$RUNE_stArt$@"))
-        XCTAssertFalse(Rune.isValidRuneStart(command: "@$RUNE_staRt$@"))
-        XCTAssertFalse(Rune.isValidRuneStart(command: "@$RUNE_starT$@"))
+        XCTAssertFalse(Rune.isValidRuneStart(command: "$@RUNE_start@$"))
+        XCTAssertFalse(Rune.isValidRuneStart(command: "$@RUNE_Start@$"))
+        XCTAssertFalse(Rune.isValidRuneStart(command: "$@RUNE_sTart@$"))
+        XCTAssertFalse(Rune.isValidRuneStart(command: "$@RUNE_stArt@$"))
+        XCTAssertFalse(Rune.isValidRuneStart(command: "$@RUNE_staRt@$"))
+        XCTAssertFalse(Rune.isValidRuneStart(command: "$@RUNE_starT@$"))
     }
     
     func testValidRUNEEnd() {
         // Ensure that the end command works
-        XCTAssertTrue(Rune.isValidRuneEnd(command: "@$RUNE_END$@"))
+        XCTAssertTrue(Rune.isValidRuneEnd(command: "$@RUNE_END@$"))
     }
     
     func testInvalidRUNEEnd() {
         // Ensures that only tht END command ends the program
-        XCTAssertFalse(Rune.isValidRuneEnd(command: "@$RUNE_end$@"))
-        XCTAssertFalse(Rune.isValidRuneEnd(command: "@$RUNE_End$@"))
-        XCTAssertFalse(Rune.isValidRuneEnd(command: "@$RUNE_eNd$@"))
-        XCTAssertFalse(Rune.isValidRuneEnd(command: "@$RUNE_enD$@"))
+        XCTAssertFalse(Rune.isValidRuneEnd(command: "$@RUNE_end@$"))
+        XCTAssertFalse(Rune.isValidRuneEnd(command: "$@RUNE_End@$"))
+        XCTAssertFalse(Rune.isValidRuneEnd(command: "$@RUNE_eNd@$"))
+        XCTAssertFalse(Rune.isValidRuneEnd(command: "$@RUNE_enD@$"))
         
     }
     
     func testValidRUNEFile() {
         // Ensure that the file command works
-        XCTAssertTrue(Rune.isValidRuneFile(command: "@$RUNE_FILE(file1)$@", fileName: "file1"))
+        XCTAssertTrue(Rune.isValidRuneFile(command: "$@RUNE_FILE(file1)@$", fileName: "file1"))
     }
     
     func testInvalidRUNEFile() {
         // Ensure that only the command FILE starts reading into a file
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file(file1)$@", fileName: "file1"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_File(file1)$@", fileName: "file1"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_fIle(file1)$@", fileName: "file1"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_fiLe(file1)$@", fileName: "file1"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_filE(file1)$@", fileName: "file1"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file$@", fileName: "file1"))
-        XCTAssertFalse(Rune.isValidRuneFile(command: "@$RUNE_file()$@", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_file(file1)@$", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_File(file1)@$", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_fIle(file1)@$", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_fiLe(file1)@$", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_filE(file1)@$", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_file@$", fileName: "file1"))
+        XCTAssertFalse(Rune.isValidRuneFile(command: "$@RUNE_file()@$", fileName: "file1"))
     }
     
     func testValidRUNEError() {
         // Ensure that the error command works
-        XCTAssertTrue(Rune.isValidRuneError(command: "@$RUNE_ERROR(error)$@", providedError: "error"))
+        XCTAssertTrue(Rune.isValidRuneError(command: "$@RUNE_ERROR(error)@$"))
+        XCTAssertTrue(Rune.isValidRuneError(command: "$@RUNE_ERROR(error test)@$"))
+        
     }
     
     func testInvalidRUNEError() {
         // Ensure that only the ERROR command signifies an error
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_error(error)$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_Error(error)$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_eRror(error)$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_erRor(error)$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_errOr(error)$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_erroR(error)$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_error$@", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "@$RUNE_error()$@", providedError: "error"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_Error(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_eRror(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_erRor(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_errOr(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_erroR(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error()@$"))
     }
     
     func testValidRUNESchema() {
         // Ensure that the rune schema is followed
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTA$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TESTB$@"))
-        XCTAssertTrue(Rune.isValidRuneSchema(command: "@$RUNE_TEST(C)$@"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "$@RUNE_TEST@$"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "$@RUNE_TESTA@$"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "$@RUNE_TESTB@$"))
+        XCTAssertTrue(Rune.isValidRuneSchema(command: "$@RUNE_TEST(C)@$"))
     }
     
     func testInvalidRUNESchema() {
         // Ensure that wrong rune schema is noticed
-        XCTAssertFalse(Rune.isValidRuneSchema(command: "$@RUNE_TEST@$"))
+        XCTAssertFalse(Rune.isValidRuneSchema(command: "@$RUNE_TEST$@"))
         XCTAssertFalse(Rune.isValidRuneSchema(command: "$@rune_TEST@$"))
         XCTAssertFalse(Rune.isValidRuneSchema(command: "$@RUNE_@$"))
         XCTAssertFalse(Rune.isValidRuneSchema(command: "$@TEST@$"))
