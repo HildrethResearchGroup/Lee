@@ -16,6 +16,9 @@
 		3F1E8E4228BE881400C4DEE3 /* LeeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */; };
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F68517B28EF286E00B18DAF /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F68517A28EF286E00B18DAF /* PythonKit */; };
+		3F68519728FF393E00B18DAF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68519628FF393E00B18DAF /* SettingsView.swift */; };
+		3F68519929019D9C00B18DAF /* RunnerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68519829019D9C00B18DAF /* RunnerSettingsView.swift */; };
+		3F6851A12901C38400B18DAF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6851A02901C38400B18DAF /* SettingsViewModel.swift */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
 		3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */; };
 		3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85428E90B2B00EB0302 /* ContentView.swift */; };
