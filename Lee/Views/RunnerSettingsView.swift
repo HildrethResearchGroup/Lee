@@ -16,7 +16,9 @@ struct RunnerSettingsView: View {
             RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
             Spacer()
             if let selected = viewModel.selectedRunner {
-                RunnerEditView(versions: Array(viewModel.runnerVersions[selected].keys), viewModel: viewModel)
+                let versions = viewModel.runnerVersions[selected].keys.sorted(by: <)
+                
+                RunnerEditView(versions: versions, viewModel: viewModel)
             }
         }
         .padding()
