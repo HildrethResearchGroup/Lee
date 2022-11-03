@@ -22,6 +22,5 @@ struct SettingsView: View {
         }.frame(width: 800, height: 500, alignment: .center)
     }
     
-    @StateObject
-    var viewModel: SettingsViewModel
+    @StateObject var viewModel: SettingsViewModel
 }
