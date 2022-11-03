@@ -72,7 +72,13 @@ struct RunnerEditView: View {
                     }
                 })
                 Button("Browse") {
-                    
+                    let panel = NSOpenPanel()
+                    panel.allowsMultipleSelection = false
+                    panel.canChooseDirectories = false
+                    if panel.runModal() == .OK {
+                        executableEdit = panel.url?.path ?? ""
+                        viewModel.setRunnerVersionExecutable(version: selection.first!, path: executableEdit)
+                    }
                 }
             }
             .disabled(selection.count != 1 && currentlyEditing == nil)
