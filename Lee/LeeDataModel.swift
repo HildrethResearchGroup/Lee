@@ -29,9 +29,11 @@ enum ScriptStatus: Equatable {
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
     var scriptRunning = [String: Bool]()
+    /// This is the scripts outputs
     var scriptOutput = [String: [String]]()
+    private var scriptStat: ScriptStatus?
     var manifest: Manifest?
-    /// This is the script output
+
     
     // MARK: Change target manifest
     /// Function to change the current target manifest file
@@ -89,6 +91,7 @@ class LeeDataModel {
                 }
             }
             self.scriptRunning.updateValue(true, forKey: scriptPath)
+            self.scriptStat = .running
             process.arguments = inputsArray // sets the arguments of the script to inputs specified in manifest
             process.terminationHandler = {_ in
             // The terminationHandler uses an "old school" escaping completion handler.
@@ -111,8 +114,10 @@ class LeeDataModel {
                     try writeToFile(manifest: manifest, output: processOutput)
                     self.scriptOutput.updateValue(processOutput.components(separatedBy: "\n"), forKey: scriptPath)
                 }
+                scriptStat = .done
             } catch {
                 print(error)
+                scriptStat = .hasNotRun
             }
             action()
          }
@@ -127,6 +132,10 @@ class LeeDataModel {
     func getOutput(scriptName: String) -> [String] {
         return self.scriptOutput[scriptName] ?? []
     }
+    /// MARK: Get  status of running script
+    func getScriptStatus() -> ScriptStatus {
+             return scriptStat ?? .done
+         }
    
     /// This function writes the output of the script to the files desinated in the manfest
     ///
