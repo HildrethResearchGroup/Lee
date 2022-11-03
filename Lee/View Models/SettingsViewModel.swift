@@ -109,6 +109,10 @@ class SettingsViewModel: ObservableObject {
         selectedRunner = index
     }
     
+    public func selectRunner(index: Int?) {
+        selectedRunner = index
+    }
+    
     private func validateRunnerName(name: String) -> Bool {
         if name.isEmpty, runnerNames.firstIndex(of: name) != nil {
             return false

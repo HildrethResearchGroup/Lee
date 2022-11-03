@@ -90,63 +90,12 @@ struct RunnerSettingsView: View {
     
     var runnerVersionListButtons: some View {
         HStack {
-            Button {
-                
-            } label: {
-                Image(systemName: "plus")
-            } .buttonStyle(.borderless)
-            Button {
-                
-            } label: {
-                Image(systemName: "minus")
-            } .buttonStyle(.borderless)
+            RunnerNamesView(runnerNames: viewModel.runnerNames, viewModel: viewModel)
             Spacer()
-        }
-    }
-    
-    var runnerVersionList: some View {
-        List(Array(viewModel.selectedRunnerVersions!.sorted(by: >)), id: \.key) {key, value in
-            HStack {
-                Text(key)
-                Spacer()
-                Text(value)
+            if let selected = viewModel.selectedRunner {
+                RunnerEditView(versions: Array(viewModel.runnerVersions[selected].keys), viewModel: viewModel)
             }
         }
-    }
-    
-    var runnerVersionEdit: some View {
-        VStack {
-            HStack {
-                Text("Version")
-                Spacer()
-            }
-            TextField("", text: $runnerVersionNameEditValue)
-            HStack {
-                Text("Executable")
-                Spacer()
-            }
-            TextField("", text: $runnerVersionPathEditValue)
-        }
-        .multilineTextAlignment(.leading)
-    }
-    
-    var body: some View {
-        VStack {
-            HStack {
-                runnerListView
-                if viewModel.selectedRunnerVersions != nil {
-                    Spacer()
-                    VStack {
-                        runnerVersionList
-                        runnerVersionListButtons
-                            .padding(4)
-                        runnerVersionEdit
-                    }
-                }
-            }
-            runnerListButtons
-                .padding(4)
-        }
-        .padding(8)
+        .padding()
     }
 }
