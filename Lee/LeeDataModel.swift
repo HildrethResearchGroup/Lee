@@ -102,7 +102,7 @@ class LeeDataModel {
                  print(error)
                  scriptStat = .hasNotRun
              }
-
+             
              // Get the piped standard output from the subprocess
              let outputHandle = outputPipe.fileHandleForReading
              let outputData = outputHandle.readDataToEndOfFile()

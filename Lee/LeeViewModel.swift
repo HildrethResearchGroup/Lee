@@ -61,7 +61,9 @@ class LeeViewModel: ObservableObject {
     }
     func runScript() async {
         do {
-            try await dataModel.runScript()
+            try await dataModel.runScript {
+                
+            }
             DispatchQueue.main.async {
                 self.scriptStatus = self.dataModel.getScriptStatus()
             }

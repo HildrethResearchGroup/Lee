@@ -13,6 +13,8 @@ import Quartz
 
 /// This is the Lee View
 struct ContentView: View {
+    @State private var items: [QuickLookPreviewItem] = []
+    @State private var index = 0
     @State
     var url: URL?
     // Handy charge on which Property Wrapper to use
@@ -56,6 +58,26 @@ struct ContentView: View {
                         Text("\(file)")
                         QLImage(url: file)
                    }
+                    ZStack {
+                        Button("Present QuickLook Preview") {
+                            // Workaround needed because there's no way to know when the preview window is dismissed.
+                            if self.items.isEmpty {
+                                fillItems()
+                            } else {
+                                Task {
+                                    self.items = []
+                                    do { try await Task.sleep(nanoseconds: 0) } catch { fillItems() }
+                                    fillItems()
+                                }
+                            }
+                        }
+                    }
+                    .quickLookPreview(self.$items, at: self.$index)
+                }
+                
+                func fillItems() {
+                    self.items = viewModel.returnFiles()
+                    self.index = self.items.count-1
                 }
             }
             Spacer(minLength: 4.0)
