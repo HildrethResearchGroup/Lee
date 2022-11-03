@@ -129,7 +129,7 @@ struct Rune {
     /// - parameter command: The command to check if it is a END rune command
     ///
     /// - returns Bool: true if the END command is valid and false if it isn't
-    static func isValidRuneError(command: String, providedError: String) -> Bool {
+    static func isValidRuneError(command: String) -> Bool {
         // Ensure that the command follows the rune schema
         if !isValidRuneSchema(command: command) {
             return false
@@ -142,7 +142,7 @@ struct Rune {
             let checkEnum = isValidRuneCommand(command: extractedValues[0])
             let checkError = RuneCommands.ERROR == RuneCommands(rawValue: extractedValues[0])
             // Check the error is the same as the one provided
-            return checkEnum && checkError && providedError == extractedValues[1]
+            return checkEnum && checkError
         }
         return false
     }

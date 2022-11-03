@@ -58,21 +58,21 @@ class RuneTests: XCTestCase {
     
     func testValidRUNEError() {
         // Ensure that the error command works
-        XCTAssertTrue(Rune.isValidRuneError(command: "$@RUNE_ERROR(error)@$", providedError: "error"))
-        XCTAssertTrue(Rune.isValidRuneError(command: "$@RUNE_ERROR(error test)@$", providedError: "error test"))
+        XCTAssertTrue(Rune.isValidRuneError(command: "$@RUNE_ERROR(error)@$"))
+        XCTAssertTrue(Rune.isValidRuneError(command: "$@RUNE_ERROR(error test)@$"))
         
     }
     
     func testInvalidRUNEError() {
         // Ensure that only the ERROR command signifies an error
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error(error)@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_Error(error)@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_eRror(error)@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_erRor(error)@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_errOr(error)@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_erroR(error)@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error@$", providedError: "error"))
-        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error()@$", providedError: "error"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_Error(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_eRror(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_erRor(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_errOr(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_erroR(error)@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error@$"))
+        XCTAssertFalse(Rune.isValidRuneError(command: "$@RUNE_error()@$"))
     }
     
     func testValidRUNESchema() {

@@ -1,13 +1,17 @@
 {
-    "program": {
-        "runner": "python",
-        "entry": "bad.py"
-    },
-    "inputs": [],
-    "outputs": [
+    "scripts": [
         {
-            "name": "error",
-            "extension": "txt"
+            "program": {
+                "runner": "python",
+                "entry": "bad.py"
+            },
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "error",
+                    "extension": "txt"
+                }
+            ]
         }
     ]
 }

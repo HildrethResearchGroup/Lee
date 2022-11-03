@@ -3,6 +3,19 @@
         {
             "program": {
                 "runner": "python",
+                "entry": "good.py"
+            },
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "num",
+                    "extension": "txt"
+                }
+            ]
+        },
+        {
+            "program": {
+                "runner": "python",
                 "entry": "many.py"
             },
             "inputs": [],

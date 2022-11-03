@@ -1,18 +1,22 @@
 {
-    "program": {
-        "runner": "python",
-        "entry": "input.py"
-    },
-    "inputs": [
+    "scripts": [
         {
-            "name": "testing",
-            "type": "string"
-        }
-    ],
-    "outputs": [
-        {
-            "name": "num",
-            "extension": "txt"
+            "program": {
+                "runner": "python",
+                "entry": "input.py"
+            },
+            "inputs": [
+                {
+                    "name": "testing",
+                    "type": "string"
+                }
+            ],
+            "outputs": [
+                {
+                    "name": "num",
+                    "extension": "txt"
+                }
+            ]
         }
     ]
 }

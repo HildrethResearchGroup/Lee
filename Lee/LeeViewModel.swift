@@ -54,7 +54,7 @@ class LeeViewModel: ObservableObject {
     }
     func runScript() async throws {
         do {
-            try await dataModel.runScript {
+            try await dataModel.runScripts {
                 
             }
         } catch {

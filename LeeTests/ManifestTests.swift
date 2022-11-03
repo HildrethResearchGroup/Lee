@@ -21,12 +21,12 @@ class ManifestTests: XCTestCase {
         let manifest = try Manifest(url: url!)
         
         // Check program section
-        XCTAssertEqual(manifest.program, Manifest.Program(runner: Manifest.Runner
+        XCTAssertEqual(manifest.scripts[0].program, Manifest.Program(runner: Manifest.Runner
             .python, entry: "main.py", version: nil))
         // Check inputs section
-        XCTAssertEqual(manifest.inputs, [Manifest.Input(name: "in-file", type: Manifest.DataType.path, comment: nil)])
+        XCTAssertEqual(manifest.scripts[0].inputs, [Manifest.Input(name: "in-file", type: Manifest.DataType.path, comment: nil)])
         // Check oututs section
-        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", extension: "txt", comment: nil)])
+        XCTAssertEqual(manifest.scripts[0].outputs, [Manifest.Output(name: "output1", extension: "txt", comment: nil)])
     }
     func testPythonCommented() throws {
         let url = bundle.url(forResource: "python_commented", withExtension: "json")
@@ -35,17 +35,17 @@ class ManifestTests: XCTestCase {
         let manifest = try Manifest(url: url!)
         
         // Check program section
-        XCTAssertEqual(manifest.program,
+        XCTAssertEqual(manifest.scripts[0].program,
                        Manifest.Program(runner: Manifest.Runner.python, entry: "main.py", version: nil))
         
         // Check inputs section
-        XCTAssertEqual(manifest.inputs, [
+        XCTAssertEqual(manifest.scripts[0].inputs, [
             Manifest.Input(name: "inputImage", type: Manifest.DataType.path, comment: "The image to process"),
             Manifest.Input(name: "timeout", type: Manifest.DataType.int,
                            comment: "Time in seconds to allow script to run")
         ])
         
         // Check oututs section
-        XCTAssertEqual(manifest.outputs, [Manifest.Output(name: "output1", extension: "txt", comment: "This is the first output")])
+        XCTAssertEqual(manifest.scripts[0].outputs, [Manifest.Output(name: "output1", extension: "txt", comment: "This is the first output")])
     }
 }

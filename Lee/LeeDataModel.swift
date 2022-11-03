@@ -22,10 +22,10 @@ enum ManifestStatus: Equatable {
 /// DataModel for Lee program
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
-    var scriptIsRunning = false
-    private var manifest: Manifest?
+    var scriptRunning = [String: Bool]()
+    var scriptOutput = [String: [String]]()
+    var manifest: Manifest?
     /// This is the script output
-    var scriptOutput: [String] = []
     
     // MARK: Change target manifest
     /// Function to change the current target manifest file
@@ -47,34 +47,49 @@ class LeeDataModel {
             return .bad(error: error.localizedDescription)
         }
     }
+    
+    // MARK: Run Scripts function
+    
+    /// This function runs multiple scripts from a manifest file.
+    func runScripts(action: @escaping () -> Void) async throws {
+        // 
+        for currentScript in manifest!.scripts {
+            let scriptURL = manifest!.relativeTo(relativePath: currentScript.program.entry)
+            self.scriptRunning.updateValue(false, forKey: scriptURL)
+            self.scriptOutput.updateValue([], forKey: scriptURL)
+            try await runScript(scriptPath: scriptURL, manifest: currentScript) {
+                action()
+            }
+        }
+    }
+    
     // MARK: Run Script function
 
     /// This function will run the script that the dataModel currently has
-    func runScript(action: @escaping () -> Void) async throws {
+    func runScript(scriptPath: String, manifest: Manifest.Script, action: @escaping () -> Void) async throws {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
         Task {
             let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
-            let scriptURL = manifest!.relativeTo(relativePath: manifest!.program.entry)
-            self.scriptIsRunning = true
             let process = Process()
             let outputPipe = Pipe()
             process.standardOutput = outputPipe
             process.executableURL = executableURL
             // if manifest specifies inputs, go through that array and get names
-            var inputsArray: [String] = [scriptURL]
-            if !manifest!.inputs.isEmpty {
-                for input in manifest!.inputs {
+            var inputsArray: [String] = [scriptPath]
+            if !manifest.inputs.isEmpty {
+                for input in manifest.inputs {
                     inputsArray.append(input.name)
                 }
             }
+            self.scriptRunning.updateValue(true, forKey: scriptPath)
             process.arguments = inputsArray // sets the arguments of the script to inputs specified in manifest
             process.terminationHandler = {_ in
             // The terminationHandler uses an "old school" escaping completion handler.
             // You can't rely on Swift's new async/await to know what to run on the main thread for you.
             // You need to wrap the property accesses in a DispatchQueue (old school style).
             DispatchQueue.main.async {
-            self.scriptIsRunning = false
+                self.scriptRunning.updateValue(false, forKey: scriptPath)
             }
              print("Process finished")
             }
@@ -85,9 +100,10 @@ class LeeDataModel {
                 // Get the piped standard output from the subprocess
                 let outputHandle = outputPipe.fileHandleForReading
                 let outputData = outputHandle.readDataToEndOfFile()
+                // Writing the output from each script to a file
                 if let processOutput = String(data: outputData, encoding: String.Encoding.utf8) {
-                    try writeToFile(output: processOutput)
-                    scriptOutput = processOutput.components(separatedBy: "\n")
+                    try writeToFile(manifest: manifest, output: processOutput)
+                    self.scriptOutput.updateValue(processOutput.components(separatedBy: "\n"), forKey: scriptPath)
                 }
             } catch {
                 print(error)
@@ -95,16 +111,22 @@ class LeeDataModel {
             action()
          }
     }
+    
+    // MARK: Get outputs for each script
+    func getOutputs() -> [String: [String]] {
+        return self.scriptOutput
+    }
+    
     // MARK: Get Output Function
-    func getOutput() -> [String] {
-        return scriptOutput
+    func getOutput(scriptName: String) -> [String] {
+        return self.scriptOutput[scriptName] ?? []
     }
    
     /// This function writes the output of the script to the files desinated in the manfest
     ///
     /// - parameter output: This is the output from the script
-    func writeToFile(output: String) throws {
-        for currentFile in manifest!.outputs {
+    func writeToFile(manifest: Manifest.Script, output: String) throws {
+        for currentFile in manifest.outputs {
             // Save the script's output for this desinated file
             var currentOutput = ""
             var foundFile = false
@@ -114,6 +136,15 @@ class LeeDataModel {
                 if !foundFile && Rune.isValidRuneFile(command: currentLine, fileName: currentFile.name) {
                     foundFile = true
                 } else if foundFile && Rune.isValidRuneSchema(command: currentLine) {
+                    // Writing the error if it exists
+                    if Rune.isValidRuneError(command: currentLine) {
+                        // Getting the error
+                        let values = Rune.extractInternalName(command: currentLine)
+                        // Writing the error to the output file
+                        currentOutput += "ERROR: " + values[1] + "\n"
+                        // Continuing reading output since this isn't the termination of the script
+                        continue
+                    }
                     // Set up the file to write to given the output
                     let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                     var fileName = URL(fileURLWithPath: currentFile.name, relativeTo: outputFile)
@@ -130,5 +161,4 @@ class LeeDataModel {
             }
         }
     }
-
 }

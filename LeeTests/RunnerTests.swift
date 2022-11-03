@@ -25,7 +25,7 @@ class RunnerTests: XCTestCase {
                 // if parsing works, attempt to run the file
                 if parseResult == .good {
                     // Set up the script runner from the manifest file
-                    try await ldm.runScript {
+                    try await ldm.runScripts {
                         expectation.fulfill()
                     }
                 } else {
@@ -39,15 +39,20 @@ class RunnerTests: XCTestCase {
             XCTFail("Can't find manifest")
         }
         wait(for: [expectation], timeout: 1.0)
-        // Getting the output from the script
-        let output = ldm.getOutput()
-        // Test that the beginning of the output is initializing rune
-        XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
-        // Test that the next lines are related to the output of the program
-        XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "num"))
-        // Since good.py is using seed 10 for random, the output is expected to be 0.5714025946899135
-        XCTAssertEqual(output[2], "0.5714025946899135")
-        XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+        
+        for currentOutput in ldm.getOutputs() {
+            // Getting the output from the script
+            let output = currentOutput.value
+            print("output is")
+            print(output)
+            // Test that the beginning of the output is initializing rune
+            XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
+            // Test that the next lines are related to the output of the program
+            XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "num"))
+            // Since good.py is using seed 10 for random, the output is expected to be 0.5714025946899135
+            XCTAssertEqual(output[2], "0.5714025946899135")
+            XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+        }
     }
     func testInputOutput() async {
         let expectation = XCTestExpectation(description: "Check the input manifest")
@@ -60,7 +65,7 @@ class RunnerTests: XCTestCase {
                 // if parsing works, attempt to run the file
                 if parseResult == .good {
                     // Set up the script runner from the manifest file
-                    try await ldm.runScript {
+                    try await ldm.runScripts {
                         expectation.fulfill()
                     }
                 } else {
@@ -74,16 +79,18 @@ class RunnerTests: XCTestCase {
             XCTFail("Can't find manifest")
         }
         wait(for: [expectation], timeout: 1.0)
-        // Getting the output from the script
-        let output = ldm.getOutput()
-        // Test that the beginning of the output is initializing rune
-        XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
-        // Test that the next lines are related to the output of the program
-        XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "num"))
-        // Testing the input, which will be 'testing'
-        XCTAssertEqual(output[2], "testing")
-        // Testing that the final line is rune end
-        XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+        for currentOutput in ldm.getOutputs() {
+            // Getting the output from the script
+            let output = currentOutput.value
+            // Test that the beginning of the output is initializing rune
+            XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
+            // Test that the next lines are related to the output of the program
+            XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "num"))
+            // Testing the input, which will be 'testing'
+            XCTAssertEqual(output[2], "testing")
+            // Testing that the final line is rune end
+            XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+        }
     }
     func testBadOutput() async {
         let expectation = XCTestExpectation(description: "Check the bad manifest")
@@ -96,7 +103,7 @@ class RunnerTests: XCTestCase {
                 // if parsing works, attempt to run the file
                 if parseResult == .good {
                     // Set up the script runner from the manifest file
-                    try await ldm.runScript {
+                    try await ldm.runScripts {
                         expectation.fulfill()
                     }
                 } else {
@@ -110,15 +117,17 @@ class RunnerTests: XCTestCase {
             XCTFail("Can't find manifest")
         }
         wait(for: [expectation], timeout: 1.0)
-        // Getting the output from the script
-        let output = ldm.getOutput()
-        // Test that the first line is rune initialization
-        XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
-        XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "error"))
-        // Ensure that rune errors can be caught
-        XCTAssertTrue(Rune.isValidRuneError(command: output[2], providedError: "This is equal to the wrong value"))
-        // Ensure that the final line is rune closure
-        XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+        for currentOutput in ldm.getOutputs() {
+            // Getting the output from the script
+            let output = currentOutput.value
+            // Test that the first line is rune initialization
+            XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
+            XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "error"))
+            // Ensure that rune errors can be caught
+            XCTAssertTrue(Rune.isValidRuneError(command: output[2]))
+            // Ensure that the final line is rune closure
+            XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+        }
     }
     func testManyOutputs() async {
         let expectation = XCTestExpectation(description: "Check the multiple file manifest")
@@ -131,7 +140,7 @@ class RunnerTests: XCTestCase {
                 // if parsing works, attempt to run the file
                 if parseResult == .good {
                     // Set up the script runner from the manifest file
-                    try await ldm.runScript {
+                    try await ldm.runScripts {
                         expectation.fulfill()
                     }
                 } else {
@@ -144,23 +153,87 @@ class RunnerTests: XCTestCase {
         } else {
             XCTFail("Can't find manifest")
         }
-        wait(for: [expectation], timeout: 5.0)
-        // Getting the output from the scripts
-        let output = ldm.getOutput()
-        // Testing that the beginning is rune initialization
-        XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
-        XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "ex1"))
-        for currentNum in 0...99 {
-            XCTAssertEqual(output[currentNum + 2], String(currentNum))
+        wait(for: [expectation], timeout: 1.0)
+        for currentOutput in ldm.getOutputs() {
+            // Getting the output from the script
+            let output = currentOutput.value
+            // Testing that the beginning is rune initialization
+            XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
+            // Testing the output for file one
+            XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "ex1"))
+            // The python script outputs the first 100 values
+            for currentNum in 0...99 {
+                XCTAssertEqual(output[currentNum + 2], String(currentNum))
+            }
+            // Testing the output for file two
+            XCTAssertTrue(Rune.isValidRuneFile(command: output[102], fileName: "ex2"))
+            // Verifying the output of the other program
+            XCTAssertEqual(output[103], "3")
+            XCTAssertEqual(output[104], "4")
+            XCTAssertEqual(output[105], "More Testing")
+            // Verifying the termination of the python script
+            XCTAssertTrue(Rune.isValidRuneEnd(command: output[106]))
         }
-        XCTAssertTrue(Rune.isValidRuneFile(command: output[102], fileName: "ex2"))
-        XCTAssertEqual(output[103], "3")
-        XCTAssertEqual(output[104], "4")
-        XCTAssertEqual(output[105], "More Testing")
-        XCTAssertTrue(Rune.isValidRuneEnd(command: output[106]))
-        
-        
-        
-        
+    }
+    func testMultipleScripts() async {
+        let expectation = XCTestExpectation(description: "Check the multiple file manifest")
+        // Running the test
+        // Finding the manifest_many.json file
+        if let filepath = bundle.url(forResource: "manifest_multiple_scripts", withExtension: "json") {
+            do {
+                // Parse the data from the manifest file
+                let parseResult = ldm.changeTargetManifest(url: filepath)
+                // if parsing works, attempt to run the file
+                if parseResult == .good {
+                    // Set up the script runner from the manifest file
+                    try await ldm.runScripts {
+                        expectation.fulfill()
+                    }
+                } else {
+                    XCTFail("Parsing the manifest went wrong")
+                }
+            } catch {
+                print(error)
+                XCTFail("Couldn't read in the manifest")
+            }
+        } else {
+            XCTFail("Can't find manifest")
+        }
+        wait(for: [expectation], timeout: 3.0)
+        let outputs = ldm.getOutputs()
+        print(outputs)
+        for currentOutput in outputs {
+            // Getting the output from the script
+            let output = currentOutput.value
+            if currentOutput.key.contains("good.py") {
+                // Testing that the beginning is rune initialization
+                XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
+                // Ensure that the next line is the start from the good.py script
+                XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "num"))
+                // Testing the input, which will be 'testing'
+                XCTAssertEqual(output[2], "testing")
+                // Testing that the final line is rune end
+                XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
+                // Testing the output for file one
+                XCTAssertTrue(Rune.isValidRuneFile(command: output[4], fileName: "ex1"))
+            } else {
+                // Testing that the beginning is rune initialization
+                XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
+                // Testing the output for file one
+                XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "ex1"))
+                // The python script outputs the first 100 values
+                for currentNum in 0...99 {
+                    XCTAssertEqual(output[currentNum + 2], String(currentNum))
+                }
+                // Testing the output for file two
+                XCTAssertTrue(Rune.isValidRuneFile(command: output[102], fileName: "ex2"))
+                // Verifying the output of the other program
+                XCTAssertEqual(output[103], "3")
+                XCTAssertEqual(output[104], "4")
+                XCTAssertEqual(output[105], "More Testing")
+                // Verifying the termination of the python script
+                XCTAssertTrue(Rune.isValidRuneEnd(command: output[106]))
+            }
+        }
     }
 }

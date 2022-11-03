@@ -1,13 +1,17 @@
 {
-    "program": {
-        "runner": "python", 
-        "entry": "good.py"
-    },
-    "inputs": [],
-    "outputs": [
+    "scripts": [
         {
-            "name": "num",
-            "extension": "txt"
+            "program": {
+                "runner": "python",
+                "entry": "good.py"
+            },
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "num",
+                    "extension": "txt"
+                }
+            ]
         }
     ]
 }
