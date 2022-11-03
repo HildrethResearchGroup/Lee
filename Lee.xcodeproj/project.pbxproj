@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0F953A29119CFC009193C7 /* RunnerNamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F953929119CFC009193C7 /* RunnerNamesView.swift */; };
+		3F0F953C2911AA33009193C7 /* RunnerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F953B2911AA33009193C7 /* RunnerEditView.swift */; };
+		3F0F953E2911AB9A009193C7 /* ListEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F953D2911AB9A009193C7 /* ListEditView.swift */; };
 		3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */; };
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
@@ -53,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0F953929119CFC009193C7 /* RunnerNamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerNamesView.swift; sourceTree = "<group>"; };
+		3F0F953B2911AA33009193C7 /* RunnerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerEditView.swift; sourceTree = "<group>"; };
+		3F0F953D2911AB9A009193C7 /* ListEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEditView.swift; sourceTree = "<group>"; };
 		3F1E8E2028BE881300C4DEE3 /* Lee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -194,6 +200,9 @@
 			children = (
 				3F68519628FF393E00B18DAF /* SettingsView.swift */,
 				3F68519829019D9C00B18DAF /* RunnerSettingsView.swift */,
+				3F0F953929119CFC009193C7 /* RunnerNamesView.swift */,
+				3F0F953B2911AA33009193C7 /* RunnerEditView.swift */,
+				3F0F953D2911AB9A009193C7 /* ListEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,9 +398,12 @@
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
 				3F68519929019D9C00B18DAF /* RunnerSettingsView.swift in Sources */,
+				3F0F953E2911AB9A009193C7 /* ListEditView.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
+				3F0F953A29119CFC009193C7 /* RunnerNamesView.swift in Sources */,
 				3FA6D87B28F3500900EB0302 /* Rune.swift in Sources */,
 				3F6851A12901C38400B18DAF /* SettingsViewModel.swift in Sources */,
+				3F0F953C2911AA33009193C7 /* RunnerEditView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
