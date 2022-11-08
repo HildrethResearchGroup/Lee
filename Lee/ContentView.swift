@@ -45,7 +45,7 @@ struct ContentView: View {
             
             // Middle horizontal stack will store the parameters window and
             VStack {
-                
+                // TODO: account for dark mode
                 Text("Parameters: ").font(.title)
                 HStack {
                     Text("value 1:")
