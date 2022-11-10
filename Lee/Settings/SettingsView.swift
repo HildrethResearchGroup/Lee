@@ -17,7 +17,7 @@ struct SettingsView: View {
     
     var body: some View {
         TabView {
-            RunnerSettingsView()
+            RunnerSettingsView(viewModel: viewModel)
                 .tabItem {
                     Label("Runner", systemImage: "play.circle.fill")
                 }

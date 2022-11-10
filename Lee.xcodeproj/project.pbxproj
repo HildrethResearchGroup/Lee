@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F0F9547291C8B98009193C7 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9546291C8B98009193C7 /* SettingsManager.swift */; };
 		3F0F9549291C8F46009193C7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9548291C8F46009193C7 /* SettingsViewModel.swift */; };
 		3F0F954B291C8F66009193C7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F954A291C8F66009193C7 /* SettingsView.swift */; };
 		3F0F954D291C90B6009193C7 /* RunnerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F954C291C90B6009193C7 /* RunnerSettingsView.swift */; };
@@ -55,7 +54,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F0F9546291C8B98009193C7 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		3F0F9548291C8F46009193C7 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3F0F954A291C8F66009193C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3F0F954C291C90B6009193C7 /* RunnerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerSettingsView.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 		3F0F9545291C8B4D009193C7 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				3F0F9546291C8B98009193C7 /* SettingsManager.swift */,
 				3F0F9548291C8F46009193C7 /* SettingsViewModel.swift */,
 				3F0F954A291C8F66009193C7 /* SettingsView.swift */,
 				3F0F954C291C90B6009193C7 /* RunnerSettingsView.swift */,
@@ -382,7 +379,6 @@
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
 				3FA6D87B28F3500900EB0302 /* Rune.swift in Sources */,
-				3F0F9547291C8B98009193C7 /* SettingsManager.swift in Sources */,
 				3F0F954B291C8F66009193C7 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

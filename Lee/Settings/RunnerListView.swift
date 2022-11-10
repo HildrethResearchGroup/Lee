@@ -9,13 +9,15 @@ import Foundation
 import SwiftUI
 
 struct RunnerListView: View {
+    @ObservedObject var viewModel: SettingsViewModel
+    
     var body: some View {
         VStack {
-            List(["test"], id: \.self) { id in
-                Text(id)
+            List(viewModel.runnerUUIDs, id: \.self) { uuid in
+                Text(viewModel.getRunnerName(uuid))
             }
             ListEditView(plus: {
-                
+                viewModel.createRunner("runner")
             }, minus: {
                 
             })

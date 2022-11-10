@@ -9,9 +9,12 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
+    
+    @ObservedObject var viewModel: SettingsViewModel
+    
     var body: some View {
         HStack {
-            RunnerListView()
+            RunnerListView(viewModel: viewModel)
                 .padding()
             RunnerDetailView()
                 .padding()
