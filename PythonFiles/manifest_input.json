@@ -9,6 +9,10 @@
                 {
                     "name": "testing",
                     "type": "string"
+                },
+                {
+                    "name": "variable",
+                    "type": "int"
                 }
             ],
             "outputs": [

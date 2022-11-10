@@ -31,25 +31,25 @@ struct Manifest: Codable {
         case filepath
     }
     /// Program section representation
-    struct Program: Codable, Equatable {
+    struct Program: Codable, Equatable, Hashable {
         let runner: Runner
         let entry: String // Main file for script
         let version: String? // Optional runner version
     }
     /// Representation of a single script input
-    struct Input: Codable, Equatable {
+    struct Input: Codable, Equatable, Hashable {
         let name: String
         let type: DataType
         let comment: String?
     }
     /// Representation of a single script output
-    struct Output: Codable, Equatable {
+    struct Output: Codable, Equatable, Hashable {
         let name: String
         let `extension`: String
         let comment: String?
     }
     /// Representation of multiple scripts to be run from the manifest
-    struct Script: Codable, Equatable {
+    struct Script: Codable, Equatable, Hashable {
         let program: Program
         let inputs: [Input]
         let outputs: [Output]
