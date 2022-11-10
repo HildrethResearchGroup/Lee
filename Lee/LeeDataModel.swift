@@ -60,7 +60,7 @@ class LeeDataModel {
     
     /// This function runs multiple scripts from a manifest file.
     func runScripts(action: @escaping () -> Void) async throws {
-        // 
+         
         for currentScript in manifest!.scripts {
             let scriptURL = manifest!.relativeTo(relativePath: currentScript.program.entry)
             self.scriptRunning.updateValue(false, forKey: scriptURL)
@@ -81,6 +81,11 @@ class LeeDataModel {
             let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
             let process = Process()
             let outputPipe = Pipe()
+            // Checking if the file path is a valid path
+            let fileExists = FileManager.default.fileExists(atPath: scriptPath)
+            if !fileExists {
+                throw RunnerError.missingFile
+            }
             process.standardOutput = outputPipe
             process.executableURL = executableURL
             // if manifest specifies inputs, go through that array and get names
@@ -132,7 +137,7 @@ class LeeDataModel {
     func getOutput(scriptName: String) -> [String] {
         return self.scriptOutput[scriptName] ?? []
     }
-    /// MARK: Get  status of running script
+    // MARK: Get  status of running script
     func getScriptStatus() -> ScriptStatus {
              return scriptStat ?? .done
          }

@@ -1,0 +1,5 @@
+
+/// Custom errors for running different scripts
+enum RunnerError: Error {
+    case missingFile
+}
