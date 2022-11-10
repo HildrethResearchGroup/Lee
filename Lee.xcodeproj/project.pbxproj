@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0F9547291C8B98009193C7 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9546291C8B98009193C7 /* SettingsManager.swift */; };
+		3F0F9549291C8F46009193C7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9548291C8F46009193C7 /* SettingsViewModel.swift */; };
+		3F0F954B291C8F66009193C7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F954A291C8F66009193C7 /* SettingsView.swift */; };
+		3F0F954D291C90B6009193C7 /* RunnerSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F954C291C90B6009193C7 /* RunnerSettingsView.swift */; };
+		3F0F954F291C91D3009193C7 /* RunnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F954E291C91D3009193C7 /* RunnerListView.swift */; };
+		3F0F9553291C91EE009193C7 /* RunnerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9552291C91EE009193C7 /* RunnerDetailView.swift */; };
+		3F0F9555291C9231009193C7 /* ListEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9554291C9231009193C7 /* ListEditView.swift */; };
 		3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */; };
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
@@ -48,6 +55,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F0F9546291C8B98009193C7 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		3F0F9548291C8F46009193C7 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3F0F954A291C8F66009193C7 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3F0F954C291C90B6009193C7 /* RunnerSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerSettingsView.swift; sourceTree = "<group>"; };
+		3F0F954E291C91D3009193C7 /* RunnerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerListView.swift; sourceTree = "<group>"; };
+		3F0F9552291C91EE009193C7 /* RunnerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerDetailView.swift; sourceTree = "<group>"; };
+		3F0F9554291C9231009193C7 /* ListEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEditView.swift; sourceTree = "<group>"; };
 		3F1E8E2028BE881300C4DEE3 /* Lee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -100,6 +114,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F0F9545291C8B4D009193C7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3F0F9546291C8B98009193C7 /* SettingsManager.swift */,
+				3F0F9548291C8F46009193C7 /* SettingsViewModel.swift */,
+				3F0F954A291C8F66009193C7 /* SettingsView.swift */,
+				3F0F954C291C90B6009193C7 /* RunnerSettingsView.swift */,
+				3F0F954E291C91D3009193C7 /* RunnerListView.swift */,
+				3F0F9552291C91EE009193C7 /* RunnerDetailView.swift */,
+				3F0F9554291C9231009193C7 /* ListEditView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		3F1E8E1728BE881300C4DEE3 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +152,7 @@
 		3F1E8E2228BE881300C4DEE3 /* Lee */ = {
 			isa = PBXGroup;
 			children = (
+				3F0F9545291C8B4D009193C7 /* Settings */,
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
 				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
@@ -343,11 +372,18 @@
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
+				3F0F9553291C91EE009193C7 /* RunnerDetailView.swift in Sources */,
+				3F0F954F291C91D3009193C7 /* RunnerListView.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
+				3F0F954D291C90B6009193C7 /* RunnerSettingsView.swift in Sources */,
+				3F0F9549291C8F46009193C7 /* SettingsViewModel.swift in Sources */,
+				3F0F9555291C9231009193C7 /* ListEditView.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
 				3FA6D87B28F3500900EB0302 /* Rune.swift in Sources */,
+				3F0F9547291C8B98009193C7 /* SettingsManager.swift in Sources */,
+				3F0F954B291C8F66009193C7 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
