@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct RunnerSettingsView: View {
-    
     @ObservedObject var viewModel: SettingsViewModel
     
     var body: some View {

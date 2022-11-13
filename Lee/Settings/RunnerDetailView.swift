@@ -80,6 +80,7 @@ struct RunnerDetailView: View {
         }.disabled(viewModel.selectedRunner == nil)
     }
     
+    /// Helper to save modifications to executable path
     private func saveExecutablePath() {
         // Commit executableText to disk
         if let selection = selection {

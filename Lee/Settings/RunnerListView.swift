@@ -19,6 +19,7 @@ struct RunnerListView: View {
         VStack {
             List(viewModel.runners, id: \.self, selection: $selection) { name in
                 HStack {
+                    // Show a text field if element is being edited
                     if currentlyEditing == name {
                         TextField("", text: $editText)
                             .onSubmit {
@@ -27,6 +28,7 @@ struct RunnerListView: View {
                             }
                             .focused($editFocus)
                             .task {
+                                // Force selection and focus
                                 editFocus = true
                                 selection.removeAll()
                                 selection.insert(name)
@@ -34,6 +36,7 @@ struct RunnerListView: View {
                     } else {
                         Text(name)
                             .onTapGesture(count: 2, perform: {
+                                // Switch to edit mode
                                 DispatchQueue.main.async {
                                     editText = name
                                     currentlyEditing = name
@@ -45,6 +48,7 @@ struct RunnerListView: View {
 
             }
             .onChange(of: selection, perform: { selection in
+                // Let viewModel know what is selected
                 viewModel.selectRunner(selection)
             })
             ListEditView(plus: {

@@ -23,6 +23,8 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    /// Create a new runner
+    /// - Parameter name: name of new runner
     public func createRunner(_ name: String) {
         // Ensure name is valid
         var name = name
@@ -36,6 +38,9 @@ class SettingsViewModel: ObservableObject {
         settingsStore.set([:], forKey: name)
     }
     
+    /// Rename a runner
+    /// - Parameter oldName: previous name of runner
+    /// - Parameter newName: new name to be assigned
     public func renameRunner(oldName: String, newName: String) {
         // Ensure new name is valid
         var name = newName
@@ -62,6 +67,8 @@ class SettingsViewModel: ObservableObject {
         settingsStore.set(newEntry, forKey: name)
     }
     
+    /// Delete a set of runners
+    /// - Parameter names: Set of runner names to delete
     public func deleteRunners(_ names: Set<String>) {
         // Delete runner entries
         for name in names {
@@ -74,6 +81,8 @@ class SettingsViewModel: ObservableObject {
         })
     }
     
+    /// Called when user selects runners from the list
+    /// - Parameter names: set of selected runner names
     public func selectRunner(_ names: Set<String>) {
         if names.count == 1 {
             selectedRunner = names.first!
@@ -84,6 +93,8 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    /// Create a new version for currently selected runner
+    ///- Parameter name: the name of the new runner version
     public func createRunnerVersion(_ name: String) {
         // Ensure a runner is selected
         if selectedRunner != nil {
@@ -98,6 +109,8 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    /// Deletes a specific version from the selected runner
+    /// - Parameter name: the name of the version
     public func deleteRunnerVersion(_ name: String) {
         // Ensure a runner is selected
         if selectedRunner != nil {
@@ -106,6 +119,9 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    /// Rename a version of a runner
+    /// - Parameter oldName: The version's previous name
+    /// - Parameter newName: The new name to assign
     public func renameRunnerVersion(oldName: String, newName: String) {
         // Ensure a runner is selected
         if selectedRunner != nil {
@@ -126,6 +142,9 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    /// Set an executable path for a particular runner versions
+    /// - Parameter versionName: name of version to set executable for
+    /// - Parameter path: The new executable path
     public func setRunnerVersionExecutable(versionName: String, path: String) {
         if selectedRunner != nil {
             selectedRunnerVersions[versionName] = path
@@ -133,6 +152,9 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    /// Helper function for validating runner names
+    /// - Parameter name: potential name
+    /// - returns a boolean value, indicating whether the name is valid or not
     private func validateRunnerName(_ name: String) -> Bool {
         // Can't be empty
         if name.isEmpty {
@@ -149,6 +171,9 @@ class SettingsViewModel: ObservableObject {
         return true
     }
     
+    /// Helper function for validating runner version names
+    /// - Parameter name: potential name
+    /// - returns a boolean value, indicating whether the name is valid or not
     private func validateVersionName(_ name: String) -> Bool {
         // Can't be empty
         if name.isEmpty {
@@ -161,10 +186,12 @@ class SettingsViewModel: ObservableObject {
         return true
     }
     
+    /// Helper function to save main list of runners to disk
     private func saveRunners() {
         settingsStore.set(runners, forKey: "__runners__")
     }
     
+    /// Helper function to save currently selected runner's versions
     private func saveSelectedRunnerVersions() {
         settingsStore.set(selectedRunnerVersions, forKey: selectedRunner!)
     }
