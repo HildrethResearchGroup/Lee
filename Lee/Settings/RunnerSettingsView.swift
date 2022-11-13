@@ -16,7 +16,7 @@ struct RunnerSettingsView: View {
         HStack {
             RunnerListView(viewModel: viewModel)
                 .padding()
-            RunnerDetailView()
+            RunnerDetailView(viewModel: viewModel)
                 .padding()
         }
     }

@@ -44,6 +44,9 @@ struct RunnerListView: View {
                 }
 
             }
+            .onChange(of: selection, perform: { selection in
+                viewModel.selectRunner(selection)
+            })
             ListEditView(plus: {
                 viewModel.createRunner("runner")
             }, minus: {

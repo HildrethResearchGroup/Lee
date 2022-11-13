@@ -9,22 +9,27 @@ import Foundation
 import SwiftUI
 
 struct RunnerDetailView: View {
+    @ObservedObject var viewModel: SettingsViewModel
     @State private var executableText: String = ""
+    @State private var selection: String?
     
     var body: some View {
         VStack {
-            List(["1.0"], id: \.self) { id in
-                Text(id)
+            List(Array((viewModel.selectedRunnerVersions ?? [:]).keys.sorted(by: >)),
+                 id: \.self, selection: $selection) { name in
+                Text(name)
             }
             ListEditView(plus: {
-                
+                viewModel.createRunnerVersion("version")
             }, minus: {
-                
+                if let selected = selection {
+                    viewModel.deleteRunnerVersion(selected)
+                }
             })
             HStack {
                 Text("Executable: ")
                 TextField("Path", text: $executableText)
             }
-        }
+        }.disabled(viewModel.selectedRunnerVersions == nil)
     }
 }

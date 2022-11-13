@@ -12,6 +12,8 @@ class SettingsViewModel: ObservableObject {
     private let settingsStore = UserDefaults(suiteName: "settings")!
     
     @Published public var runners: [String] = []
+    @Published public var selectedRunner: String?
+    @Published public var selectedRunnerVersions: [String: String]?
     
     public init() {
         if let runners = settingsStore.stringArray(forKey: "__runners__") {
@@ -72,6 +74,38 @@ class SettingsViewModel: ObservableObject {
         })
     }
     
+    public func selectRunner(_ names: Set<String>) {
+        if names.count == 1 {
+            selectedRunner = names.first!
+            selectedRunnerVersions = settingsStore.dictionary(forKey: names.first!) as? [String: String]
+        } else {
+            selectedRunner = nil
+            selectedRunnerVersions = nil
+        }
+    }
+    
+    public func createRunnerVersion(_ name: String) {
+        // Ensure a runner is selected
+        if selectedRunner != nil {
+            // Ensure name uniqueness
+            var name = name
+            while !validateVersionName(name) {
+                name.append("-new")
+            }
+            
+            selectedRunnerVersions![name] = ""
+            saveSelectedRunnerVersions()
+        }
+    }
+    
+    public func deleteRunnerVersion(_ name: String) {
+        // Ensure a runner is selected
+        if selectedRunner != nil, selectedRunnerVersions != nil {
+            selectedRunnerVersions!.removeValue(forKey: name)
+            saveSelectedRunnerVersions()
+        }
+    }
+    
     private func validateRunnerName(_ name: String) -> Bool {
         // Can't be empty
         if name.isEmpty {
@@ -87,7 +121,23 @@ class SettingsViewModel: ObservableObject {
         return true
     }
     
+    private func validateVersionName(_ name: String) -> Bool {
+        // Can't be empty
+        if name.isEmpty {
+            return false
+        } else if selectedRunnerVersions![name] != nil {
+            // Cannot already exist
+            return false
+        }
+        
+        return true
+    }
+    
     private func saveRunners() {
         settingsStore.set(runners, forKey: "__runners__")
+    }
+    
+    private func saveSelectedRunnerVersions() {
+        settingsStore.set(selectedRunnerVersions, forKey: selectedRunner!)
     }
 }
