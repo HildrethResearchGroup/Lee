@@ -18,7 +18,7 @@ struct RunnerDetailView: View {
     
     var body: some View {
         VStack {
-            List(Array((viewModel.selectedRunnerVersions ?? [:]).keys.sorted(by: >)),
+            List(Array((viewModel.selectedRunnerVersions).keys.sorted(by: >)),
                  id: \.self, selection: $selection) { name in
                 if currentlyEditing == name {
                     TextField("", text: $versionEditText)
@@ -33,9 +33,6 @@ struct RunnerDetailView: View {
                             editFocus = true
                             selection = name
                         }
-                        .onChange(of: $selection, perform: { selection in
-                            
-                        })
                 } else {
                     Text(name)
                         .onTapGesture(count: 2, perform: {
@@ -47,6 +44,13 @@ struct RunnerDetailView: View {
                         })
                 }
             }
+             .onChange(of: selection, perform: { selection in
+                 if let selection = selection {
+                     executableText = viewModel.selectedRunnerVersions[selection]!
+                 } else {
+                     executableText = ""
+                 }
+             })
             ListEditView(plus: {
                 // Create a new version
                 viewModel.createRunnerVersion("version")
@@ -59,11 +63,16 @@ struct RunnerDetailView: View {
             HStack {
                 Text("Executable: ")
                 TextField("Path", text: $executableText)
+                    .onSubmit {
+                        saveExecutablePath()
+                    }
             }
-        }.disabled(viewModel.selectedRunnerVersions == nil)
+        }.disabled(viewModel.selectedRunner == nil)
     }
     
     private func saveExecutablePath() {
-        
+        if let selection = selection {
+            viewModel.setRunnerVersionExecutable(versionName: selection, path: executableText)
+        }
     }
 }

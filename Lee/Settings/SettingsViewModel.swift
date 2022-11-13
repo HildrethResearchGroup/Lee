@@ -126,6 +126,13 @@ class SettingsViewModel: ObservableObject {
         }
     }
     
+    public func setRunnerVersionExecutable(versionName: String, path: String) {
+        if selectedRunner != nil {
+            selectedRunnerVersions[versionName] = path
+            saveSelectedRunnerVersions()
+        }
+    }
+    
     private func validateRunnerName(_ name: String) -> Bool {
         // Can't be empty
         if name.isEmpty {
