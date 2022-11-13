@@ -66,11 +66,22 @@ struct RunnerDetailView: View {
                     .onSubmit {
                         saveExecutablePath()
                     }
+                Button("Browse...") {
+                    // Open file selection
+                    let panel = NSOpenPanel()
+                    panel.allowsMultipleSelection = false
+                    panel.canChooseDirectories = false
+                    if panel.runModal() == .OK {
+                        executableText = panel.url!.path
+                        saveExecutablePath()
+                    }
+                }
             }
         }.disabled(viewModel.selectedRunner == nil)
     }
     
     private func saveExecutablePath() {
+        // Commit executableText to disk
         if let selection = selection {
             viewModel.setRunnerVersionExecutable(versionName: selection, path: executableText)
         }
