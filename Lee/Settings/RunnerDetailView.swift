@@ -12,16 +12,46 @@ struct RunnerDetailView: View {
     @ObservedObject var viewModel: SettingsViewModel
     @State private var executableText: String = ""
     @State private var selection: String?
+    @State private var currentlyEditing: String?
+    @State private var versionEditText: String = ""
+    @FocusState private var editFocus: Bool
     
     var body: some View {
         VStack {
             List(Array((viewModel.selectedRunnerVersions ?? [:]).keys.sorted(by: >)),
                  id: \.self, selection: $selection) { name in
-                Text(name)
+                if currentlyEditing == name {
+                    TextField("", text: $versionEditText)
+                        .onSubmit({
+                            // Rename the version and disable editing
+                            viewModel.renameRunnerVersion(oldName: name, newName: versionEditText)
+                            currentlyEditing = nil
+                        })
+                        .focused($editFocus)
+                        .task {
+                            // Focus on field and select it
+                            editFocus = true
+                            selection = name
+                        }
+                        .onChange(of: $selection, perform: { selection in
+                            
+                        })
+                } else {
+                    Text(name)
+                        .onTapGesture(count: 2, perform: {
+                            // Toggle edit on double tap
+                            DispatchQueue.main.async {
+                                currentlyEditing = name
+                                versionEditText = name
+                            }
+                        })
+                }
             }
             ListEditView(plus: {
+                // Create a new version
                 viewModel.createRunnerVersion("version")
             }, minus: {
+                // Remove selected version
                 if let selected = selection {
                     viewModel.deleteRunnerVersion(selected)
                 }
@@ -31,5 +61,9 @@ struct RunnerDetailView: View {
                 TextField("Path", text: $executableText)
             }
         }.disabled(viewModel.selectedRunnerVersions == nil)
+    }
+    
+    private func saveExecutablePath() {
+        
     }
 }

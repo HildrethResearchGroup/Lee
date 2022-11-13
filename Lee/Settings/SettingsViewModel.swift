@@ -13,7 +13,7 @@ class SettingsViewModel: ObservableObject {
     
     @Published public var runners: [String] = []
     @Published public var selectedRunner: String?
-    @Published public var selectedRunnerVersions: [String: String]?
+    @Published public var selectedRunnerVersions: [String: String] = [:]
     
     public init() {
         if let runners = settingsStore.stringArray(forKey: "__runners__") {
@@ -77,10 +77,10 @@ class SettingsViewModel: ObservableObject {
     public func selectRunner(_ names: Set<String>) {
         if names.count == 1 {
             selectedRunner = names.first!
-            selectedRunnerVersions = settingsStore.dictionary(forKey: names.first!) as? [String: String]
+            selectedRunnerVersions = settingsStore.dictionary(forKey: names.first!) as? [String: String] ?? [:]
         } else {
             selectedRunner = nil
-            selectedRunnerVersions = nil
+            selectedRunnerVersions.removeAll()
         }
     }
     
@@ -93,16 +93,36 @@ class SettingsViewModel: ObservableObject {
                 name.append("-new")
             }
             
-            selectedRunnerVersions![name] = ""
+            selectedRunnerVersions[name] = ""
             saveSelectedRunnerVersions()
         }
     }
     
     public func deleteRunnerVersion(_ name: String) {
         // Ensure a runner is selected
-        if selectedRunner != nil, selectedRunnerVersions != nil {
-            selectedRunnerVersions!.removeValue(forKey: name)
+        if selectedRunner != nil {
+            selectedRunnerVersions.removeValue(forKey: name)
             saveSelectedRunnerVersions()
+        }
+    }
+    
+    public func renameRunnerVersion(oldName: String, newName: String) {
+        // Ensure a runner is selected
+        if selectedRunner != nil {
+            // Ensure new name is valid
+            var name = newName
+            while !validateVersionName(name) {
+                name.append("-new")
+            }
+            
+            if let path = selectedRunnerVersions[oldName] {
+                // Move value
+                selectedRunnerVersions[name] = path
+                selectedRunnerVersions.removeValue(forKey: oldName)
+                saveSelectedRunnerVersions()
+            } else {
+                print("Failed to rename runner version '\(oldName)', does not exist")
+            }
         }
     }
     
@@ -116,6 +136,7 @@ class SettingsViewModel: ObservableObject {
         } else if settingsStore.object(forKey: name) != nil {
             // Key already exists
             return false
+            
         }
         
         return true
@@ -125,7 +146,7 @@ class SettingsViewModel: ObservableObject {
         // Can't be empty
         if name.isEmpty {
             return false
-        } else if selectedRunnerVersions![name] != nil {
+        } else if selectedRunnerVersions[name] != nil {
             // Cannot already exist
             return false
         }
