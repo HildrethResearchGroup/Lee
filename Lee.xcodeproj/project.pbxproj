@@ -13,6 +13,8 @@
 		3F0F954F291C91D3009193C7 /* RunnerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F954E291C91D3009193C7 /* RunnerListView.swift */; };
 		3F0F9553291C91EE009193C7 /* RunnerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9552291C91EE009193C7 /* RunnerDetailView.swift */; };
 		3F0F9555291C9231009193C7 /* ListEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F9554291C9231009193C7 /* ListEditView.swift */; };
+		3F0F955729269E81009193C7 /* RunnerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F955629269E81009193C7 /* RunnerProvider.swift */; };
+		3F0F955929269ED5009193C7 /* SettingsRunnerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0F955829269ED5009193C7 /* SettingsRunnerProvider.swift */; };
 		3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */; };
 		3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */; };
 		3F1E8E4028BE881400C4DEE3 /* LeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1E8E3F28BE881400C4DEE3 /* LeeUITests.swift */; };
@@ -60,6 +62,8 @@
 		3F0F954E291C91D3009193C7 /* RunnerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerListView.swift; sourceTree = "<group>"; };
 		3F0F9552291C91EE009193C7 /* RunnerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerDetailView.swift; sourceTree = "<group>"; };
 		3F0F9554291C9231009193C7 /* ListEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEditView.swift; sourceTree = "<group>"; };
+		3F0F955629269E81009193C7 /* RunnerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerProvider.swift; sourceTree = "<group>"; };
+		3F0F955829269ED5009193C7 /* SettingsRunnerProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRunnerProvider.swift; sourceTree = "<group>"; };
 		3F1E8E2028BE881300C4DEE3 /* Lee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F1E8E2A28BE881400C4DEE3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				3F0F954E291C91D3009193C7 /* RunnerListView.swift */,
 				3F0F9552291C91EE009193C7 /* RunnerDetailView.swift */,
 				3F0F9554291C9231009193C7 /* ListEditView.swift */,
+				3F0F955829269ED5009193C7 /* SettingsRunnerProvider.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				3F8F2B9328C29EB400B7565D /* argsTest.py */,
 				3F1E8E2728BE881400C4DEE3 /* Assets.xcassets */,
 				3F1E8E2C28BE881400C4DEE3 /* Lee.entitlements */,
+				3F0F955629269E81009193C7 /* RunnerProvider.swift */,
 				3F1E8E2928BE881400C4DEE3 /* Preview Content */,
 			);
 			path = Lee;
@@ -368,6 +374,7 @@
 			files = (
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
+				3F0F955729269E81009193C7 /* RunnerProvider.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3F0F9553291C91EE009193C7 /* RunnerDetailView.swift in Sources */,
 				3F0F954F291C91D3009193C7 /* RunnerListView.swift in Sources */,
@@ -377,6 +384,7 @@
 				3F0F9549291C8F46009193C7 /* SettingsViewModel.swift in Sources */,
 				3F0F9555291C9231009193C7 /* ListEditView.swift in Sources */,
 				3FA6D87928F3500500EB0302 /* RuneCommands.swift in Sources */,
+				3F0F955929269ED5009193C7 /* SettingsRunnerProvider.swift in Sources */,
 				3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */,
 				3FA6D87B28F3500900EB0302 /* Rune.swift in Sources */,
 				3F0F954B291C8F66009193C7 /* SettingsView.swift in Sources */,
