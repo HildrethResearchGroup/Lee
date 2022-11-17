@@ -43,7 +43,7 @@ struct Manifest: Codable {
         let comment: String?
     }
     /// Representation of a single script output
-    struct Output: Codable, Equatable {
+    struct Output: Codable, Equatable, Hashable {
         let name: String
         let `extension`: String
         let comment: String?

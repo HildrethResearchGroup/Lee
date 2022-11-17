@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
-
+import QuickLook
+import Quartz
+import AppKit
 /// This is the Lee View
 struct ContentView: View {
     // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
     @State private var num = 0;
+//    @Binding var fileDisp = URL
+    @State var urls = [URL]()
+    @State var outputNames = [Manifest.Output]()
+    
+//    let Nullurl: URL = $0
+//    @State var newFile = Binding<URL?>(
+//        get: { URL.init(string: "") },
+//        set: { _ in URL.init(string: "")! }
+//    )
+    @State var newFile = URL(string: "")
     var body: some View {
         VStack {
             // MARK: Manifest Path Display
@@ -79,8 +91,39 @@ struct ContentView: View {
                 }) {
                     Text("Run")
                 }.disabled(viewModel.loadedManifest == false)
-                
+                Spacer(minLength: 1.0)
+                Button(action: {
+                    Task {
+                        urls = viewModel.getOutputURLS()
+//                        outputNames = viewModel.getOutputNames()
+                        print(urls)
+                        print("end")
+                    }
+                })
+                {
+                    Text("Open Output Files")
+                }//.quickLookPreview($urls?)
+//                ForEach($outputNames, id: \.self) { $name in
+//                    Button("Preview") {
+////                        var newFile: Binding<URL?> {
+////                            Binding(
+////                                get: { file },
+////                                set: { file = $0 ?? URL.init(string: "")! }
+////                            )
+////                        }
+//
+//                        let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+//                        newFile = URL(fileURLWithPath: name.name, relativeTo: outputFile)
+//                        newFile = newFile!.appendingPathExtension(name.extension)
+//                    }.quickLookPreview($newFile)
+//                }
+        }
+        VStack(alignment: .leading) {
+            ForEach(urls,id: \.self) { file in
+                Text(file.path)
+                QLImage(url: file)
             }
+        }
         }.padding(16)
             .refreshable {
                 await viewModel.runScript()

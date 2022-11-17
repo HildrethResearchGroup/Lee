@@ -27,7 +27,16 @@ class LeeViewModel: ObservableObject {
     @Published var manifestPath: String = ""
     // Intent function for user selecting manifest
     @Published var loadedManifest = false
-
+    // TODO: Add error handling
+    func getOutputURLS() -> [URL] {
+        if let manifest = dataModel.manifest{
+            return dataModel.getOutputURLS(manifest: dataModel.manifest!)
+        }
+        return [URL]()
+    }
+    func getOutputNames() -> [Manifest.Output] {
+        dataModel.getScriptNames()
+    }
     /// Intent function for user selecting manifest, will open new file chooser window for user
     /// Once user has selected a file, the function will update the manifest in the data model and return the status.
     ///

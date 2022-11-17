@@ -33,7 +33,8 @@ class LeeDataModel {
     var scriptOutput = [String: [String]]()
     private var scriptStat: ScriptStatus?
     var manifest: Manifest?
-
+    var fileUrls = [URL]()
+    var fileNames = [Manifest.Output]()
     
     // MARK: Change target manifest
     /// Function to change the current target manifest file
@@ -132,11 +133,34 @@ class LeeDataModel {
     func getOutput(scriptName: String) -> [String] {
         return self.scriptOutput[scriptName] ?? []
     }
+    
+    // MARK: Get Output Function
+    func getOutputURLS(manifest: Manifest) -> [URL] {
+        fileUrls = [URL]()
+        for script in manifest.scripts{
+            for file in script.outputs{
+                let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+                var fileName = URL(fileURLWithPath: file.name, relativeTo: outputFile)
+                fileName = fileName.appendingPathExtension(file.extension)
+                self.fileUrls.append(fileName)
+                print(fileName)
+            }
+        }
+        return self.fileUrls
+    }
     /// MARK: Get  status of running script
     func getScriptStatus() -> ScriptStatus {
              return scriptStat ?? .done
          }
-   
+    func getScriptNames() -> [Manifest.Output]{
+        fileNames = [Manifest.Output]()
+        for script in manifest!.scripts{
+            for file in script.outputs{
+                self.fileNames.append(file)
+            }
+        }
+        return self.fileNames
+    }
     /// This function writes the output of the script to the files desinated in the manfest
     ///
     /// - parameter output: This is the output from the script
@@ -166,7 +190,7 @@ class LeeDataModel {
                     fileName = fileName.appendingPathExtension(currentFile.extension)
                     // Write the script's output to the file
                     try currentOutput.write(to: fileName, atomically: true, encoding: .utf8)
-                    // Finished getting all output written to this file
+                    // Finished getting all output written to this file'
                     foundFile = false
                     break
                 } else if foundFile {
