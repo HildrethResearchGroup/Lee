@@ -249,13 +249,21 @@ class RunnerTests: XCTestCase {
                 } else {
                     XCTFail("Parsing the manifest went wrong")
                 }
+            } catch let error as ScriptError {
+                // The only valid way for this test case to succeed
+                XCTAssertTrue(ScriptError.missingFile == error)
+                return
             } catch {
+                // The manifest isn't appearing for the test to find
                 print(error)
                 XCTFail("Couldn't read in the manifest")
             }
         } else {
             XCTFail("Can't find manifest")
         }
+        wait(for: [expectation], timeout: 3.0)
+        XCTFail("Didn't have an error")
+        
         
         
     }

@@ -23,6 +23,7 @@ enum ScriptStatus: Equatable {
     case running
     case done
     case hasNotRun
+    case bad(error: String)
 }
 
 /// DataModel for Lee program
@@ -33,8 +34,6 @@ class LeeDataModel {
     var scriptOutput = [String: [String]]()
     private var scriptStat: ScriptStatus?
     var manifest: Manifest?
-
-    
     // MARK: Change target manifest
     /// Function to change the current target manifest file
     /// It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
@@ -62,11 +61,18 @@ class LeeDataModel {
     func runScripts(action: @escaping () -> Void) async throws {
          
         for currentScript in manifest!.scripts {
-            let scriptURL = manifest!.relativeTo(relativePath: currentScript.program.entry)
-            self.scriptRunning.updateValue(false, forKey: scriptURL)
-            self.scriptOutput.updateValue([], forKey: scriptURL)
-            try await runScript(scriptPath: scriptURL, manifest: currentScript) {
-                action()
+            do {
+                let scriptURL = manifest!.relativeTo(relativePath: currentScript.program.entry)
+                self.scriptRunning.updateValue(false, forKey: scriptURL)
+                self.scriptOutput.updateValue([], forKey: scriptURL)
+                try await runScript(scriptPath: scriptURL, manifest: currentScript) {
+                    action()
+                }
+            } catch let error as ScriptError {
+                scriptStat = .bad(error: error.localizedDescription) // set error description before updating content view
+                let scriptURL = manifest!.relativeTo(relativePath: currentScript.program.entry)
+                self.scriptRunning.removeValue(forKey: scriptURL)
+                throw error // TODO: should it throw here?
             }
         }
     }
@@ -77,15 +83,16 @@ class LeeDataModel {
     func runScript(scriptPath: String, manifest: Manifest.Script, action: @escaping () -> Void) async throws {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
+        let fileExists = FileManager.default.fileExists(atPath: scriptPath)
+        if !fileExists {
+            action()
+            throw ScriptError.missingFile
+        }
         Task {
             let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
             let process = Process()
             let outputPipe = Pipe()
             // Checking if the file path is a valid path
-            let fileExists = FileManager.default.fileExists(atPath: scriptPath)
-            if !fileExists {
-                throw RunnerError.missingFile
-            }
             process.standardOutput = outputPipe
             process.executableURL = executableURL
             // if manifest specifies inputs, go through that array and get names
@@ -95,8 +102,6 @@ class LeeDataModel {
                     inputsArray.append(input.name)
                 }
             }
-            self.scriptRunning.updateValue(true, forKey: scriptPath)
-            self.scriptStat = .running
             process.arguments = inputsArray // sets the arguments of the script to inputs specified in manifest
             process.terminationHandler = {_ in
             // The terminationHandler uses an "old school" escaping completion handler.
@@ -104,6 +109,7 @@ class LeeDataModel {
             // You need to wrap the property accesses in a DispatchQueue (old school style).
             DispatchQueue.main.async {
                 self.scriptRunning.updateValue(false, forKey: scriptPath)
+                self.scriptStat = .running
             }
              print("Process finished")
             }
@@ -121,7 +127,6 @@ class LeeDataModel {
                 }
                 scriptStat = .done
             } catch {
-                print(error)
                 scriptStat = .hasNotRun
             }
             action()
