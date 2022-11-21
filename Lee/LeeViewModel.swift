@@ -17,7 +17,7 @@ import SwiftUI
 /// This is the view model for Lee
 class LeeViewModel: ObservableObject {
     /// The data model, default is LeeDataModel()
-    @Published var dataModel = LeeDataModel()
+    @Published var dataModel = LeeDataModel(runnerProvider: SettingsRunnerProvider())
 
     /// Manifest Status optional
     @Published var manifestStatus: ManifestStatus?

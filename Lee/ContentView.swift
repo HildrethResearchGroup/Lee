@@ -25,6 +25,9 @@ struct ContentView: View {
 //        set: { _ in URL.init(string: "")! }
 //    )
     @State var newFile = URL(string: "")
+    // State variable to get value inside each TextField for the parameters window.
+    // Patamers window does not connect to dataModel at this point, so this is a placeholder.
+    @State var tempInputValue: String = ""
     var body: some View {
         VStack {
             // MARK: Manifest Path Display
@@ -57,13 +60,25 @@ struct ContentView: View {
             
             // Middle horizontal stack will store the parameters window and
             VStack {
-                
+                // TODO: account for dark mode
                 Text("Parameters: ").font(.title)
-                HStack {
-                    Text("value 1:")
-                    TextField("integers", value: $num, format: .number)
+                // for each parameter in view model, create a text field use manifest file
+                // to get param name and data type
+                VStack {
+                    if viewModel.dataModel.manifest?.scripts != nil {
+                        ForEach(viewModel.dataModel.manifest!.scripts, id: \.self) { script in
+                            ForEach(script.inputs, id: \.self) { input in
+                                HStack {
+                                    Text(input.name)
+                                    //TextField("enter value", text: $tempInputValue)
+                                    SubView(model: viewModel)
+                                }
+                            }
+                            
+                        }
+                    }
+                    
                 }
-                
             }
             .multilineTextAlignment(.leading)
             .padding()
@@ -85,7 +100,7 @@ struct ContentView: View {
                     }
                 }) {
                     Text("Run")
-                }.disabled(viewModel.loadedManifest == false)
+                }.disabled(viewModel.loadedManifest == false && viewModel.manifestStatus != .good)
                 Spacer(minLength: 1.0)
                 Button(action: {
                     Task {
@@ -112,6 +127,19 @@ struct ContentView: View {
     }
     
     
+}
+
+/// This is the SubView for each parameter text field so that values are not linked together
+struct SubView: View {
+       @ObservedObject var model: LeeViewModel
+       @State var textValue = ""
+
+       var body: some View {
+           VStack {
+               TextField("Enter value...", text: $textValue)
+            }
+        }
+    // TODO: textValue needs to be sent to dataModel so that script has the value of
 }
 
 

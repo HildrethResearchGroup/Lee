@@ -28,6 +28,7 @@ enum ScriptStatus: Equatable {
 /// DataModel for Lee program
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
+    let runnerProvider: RunnerProvider
     var scriptRunning = [String: Bool]()
     /// This is the scripts outputs
     var scriptOutput = [String: [String]]()
@@ -35,6 +36,10 @@ class LeeDataModel {
     var manifest: Manifest?
     var fileUrls = [URL]()
     var fileNames = [Manifest.Output]()
+
+    public init(runnerProvider: RunnerProvider) {
+        self.runnerProvider = runnerProvider
+    }
     
     // MARK: Change target manifest
     /// Function to change the current target manifest file
@@ -79,7 +84,7 @@ class LeeDataModel {
         // Only run the script if the manifest was loaded correctly
         // Put async code in a Task to have it run off the main thread.  This way your GUI won't freeze up.
         Task {
-            let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
+            let executableURL = runnerProvider.getRunnerPath(name: manifest.program.runner.rawValue, version: manifest.program.version)
             let process = Process()
             let outputPipe = Pipe()
             process.standardOutput = outputPipe
