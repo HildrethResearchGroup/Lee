@@ -57,7 +57,7 @@ struct Manifest: Codable {
     // MARK: Manifest Parser
     private var rootDirectory: URL?
     
-    let scripts: [Script]
+    var scripts: [Script]
     
     /// Constructs a manifest from the URL of a manifest file
     ///
