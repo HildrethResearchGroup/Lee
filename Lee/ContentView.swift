@@ -63,11 +63,6 @@ struct ContentView: View {
                     Text("value 1:")
                     TextField("integers", value: $num, format: .number)
                 }
-                /*ForEach(viewModel...<emojiCount], id: \.self){ emoji in
-                    CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
-                } for each parameter in view model, create a text field
-                 use manifest file to get param name and data type
-                 */
                 
             }
             .multilineTextAlignment(.leading)
@@ -102,21 +97,7 @@ struct ContentView: View {
                 })
                 {
                     Text("Open Output Files")
-                }//.quickLookPreview($urls?)
-//                ForEach($outputNames, id: \.self) { $name in
-//                    Button("Preview") {
-////                        var newFile: Binding<URL?> {
-////                            Binding(
-////                                get: { file },
-////                                set: { file = $0 ?? URL.init(string: "")! }
-////                            )
-////                        }
-//
-//                        let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-//                        newFile = URL(fileURLWithPath: name.name, relativeTo: outputFile)
-//                        newFile = newFile!.appendingPathExtension(name.extension)
-//                    }.quickLookPreview($newFile)
-//                }
+                }
         }
         VStack(alignment: .leading) {
             ForEach(urls,id: \.self) { file in

@@ -29,7 +29,6 @@
 		3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
 		3FBEDC8F29269E1900598312 /* QuickLookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEDC8E29269E1900598312 /* QuickLookImage.swift */; };
-		3FD5194C29218EFF0048EFD2 /* quickLookInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5194B29218EFF0048EFD2 /* quickLookInterface.swift */; };
 		4A36334C28EE59AD000F8851 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A36334B28EE59AD000F8851 /* PythonKit */; };
 		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
@@ -76,7 +75,6 @@
 		3FBC8D1C28E35FE3000BA2D9 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
 		3FBEDC8E29269E1900598312 /* QuickLookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookImage.swift; sourceTree = "<group>"; };
-		3FD5194B29218EFF0048EFD2 /* quickLookInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = quickLookInterface.swift; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +132,6 @@
 			children = (
 				4AFDC3BF28D52D2100390215 /* Lee.swift */,
 				3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */,
-				3FD5194B29218EFF0048EFD2 /* quickLookInterface.swift */,
 				3FA6D85428E90B2B00EB0302 /* ContentView.swift */,
 				3FA6D85728E90B2F00EB0302 /* LeeDataModel.swift */,
 				3FA6D85628E90B2F00EB0302 /* Manifest.swift */,
@@ -355,7 +352,6 @@
 				3FBEDC8F29269E1900598312 /* QuickLookImage.swift in Sources */,
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
-				3FD5194C29218EFF0048EFD2 /* quickLookInterface.swift in Sources */,
 				3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */,
 				3FA6D85A28E90B2F00EB0302 /* PythonDataModel.swift in Sources */,
 				3FA6D85B28E90B2F00EB0302 /* LeeDataModel.swift in Sources */,
