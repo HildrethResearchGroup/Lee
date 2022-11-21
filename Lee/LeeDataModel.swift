@@ -29,11 +29,15 @@ enum ScriptStatus: Equatable {
 /// DataModel for Lee program
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
+    let runnerProvider: RunnerProvider
     var scriptRunning = [String: Bool]()
     /// This is the scripts outputs
     var scriptOutput = [String: [String]]()
     private var scriptStat: ScriptStatus?
     var manifest: Manifest?
+    public init(runnerProvider: RunnerProvider) {
+        self.runnerProvider = runnerProvider
+    }
     // MARK: Change target manifest
     /// Function to change the current target manifest file
     /// It will attempt to load and parse the manifest, then will return whether or not the manifest is good.
@@ -89,7 +93,7 @@ class LeeDataModel {
             throw ScriptError.missingFile
         }
         Task {
-            let executableURL = URL(fileURLWithPath: "/opt/homebrew/bin/python3") // TODO: PUT THIS IN MANIFEST PARSER
+            let executableURL = runnerProvider.getRunnerPath(name: manifest.program.runner.rawValue, version: manifest.program.version)
             let process = Process()
             let outputPipe = Pipe()
             // Checking if the file path is a valid path
@@ -145,8 +149,8 @@ class LeeDataModel {
     // MARK: Get  status of running script
     func getScriptStatus() -> ScriptStatus {
              return scriptStat ?? .done
-         }
-   
+    }
+    
     /// This function writes the output of the script to the files desinated in the manfest
     ///
     /// - parameter output: This is the output from the script
