@@ -6,16 +6,28 @@
 //
 
 import SwiftUI
-
+import QuickLook
+import Quartz
+import AppKit
 /// This is the Lee View
 struct ContentView: View {
     // Handy charge on which Property Wrapper to use
     // https://swiftuipropertywrappers.com
     @ObservedObject var viewModel: LeeViewModel
+    @State private var num = 0;
+//    @Binding var fileDisp = URL
+    @State var urls = [URL]()
+    @State var outputNames = [Manifest.Output]()
+    
+//    let Nullurl: URL = $0
+//    @State var newFile = Binding<URL?>(
+//        get: { URL.init(string: "") },
+//        set: { _ in URL.init(string: "")! }
+//    )
+    @State var newFile = URL(string: "")
     // State variable to get value inside each TextField for the parameters window.
     // Patamers window does not connect to dataModel at this point, so this is a placeholder.
     @State var tempInputValue: String = ""
-    
     var body: some View {
         VStack {
             // MARK: Manifest Path Display
@@ -75,8 +87,6 @@ struct ContentView: View {
                     }
                     
                 }
-                
-                
             }
             .multilineTextAlignment(.leading)
             .padding()
@@ -99,8 +109,25 @@ struct ContentView: View {
                 }) {
                     Text("Run")
                 }.disabled(viewModel.loadedManifest == false && viewModel.manifestStatus != .good)
-                
+                Spacer(minLength: 1.0)
+                Button(action: {
+                    Task {
+                        urls = viewModel.getOutputURLS()
+//                        outputNames = viewModel.getOutputNames()
+                        print(urls)
+                        print("end")
+                    }
+                })
+                {
+                    Text("Open Output Files")
+                }
+        }
+        VStack(alignment: .leading) {
+            ForEach(urls,id: \.self) { file in
+                Text(file.path)
+                QLImage(url: file)
             }
+        }
         }.padding(16)
             .refreshable {
                 await viewModel.runScript()

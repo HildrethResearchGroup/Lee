@@ -22,6 +22,8 @@
 		3F68516228D3A43E00B18DAF /* ManifestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68516128D3A43E00B18DAF /* ManifestTests.swift */; };
 		3F68517B28EF286E00B18DAF /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3F68517A28EF286E00B18DAF /* PythonKit */; };
 		3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */ = {isa = PBXBuildFile; fileRef = 3F8F2B9328C29EB400B7565D /* argsTest.py */; };
+		3FA00CFA291AC22300AF39BB /* manifest_multiple_scripts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA00CF9291AC22300AF39BB /* manifest_multiple_scripts.json */; };
+		3FA00CFB291AC22300AF39BB /* manifest_multiple_scripts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FA00CF9291AC22300AF39BB /* manifest_multiple_scripts.json */; };
 		3FA6D85328E90B1A00EB0302 /* LeeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */; };
 		3FA6D85528E90B2B00EB0302 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85428E90B2B00EB0302 /* ContentView.swift */; };
 		3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6D85628E90B2F00EB0302 /* Manifest.swift */; };
@@ -34,6 +36,7 @@
 		3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1B28E35FE3000BA2D9 /* good.py */; };
 		3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
+		3FBEDC8F29269E1900598312 /* QuickLookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEDC8E29269E1900598312 /* QuickLookImage.swift */; };
 		4A36334C28EE59AD000F8851 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A36334B28EE59AD000F8851 /* PythonKit */; };
 		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +77,7 @@
 		3F1E8E4128BE881400C4DEE3 /* LeeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		3F68516128D3A43E00B18DAF /* ManifestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManifestTests.swift; sourceTree = "<group>"; };
 		3F8F2B9328C29EB400B7565D /* argsTest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = argsTest.py; sourceTree = "<group>"; };
+		3FA00CF9291AC22300AF39BB /* manifest_multiple_scripts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_multiple_scripts.json; sourceTree = "<group>"; };
 		3FA6D85228E90B1A00EB0302 /* LeeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeeViewModel.swift; sourceTree = "<group>"; };
 		3FA6D85428E90B2B00EB0302 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3FA6D85628E90B2F00EB0302 /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		3FBC8D1B28E35FE3000BA2D9 /* good.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = good.py; sourceTree = "<group>"; };
 		3FBC8D1C28E35FE3000BA2D9 /* input.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = input.py; sourceTree = "<group>"; };
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
+		3FBEDC8E29269E1900598312 /* QuickLookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookImage.swift; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +138,7 @@
 		3F1E8E1728BE881300C4DEE3 = {
 			isa = PBXGroup;
 			children = (
+				3FBEDC8E29269E1900598312 /* QuickLookImage.swift */,
 				3FBC8D1828DF7D6F000BA2D9 /* PythonFiles */,
 				3F1E8E2228BE881300C4DEE3 /* Lee */,
 				3F1E8E3E28BE881400C4DEE3 /* LeeUITests */,
@@ -205,6 +211,7 @@
 				3FBC8D1D28E35FE3000BA2D9 /* bad.py */,
 				3FBC8D1B28E35FE3000BA2D9 /* good.py */,
 				3FBC8D1C28E35FE3000BA2D9 /* input.py */,
+				3FA00CF9291AC22300AF39BB /* manifest_multiple_scripts.json */,
 			);
 			path = PythonFiles;
 			sourceTree = "<group>";
@@ -325,6 +332,7 @@
 				3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */,
 				3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */,
 				3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */,
+				3FA00CFA291AC22300AF39BB /* manifest_multiple_scripts.json in Resources */,
 				3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */,
 				3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */,
 			);
@@ -334,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA00CFB291AC22300AF39BB /* manifest_multiple_scripts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FBEDC8F29269E1900598312 /* QuickLookImage.swift in Sources */,
 				3FA6D85928E90B2F00EB0302 /* Manifest.swift in Sources */,
 				4AFDC3C028D52D2100390215 /* Lee.swift in Sources */,
 				3F0F955729269E81009193C7 /* RunnerProvider.swift in Sources */,
