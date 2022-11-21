@@ -43,8 +43,6 @@ class RunnerTests: XCTestCase {
         for currentOutput in ldm.getOutputs() {
             // Getting the output from the script
             let output = currentOutput.value
-            print("output is")
-            print(output)
             // Test that the beginning of the output is initializing rune
             XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
             // Test that the next lines are related to the output of the program
@@ -176,7 +174,9 @@ class RunnerTests: XCTestCase {
         }
     }
     func testMultipleScripts() async {
-        let expectation = XCTestExpectation(description: "Check the multiple file manifest")
+        
+        let expectations = [XCTestExpectation(description: ""), XCTestExpectation(description: "")]
+        var index = 0
         // Running the test
         // Finding the manifest_many.json file
         if let filepath = bundle.url(forResource: "manifest_multiple_scripts", withExtension: "json") {
@@ -187,7 +187,8 @@ class RunnerTests: XCTestCase {
                 if parseResult == .good {
                     // Set up the script runner from the manifest file
                     try await ldm.runScripts {
-                        expectation.fulfill()
+                        expectations[index].fulfill()
+                        index += 1
                     }
                 } else {
                     XCTFail("Parsing the manifest went wrong")
@@ -199,23 +200,19 @@ class RunnerTests: XCTestCase {
         } else {
             XCTFail("Can't find manifest")
         }
-        wait(for: [expectation], timeout: 3.0)
+        wait(for: [expectations[0], expectations[1]], timeout: 3.0)
         let outputs = ldm.getOutputs()
-        print(outputs)
         for currentOutput in outputs {
             // Getting the output from the script
             let output = currentOutput.value
             if currentOutput.key.contains("good.py") {
-                // Testing that the beginning is rune initialization
+                // Test that the beginning of the output is initializing rune
                 XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
-                // Ensure that the next line is the start from the good.py script
+                // Test that the next lines are related to the output of the program
                 XCTAssertTrue(Rune.isValidRuneFile(command: output[1], fileName: "num"))
-                // Testing the input, which will be 'testing'
-                XCTAssertEqual(output[2], "testing")
-                // Testing that the final line is rune end
+                // Since good.py is using seed 10 for random, the output is expected to be 0.5714025946899135
+                XCTAssertEqual(output[2], "0.5714025946899135")
                 XCTAssertTrue(Rune.isValidRuneEnd(command: output[3]))
-                // Testing the output for file one
-                XCTAssertTrue(Rune.isValidRuneFile(command: output[4], fileName: "ex1"))
             } else {
                 // Testing that the beginning is rune initialization
                 XCTAssertTrue(Rune.isValidRuneStart(command: output[0]))
@@ -235,5 +232,39 @@ class RunnerTests: XCTestCase {
                 XCTAssertTrue(Rune.isValidRuneEnd(command: output[106]))
             }
         }
+    }
+    func testMissingFile() async {
+        let expectation = XCTestExpectation(description: "Check the no file manifest")
+        // Finding the no_file.json file
+        if let filepath = bundle.url(forResource: "no_file", withExtension: "json") {
+            do {
+                // Parse the data from the manifest file
+                let parseResult = ldm.changeTargetManifest(url: filepath)
+                // if parsing works, attempt to run the file
+                if parseResult == .good {
+                    // Set up the script runner from the manifest file
+                    try await ldm.runScripts {
+                        expectation.fulfill()
+                    }
+                } else {
+                    XCTFail("Parsing the manifest went wrong")
+                }
+            } catch let error as ScriptError {
+                // The only valid way for this test case to succeed
+                XCTAssertTrue(ScriptError.missingFile == error)
+                return
+            } catch {
+                // The manifest isn't appearing for the test to find
+                print(error)
+                XCTFail("Couldn't read in the manifest")
+            }
+        } else {
+            XCTFail("Can't find manifest")
+        }
+        wait(for: [expectation], timeout: 3.0)
+        XCTFail("Didn't have an error")
+        
+        
+        
     }
 }

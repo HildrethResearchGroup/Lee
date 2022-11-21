@@ -45,6 +45,7 @@ struct ContentView: View {
                 switch viewModel.scriptStatus {
                 case .done: Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
                 case .hasNotRun: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
+                case .bad: Image(systemName: "multiply.circle.fill").foregroundColor(.red)
                 default: Spacer()
                 }
             }
@@ -53,6 +54,13 @@ struct ContentView: View {
                     Text("Error: \(message)")
                     Spacer()
                 }
+            }
+            if case .bad(let message) = viewModel.scriptStatus {
+                HStack {
+                    Text("Error: \(message)")
+                    Spacer()
+                }
+                
             }
             Spacer(minLength: 4.0)
             // MARK: Run and Load File Buttons

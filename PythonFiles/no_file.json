@@ -1,0 +1,17 @@
+{
+    "scripts": [
+        {
+            "program": {
+                "runner": "python",
+                "entry": "no_file.py"
+            },
+            "inputs": [],
+            "outputs": [
+                {
+                    "name": "ex1",
+                    "extension": "txt"
+                }
+            ]
+        }
+    ]
+}
