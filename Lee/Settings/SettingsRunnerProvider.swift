@@ -8,7 +8,7 @@
 import Foundation
 
 class SettingsRunnerProvider: RunnerProvider {
-    private let runnersStore = UserDefaults(suiteName: "settings")!
+    private let runnersStore = UserDefaults.standard
     
     func getRunnerPath(name: String, version: String?) -> URL? {
         if let entry = runnersStore.dictionary(forKey: name) {
