@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class SettingsViewModel: ObservableObject {
-    private let settingsStore = UserDefaults(suiteName: "settings")!
+    private let settingsStore = UserDefaults.standard
     
     @Published public var runners: [String] = []
     @Published public var selectedRunner: String?
@@ -75,10 +75,15 @@ class SettingsViewModel: ObservableObject {
             settingsStore.removeObject(forKey: name)
         }
         
+        selectedRunnerVersions.removeAll()
+        selectedRunner = nil
+        
         // Remove from runner list
         runners.removeAll(where: { name in
             names.contains(name)
         })
+        
+        saveRunners()
     }
     
     /// Called when user selects runners from the list
