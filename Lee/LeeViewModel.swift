@@ -41,7 +41,8 @@ class LeeViewModel: ObservableObject {
     /// Once user has selected a file, the function will update the manifest in the data model and return the status.
     ///
     /// - returns manifestStatus: Whether or not the chosen file is a valid JSON manifest conforming to RUNE protocols
-    // MARK: Load Manifest File 
+    // MARK: Load Manifest File
+    //This set of else-ifs are for the UI tests
     func loadManifestFile() {
         if ProcessInfo.processInfo.arguments.contains("good") {
             manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/manifest_multiple_scripts.json"))
@@ -49,19 +50,19 @@ class LeeViewModel: ObservableObject {
                 loadedManifest = true
             }
         }
-        else if ProcessInfo.processInfo.arguments.contains("bad"){
+        else if ProcessInfo.processInfo.arguments.contains("bad") {
             manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/many.py"))
             if manifestStatus == .good {
                 loadedManifest = true
             }
         }
-        else if ProcessInfo.processInfo.arguments.contains("badScript"){
+        else if ProcessInfo.processInfo.arguments.contains("badScript") {
             manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/manifest_bad.json"))
             if manifestStatus == .good {
                 loadedManifest = true
             }
         }
-        else if ProcessInfo.processInfo.arguments.contains("input"){
+        else if ProcessInfo.processInfo.arguments.contains("input") {
             manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/manifest_input.json"))
             if manifestStatus == .good {
                 loadedManifest = true

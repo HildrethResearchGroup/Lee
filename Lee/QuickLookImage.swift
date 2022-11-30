@@ -2,11 +2,12 @@
 //  QuickLookImage.swift
 //  Lee
 //
-//  Created by Mines Student on 11/17/22.
+//  Created by Davita Bird on 11/17/22.
 //
 import SwiftUI
 import Quartz
 
+//Creating struct to display output files
 struct QLImage: NSViewRepresentable {
     var url: URL
     

@@ -31,7 +31,6 @@ struct ContentView: View {
     var body: some View {
         VStack {
             // MARK: Manifest Path Display
-            // TODO: make separate view
             HStack {
                 Text("Current Manifest: \(viewModel.manifestPath)")
                 switch viewModel.manifestStatus {
@@ -40,7 +39,7 @@ struct ContentView: View {
                 default: Spacer()
                 }
                 Spacer()
-                
+                // MARK: Script status
                 Text("Current Script Status: ")
                 switch viewModel.scriptStatus {
                 case .done: Image(systemName: "checkmark.circle.fill").foregroundColor(.green)
@@ -63,9 +62,7 @@ struct ContentView: View {
                 
             }
             Spacer(minLength: 4.0)
-            // MARK: Run and Load File Buttons
-            // TODO: Make separate view
-            
+            // MARK: Parameters display
             // Middle horizontal stack will store the parameters window and
             VStack {
                 // TODO: account for dark mode
@@ -96,6 +93,7 @@ struct ContentView: View {
             
             Spacer(minLength: 4.0)
             
+            // MARK: Run and Load File Buttons
             HStack {
                 Button(action: viewModel.loadManifestFile) {
                     Text("Load File")
@@ -110,6 +108,8 @@ struct ContentView: View {
                     Text("Run")
                 }.disabled(viewModel.loadedManifest == false && viewModel.manifestStatus != .good)
                 Spacer(minLength: 1.0)
+                
+                // MARK: Output Files
                 Button(action: {
                     Task {
                         urls = viewModel.getOutputURLS()
@@ -137,6 +137,7 @@ struct ContentView: View {
     
 }
 
+// MARK: Parameters Sub-view
 /// This is the SubView for each parameter text field so that values are not linked together
 struct SubView: View {
        @ObservedObject var model: LeeViewModel
