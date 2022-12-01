@@ -38,6 +38,22 @@
 		3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
 		3FBEDC8F29269E1900598312 /* QuickLookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEDC8E29269E1900598312 /* QuickLookImage.swift */; };
 		3FBEDC93292C52B900598312 /* RunnerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBEDC92292C52B900598312 /* RunnerError.swift */; };
+		3FF90D8F29368A24002FCBCF /* RunnerProvider.swift in Resources */ = {isa = PBXBuildFile; fileRef = 3F0F955629269E81009193C7 /* RunnerProvider.swift */; };
+		3FF90D9729391831002FCBCF /* manifest_many.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D9629391831002FCBCF /* manifest_many.json */; };
+		3FF90D9829391831002FCBCF /* manifest_many.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D9629391831002FCBCF /* manifest_many.json */; };
+		3FF90D9A2939185B002FCBCF /* many.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D992939185B002FCBCF /* many.py */; };
+		3FF90D9B2939185B002FCBCF /* many.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D992939185B002FCBCF /* many.py */; };
+		3FF90D9D29391863002FCBCF /* no_file.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D9C29391863002FCBCF /* no_file.json */; };
+		3FF90D9E29391863002FCBCF /* no_file.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D9C29391863002FCBCF /* no_file.json */; };
+		3FF90DA229391DD9002FCBCF /* manifest_input.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D9F29391CAA002FCBCF /* manifest_input.json */; };
+		3FF90DA3293920EA002FCBCF /* manifest_input.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90D9F29391CAA002FCBCF /* manifest_input.json */; };
+		3FF90DA4293920EE002FCBCF /* input.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1C28E35FE3000BA2D9 /* input.py */; };
+		3FF90DA5293920F1002FCBCF /* bad.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1D28E35FE3000BA2D9 /* bad.py */; };
+		3FF90DA6293920F4002FCBCF /* good.py in Resources */ = {isa = PBXBuildFile; fileRef = 3FBC8D1B28E35FE3000BA2D9 /* good.py */; };
+		3FF90DA82939221E002FCBCF /* manifest_good.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90DA72939221E002FCBCF /* manifest_good.json */; };
+		3FF90DA92939221E002FCBCF /* manifest_good.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90DA72939221E002FCBCF /* manifest_good.json */; };
+		3FF90DAB29392250002FCBCF /* manifest_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90DAA29392250002FCBCF /* manifest_bad.json */; };
+		3FF90DAC29392250002FCBCF /* manifest_bad.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF90DAA29392250002FCBCF /* manifest_bad.json */; };
 		4A36334C28EE59AD000F8851 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4A36334B28EE59AD000F8851 /* PythonKit */; };
 		4AFDC3C028D52D2100390215 /* Lee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AFDC3BF28D52D2100390215 /* Lee.swift */; };
 /* End PBXBuildFile section */
@@ -93,6 +109,12 @@
 		3FBC8D1D28E35FE3000BA2D9 /* bad.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = bad.py; sourceTree = "<group>"; };
 		3FBEDC8E29269E1900598312 /* QuickLookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookImage.swift; sourceTree = "<group>"; };
 		3FBEDC92292C52B900598312 /* RunnerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunnerError.swift; sourceTree = "<group>"; };
+		3FF90D9629391831002FCBCF /* manifest_many.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_many.json; sourceTree = "<group>"; };
+		3FF90D992939185B002FCBCF /* many.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = many.py; sourceTree = "<group>"; };
+		3FF90D9C29391863002FCBCF /* no_file.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_file.json; sourceTree = "<group>"; };
+		3FF90D9F29391CAA002FCBCF /* manifest_input.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_input.json; sourceTree = "<group>"; };
+		3FF90DA72939221E002FCBCF /* manifest_good.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest_good.json; sourceTree = "<group>"; };
+		3FF90DAA29392250002FCBCF /* manifest_bad.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = manifest_bad.json; sourceTree = "<group>"; };
 		4AFDC3BF28D52D2100390215 /* Lee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,7 +236,13 @@
 				3FBC8D1D28E35FE3000BA2D9 /* bad.py */,
 				3FBC8D1B28E35FE3000BA2D9 /* good.py */,
 				3FBC8D1C28E35FE3000BA2D9 /* input.py */,
+				3FF90D992939185B002FCBCF /* many.py */,
+				3FF90D9629391831002FCBCF /* manifest_many.json */,
 				3FA00CF9291AC22300AF39BB /* manifest_multiple_scripts.json */,
+				3FF90D9F29391CAA002FCBCF /* manifest_input.json */,
+				3FF90D9C29391863002FCBCF /* no_file.json */,
+				3FF90DAA29392250002FCBCF /* manifest_bad.json */,
+				3FF90DA72939221E002FCBCF /* manifest_good.json */,
 			);
 			path = PythonFiles;
 			sourceTree = "<group>";
@@ -331,12 +359,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF90DA229391DD9002FCBCF /* manifest_input.json in Resources */,
+				3FF90D8F29368A24002FCBCF /* RunnerProvider.swift in Resources */,
 				3F8F2B9428C29EB400B7565D /* argsTest.py in Resources */,
+				3FF90D9729391831002FCBCF /* manifest_many.json in Resources */,
+				3FF90D9A2939185B002FCBCF /* many.py in Resources */,
+				3FF90D9D29391863002FCBCF /* no_file.json in Resources */,
 				3F1E8E2B28BE881400C4DEE3 /* Preview Assets.xcassets in Resources */,
+				3FF90DA82939221E002FCBCF /* manifest_good.json in Resources */,
 				3FBC8D1F28E35FE3000BA2D9 /* input.py in Resources */,
 				3F1E8E2828BE881400C4DEE3 /* Assets.xcassets in Resources */,
 				3FA00CFA291AC22300AF39BB /* manifest_multiple_scripts.json in Resources */,
 				3FBC8D2028E35FE3000BA2D9 /* bad.py in Resources */,
+				3FF90DAB29392250002FCBCF /* manifest_bad.json in Resources */,
 				3FBC8D1E28E35FE3000BA2D9 /* good.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +380,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FF90DAC29392250002FCBCF /* manifest_bad.json in Resources */,
+				3FF90DA3293920EA002FCBCF /* manifest_input.json in Resources */,
 				3FA00CFB291AC22300AF39BB /* manifest_multiple_scripts.json in Resources */,
+				3FF90DA92939221E002FCBCF /* manifest_good.json in Resources */,
+				3FF90DA5293920F1002FCBCF /* bad.py in Resources */,
+				3FF90D9829391831002FCBCF /* manifest_many.json in Resources */,
+				3FF90D9E29391863002FCBCF /* no_file.json in Resources */,
+				3FF90D9B2939185B002FCBCF /* many.py in Resources */,
+				3FF90DA4293920EE002FCBCF /* input.py in Resources */,
+				3FF90DA6293920F4002FCBCF /* good.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

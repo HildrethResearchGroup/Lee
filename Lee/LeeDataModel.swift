@@ -29,7 +29,7 @@ enum ScriptStatus: Equatable {
 /// DataModel for Lee program
 /// Contains the Manifest as well as script running and output functions
 class LeeDataModel {
-    let runnerProvider: RunnerProvider
+    let runnerProvider: RunnerProtocol
     var scriptRunning = [String: Bool]()
     /// This is the scripts outputs
     var scriptOutput = [String: [String]]()
@@ -38,7 +38,7 @@ class LeeDataModel {
     var fileUrls = [URL]()
     var fileNames = [Manifest.Output]()
 
-    public init(runnerProvider: RunnerProvider) {
+    public init(runnerProvider: RunnerProtocol) {
         self.runnerProvider = runnerProvider
     }
     // MARK: Change target manifest
@@ -153,8 +153,8 @@ class LeeDataModel {
     // MARK: Get Output Function
     func getOutputURLS(manifest: Manifest) -> [URL] {
         fileUrls = [URL]()
-        for script in manifest.scripts{
-            for file in script.outputs{
+        for script in manifest.scripts {
+            for file in script.outputs {
                 let outputFile = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
                 var fileName = URL(fileURLWithPath: file.name, relativeTo: outputFile)
                 fileName = fileName.appendingPathExtension(file.extension)
@@ -168,10 +168,10 @@ class LeeDataModel {
     func getScriptStatus() -> ScriptStatus {
              return scriptStat ?? .done
          }
-    func getScriptNames() -> [Manifest.Output]{
+    func getScriptNames() -> [Manifest.Output] {
         fileNames = [Manifest.Output]()
-        for script in manifest!.scripts{
-            for file in script.outputs{
+        for script in manifest!.scripts {
+            for file in script.outputs {
                 self.fileNames.append(file)
             }
         }

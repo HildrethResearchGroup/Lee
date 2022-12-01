@@ -9,7 +9,7 @@ import XCTest
 @testable import Lee
 
 class RunnerTests: XCTestCase {
-    let ldm = LeeDataModel()
+    let ldm = LeeDataModel(runnerProvider: MockRunnerProvider(path: "/opt/homebrew/bin/python3"))
     let bundle = Bundle(for: RunnerTests.self)
     override func setUp() {
         continueAfterFailure = false
@@ -58,6 +58,7 @@ class RunnerTests: XCTestCase {
         // Finding the manifest_input.json file
         if let filepath = bundle.url(forResource: "manifest_input", withExtension: "json") {
             do {
+                print(filepath)
                 // Parse the data from the manifest file
                 let parseResult = ldm.changeTargetManifest(url: filepath)
                 // if parsing works, attempt to run the file
