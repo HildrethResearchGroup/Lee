@@ -41,32 +41,59 @@ class LeeViewModel: ObservableObject {
     /// Once user has selected a file, the function will update the manifest in the data model and return the status.
     ///
     /// - returns manifestStatus: Whether or not the chosen file is a valid JSON manifest conforming to RUNE protocols
-    // MARK: Load Manifest File 
+    // MARK: Load Manifest File
+    //This set of else-ifs are for the UI tests
     func loadManifestFile() {
-        // create a new window to choose a file
-        let dialog = NSOpenPanel()
-        dialog.title                   = "Choose a file"
-        dialog.showsResizeIndicator    = true; // allow resizing
-        dialog.showsHiddenFiles        = false; // Manifest files shouldn't be hidden, could change if needed
-        dialog.allowsMultipleSelection = false; // select only one right now, will change
-        dialog.canChooseDirectories = false; // manifest files are not directories
-        
-        if dialog.runModal() ==  NSApplication.ModalResponse.OK {
-            let result = dialog.url // Pathname of the file
-            if result != nil {
-                let path = result!.path
-                manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: path))
-                if manifestStatus == .good {
-                    loadedManifest = true
-                }
-                // path contains the file path e.g
-                // /Users/ourcodeworld/Desktop/file.txt
-                // saveFile(path)
-                
+        if ProcessInfo.processInfo.arguments.contains("good") {
+            manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/manifest_multiple_scripts.json"))
+            if manifestStatus == .good {
+                loadedManifest = true
             }
-        } else {
-            // User clicked on "Cancel"
-            return
+        }
+        else if ProcessInfo.processInfo.arguments.contains("bad") {
+            manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/many.py"))
+            if manifestStatus == .good {
+                loadedManifest = true
+            }
+        }
+        else if ProcessInfo.processInfo.arguments.contains("badScript") {
+            manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/manifest_bad.json"))
+            if manifestStatus == .good {
+                loadedManifest = true
+            }
+        }
+        else if ProcessInfo.processInfo.arguments.contains("input") {
+            manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: "/Users/student/Developer/Lee/PythonFiles/manifest_input.json"))
+            if manifestStatus == .good {
+                loadedManifest = true
+            }
+        }
+        else{
+            // create a new window to choose a file
+            let dialog = NSOpenPanel()
+            dialog.title                   = "Choose a file"
+            dialog.showsResizeIndicator    = true; // allow resizing
+            dialog.showsHiddenFiles        = false; // Manifest files shouldn't be hidden, could change if needed
+            dialog.allowsMultipleSelection = false; // select only one right now, will change
+            dialog.canChooseDirectories = false; // manifest files are not directories
+            
+            if dialog.runModal() ==  NSApplication.ModalResponse.OK {
+                let result = dialog.url // Pathname of the file
+                if result != nil {
+                    let path = result!.path
+                    manifestStatus = dataModel.changeTargetManifest(url: URL(fileURLWithPath: path))
+                    if manifestStatus == .good {
+                        loadedManifest = true
+                    }
+                    // path contains the file path e.g
+                    // /Users/ourcodeworld/Desktop/file.txt
+                    // saveFile(path)
+                    
+                }
+            } else {
+                // User clicked on "Cancel"
+                return
+            }
         }
     }
     func runScript() async {
